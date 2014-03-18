@@ -18,6 +18,8 @@
 		F5D9566318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
 		F5D9566B18D25B2F00952D3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5D9566918D25B2F00952D3C /* InfoPlist.strings */; };
 		F5D9566D18D25B2F00952D3C /* SymbolicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9566C18D25B2F00952D3C /* SymbolicatorTests.m */; };
+		F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9567718D25DFA00952D3C /* SYMAppController.m */; };
+		F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9567718D25DFA00952D3C /* SYMAppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		F5D9566818D25B2F00952D3C /* SymbolicatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SymbolicatorTests-Info.plist"; sourceTree = "<group>"; };
 		F5D9566A18D25B2F00952D3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5D9566C18D25B2F00952D3C /* SymbolicatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolicatorTests.m; sourceTree = "<group>"; };
+		F5D9567618D25DFA00952D3C /* SYMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMAppController.h; sourceTree = "<group>"; };
+		F5D9567718D25DFA00952D3C /* SYMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMAppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		F5D9564818D25B2F00952D3C /* Symbolicator */ = {
 			isa = PBXGroup;
 			children = (
+				F5D9567618D25DFA00952D3C /* SYMAppController.h */,
+				F5D9567718D25DFA00952D3C /* SYMAppController.m */,
 				F5D9565418D25B2F00952D3C /* SYMAppDelegate.h */,
 				F5D9565518D25B2F00952D3C /* SYMAppDelegate.m */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
@@ -253,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
 			);
@@ -263,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D9566D18D25B2F00952D3C /* SymbolicatorTests.m in Sources */,
+				F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
