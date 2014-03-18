@@ -3,7 +3,7 @@
 //  Symbolicator
 //
 //  Created by Sam Stigler on 3/17/14.
-//  Copyright (c) 2014 Symbolicator. All rights reserved.
+//  Copyright (c) 2014 Sam Stigler. All rights reserved.
 //
 
 #import "SYMSymbolicator.h"
