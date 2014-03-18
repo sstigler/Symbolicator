@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
+		F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F5D9564318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
 		F5D9564D18D25B2F00952D3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5D9564B18D25B2F00952D3C /* InfoPlist.strings */; };
 		F5D9564F18D25B2F00952D3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9564E18D25B2F00952D3C /* main.m */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F529775118D7E68A001551EB /* SYMSymbolicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMSymbolicator.h; sourceTree = "<group>"; };
+		F529775218D7E68A001551EB /* SYMSymbolicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMSymbolicator.m; sourceTree = "<group>"; };
 		F5D9563F18D25B2F00952D3C /* Symbolicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symbolicator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D9564218D25B2F00952D3C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F5D9564518D25B2F00952D3C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +127,8 @@
 				F5D9567718D25DFA00952D3C /* SYMAppController.m */,
 				F5D9565418D25B2F00952D3C /* SYMAppDelegate.h */,
 				F5D9565518D25B2F00952D3C /* SYMAppDelegate.m */,
+				F529775118D7E68A001551EB /* SYMSymbolicator.h */,
+				F529775218D7E68A001551EB /* SYMSymbolicator.m */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
 				F5D9565A18D25B2F00952D3C /* Images.xcassets */,
 				F5D9564918D25B2F00952D3C /* Supporting Files */,
@@ -260,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
+				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
 			);
@@ -269,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9566D18D25B2F00952D3C /* SymbolicatorTests.m in Sources */,
 				F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */,
 			);
@@ -475,6 +483,7 @@
 				F5D9567218D25B2F00952D3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5D9567318D25B2F00952D3C /* Build configuration list for PBXNativeTarget "SymbolicatorTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +492,7 @@
 				F5D9567518D25B2F00952D3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
