@@ -11,10 +11,6 @@
 
 @interface SYMAppController ()
 
-@property(nonatomic, assign) IBOutlet NSTextView* symbolicatedView; // NSTextView doesn't support weak references.
-
-@property(nonatomic, copy) NSString* symbolicatedReport;
-
 - (IBAction)chooseCrashReport:(id)sender;
 - (IBAction)chooseDSYM:(id)sender;
 - (IBAction)symbolicate:(id)sender;
@@ -65,7 +61,6 @@
      dSYM:self.dSYMURL
      withCompletionBlock:^(NSString *symbolicatedReport) {
          weakSelf.symbolicatedReport = symbolicatedReport;
-         [weakSelf.symbolicatedView setString:symbolicatedReport];
      }];
 }
 

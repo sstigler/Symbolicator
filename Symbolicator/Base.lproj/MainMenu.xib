@@ -17,11 +17,7 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="YEF-mj-2aC" customClass="SYMAppController">
-            <connections>
-                <outlet property="symbolicatedView" destination="iEt-GK-jIp" id="ZYw-kc-abd"/>
-            </connections>
-        </customObject>
+        <customObject id="YEF-mj-2aC" customClass="SYMAppController"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">
@@ -184,7 +180,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="597" height="645"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="588" height="400"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="597" height="645"/>
@@ -265,7 +261,7 @@
                             <rect key="frame" x="1" y="1" width="555" height="468"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" findStyle="panel" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="iEt-GK-jIp">
+                                <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="iEt-GK-jIp">
                                     <rect key="frame" x="0.0" y="0.0" width="555" height="468"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,6 +270,15 @@
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="555" height="468"/>
                                     <size key="maxSize" width="567" height="10000000"/>
+                                    <connections>
+                                        <binding destination="YEF-mj-2aC" name="value" keyPath="symbolicatedReport" id="0A6-Bl-3wi">
+                                            <dictionary key="options">
+                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                <string key="NSNullPlaceholder">Symbolicated report will go here.</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

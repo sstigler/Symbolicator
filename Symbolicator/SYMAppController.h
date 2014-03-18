@@ -13,4 +13,6 @@
 @property(nonatomic, strong) NSURL* crashReportURL;
 @property(nonatomic, strong) NSURL* dSYMURL;
 
+@property(nonatomic, copy) NSString* symbolicatedReport;
+
 @end
