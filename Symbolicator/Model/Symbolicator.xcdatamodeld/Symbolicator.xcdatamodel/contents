@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BambooArtifact" representedClassName="SYMBambooArtifact" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="build" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BambooBuild" inverseName="artifacts" inverseEntity="BambooBuild" syncable="YES"/>
+    </entity>
+    <entity name="BambooBuild" representedClassName="SYMBambooBuild" syncable="YES">
+        <attribute name="number" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <relationship name="artifacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BambooArtifact" inverseName="build" inverseEntity="BambooArtifact" syncable="YES"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BambooPlan" inverseName="builds" inverseEntity="BambooPlan" syncable="YES"/>
+    </entity>
+    <entity name="BambooPlan" representedClassName="SYMBambooPlan" syncable="YES">
+        <attribute name="key" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="builds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BambooBuild" inverseName="plan" inverseEntity="BambooBuild" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BambooProject" inverseName="plans" inverseEntity="BambooProject" syncable="YES"/>
+    </entity>
+    <entity name="BambooProject" representedClassName="SYMBambooProject" syncable="YES">
+        <attribute name="key" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="plans" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BambooPlan" inverseName="project" inverseEntity="BambooPlan" syncable="YES"/>
+        <relationship name="server" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BambooServer" inverseName="projects" inverseEntity="BambooServer" syncable="YES"/>
+    </entity>
+    <entity name="BambooServer" representedClassName="SYMBambooServer" syncable="YES">
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BambooProject" inverseName="server" inverseEntity="BambooProject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="BambooArtifact" positionX="-27" positionY="72" width="128" height="90"/>
+        <element name="BambooBuild" positionX="-36" positionY="54" width="128" height="105"/>
+        <element name="BambooPlan" positionX="-45" positionY="27" width="128" height="105"/>
+        <element name="BambooProject" positionX="-63" positionY="-9" width="128" height="105"/>
+        <element name="BambooServer" positionX="-63" positionY="-18" width="128" height="90"/>
+    </elements>
+</model>
