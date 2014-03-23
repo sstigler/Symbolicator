@@ -4,6 +4,7 @@
 #import "_SYMBambooServer.h"
 
 const struct SYMBambooServerAttributes SYMBambooServerAttributes = {
+	.authenticationString = @"authenticationString",
 	.url = @"url",
 	.version = @"version",
 };
@@ -44,6 +45,13 @@ const struct SYMBambooServerFetchedProperties SYMBambooServerFetchedProperties =
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic authenticationString;
+
+
 
 
 
