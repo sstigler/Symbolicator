@@ -26,7 +26,7 @@
 
 - (void)testDoesNotThrowExceptionIfPassedNilRealm
 {
-    XCTAssertNoThrow([[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"bamboo.com"]
+    XCTAssertNoThrow([[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://bamboo.com"]
                                                          realm:nil
                                           authenticationMethod:NSURLAuthenticationMethodHTTPBasic],
                      @"Expected that passing in a nil realm would not result in an assertion failure.");
@@ -35,7 +35,7 @@
 
 - (void)testThrowsExceptionIfPassedNilAuthenticationMethod
 {
-    XCTAssertThrows([[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"bamboo.com"]
+    XCTAssertThrows([[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://bamboo.com"]
                                                         realm:nil
                                          authenticationMethod:nil],
                     @"Expected that passing a nil authentication method would result in an assertion failure.");
@@ -44,7 +44,7 @@
 
 - (void)testReturnsNSURLProtectionSpaceIfPassedValidParameters
 {
-    id test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com:8088"]
+    id test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com:8088"]
                                                   realm:nil
                                    authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     XCTAssertTrue([test isKindOfClass:[NSURLProtectionSpace class]],
@@ -54,7 +54,7 @@
 
 - (void)testReturnValueHasCorrectHostIfPassedTestDotCom
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     NSString* actual = [test host];
@@ -65,7 +65,7 @@
 
 - (void)testReturnValueHasCorrectHostIfPassedBambooDotTestDotNet
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"bamboo.test.net"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://bamboo.test.net"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     NSString* actual = [test host];
@@ -76,7 +76,7 @@
 
 - (void)testReturnValueHasCorrectPortIfPassedURLWithPort80
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com:80"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com:80"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     XCTAssertEqual([test port], 80,
@@ -86,7 +86,7 @@
 
 - (void)testReturnValueHasCorrectPortIfPassedURLWithPort5789
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com:5789"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com:5789"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     XCTAssertEqual([test port], 5789,
@@ -96,7 +96,7 @@
 
 - (void)testReturnValueHasCorrectRealmIfPassedNilRealm
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com:5789"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com:5789"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     XCTAssertNil([test realm],
@@ -106,17 +106,17 @@
 
 - (void)testReturnValueHasCorrectRealmIfPassedUsersRealm
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com:5789"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com:5789"]
                                                                      realm:@"users"
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
-    XCTAssertNil([test realm],
-                 @"Expected 'users', got %@.", [test realm]);
+    XCTAssertEqualObjects([test realm], @"users",
+                          @"Expected 'users', got %@.", [test realm]);
 }
 
 
 - (void)testReturnValueHasCorrectAuthenticationMethodIfPassedHTTPBasicAuthentication
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
     XCTAssertEqualObjects([test authenticationMethod], NSURLAuthenticationMethodHTTPBasic,
@@ -128,7 +128,7 @@
 
 - (void)testReturnValueHasCorrectAuthenticationMethodIfPassedNTLMAuthentication
 {
-    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"test.com"]
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com"]
                                                                      realm:nil
                                                       authenticationMethod:NSURLAuthenticationMethodNTLM];
     XCTAssertEqualObjects([test authenticationMethod], NSURLAuthenticationMethodNTLM,
