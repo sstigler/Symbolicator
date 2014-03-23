@@ -52,6 +52,28 @@
 }
 
 
+- (void)testReturnValueHasCorrectProtocolIfPassedHTTP
+{
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com"]
+                                                                     realm:nil
+                                                      authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+    NSString* actual = [test protocol];
+    XCTAssertEqualObjects(actual, @"http",
+                          @"Expected 'http', got %@.", actual);
+}
+
+
+- (void)testReturnValueHasCorrectProtocolIfPassedHTTPS
+{
+    NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"https://test.com"]
+                                                                     realm:nil
+                                                      authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+    NSString* actual = [test protocol];
+    XCTAssertEqualObjects(actual, @"https",
+                          @"Expected 'https', got %@.", actual);
+}
+
+
 - (void)testReturnValueHasCorrectHostIfPassedTestDotCom
 {
     NSURLProtectionSpace* test = [[NSURLProtectionSpace alloc] initWithURL:[NSURL URLWithString:@"http://test.com"]
