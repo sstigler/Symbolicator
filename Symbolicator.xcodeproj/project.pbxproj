@@ -681,6 +681,7 @@
 				E7751A9B18DEA93100EDF841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5D9563A18D25B2F00952D3C /* Build configuration list for PBXProject "Symbolicator" */ = {
 			isa = XCConfigurationList;
