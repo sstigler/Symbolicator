@@ -1,41 +1,69 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-
 #import "SYMBambooServer.h"
+#import "NSURLProtectionSpace+SYMAdditions.h"
 
 @interface SYMBambooServer ()
 
 @end
 
-static NSString* const kHTTPAuthorizationHeader = @"Authorization";
-
 @implementation SYMBambooServer
 
-#pragma mark - Authentication
+- (void)setUrl:(NSString *)url
+{
+    [self setPrimitiveUrl:url];
+    [self initializeURLProtectionSpaceWithURL:[NSURL URLWithString:url]];
+}
+
+
+- (void)initializeURLProtectionSpaceWithURL:(NSURL *)URL
+{
+    NSURLProtectionSpace* protectionSpace = [[NSURLProtectionSpace alloc]
+                                             initWithURL:URL
+                                             realm:nil
+                                             authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+    [self setPrimitiveUrlProtectionSpace:protectionSpace];
+}
+
 
 - (void)setUsername:(NSString *)username password:(NSString *)password
 {
-    NSString* authString = [self base64EncodedAuthenticationStringFromUsername:username
-                                                                      password:password];
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-        self.authenticationString = authString;
-    }];
+    NSParameterAssert(self.urlProtectionSpace != nil);
+    
+    NSURLCredential* credential = [NSURLCredential credentialWithUser:username
+                                                             password:password
+                                                          persistence:NSURLCredentialPersistencePermanent];
+    [[NSURLCredentialStorage sharedCredentialStorage] setCredential:credential
+                                                 forProtectionSpace:self.urlProtectionSpace];
 }
 
 
-- (NSDictionary *)HTTPBasicAuthenticationHeader
+- (NSURLCredential *)loginCredential
 {
-    NSDictionary* header = @{kHTTPAuthorizationHeader: self.authenticationString};
-    return header;
+    NSDictionary* matchingCredentials = [[NSURLCredentialStorage sharedCredentialStorage]
+                                         credentialsForProtectionSpace:self.urlProtectionSpace];
+    // TODO: Add support for picking between multiple matching credentials.
+    NSArray* allCredentials = [matchingCredentials allValues];
+    if ([allCredentials count] > 0)
+    {
+        return allCredentials[0];
+    } else
+    {
+        return nil;
+    }
 }
 
 
-- (NSString *)base64EncodedAuthenticationStringFromUsername:(NSString *)username
-                                                   password:(NSString *)password
+- (void)logout
 {
-    NSString* authenticationString = [NSString stringWithFormat:@"%@:%@", username, password];
-    NSData* authenticationData = [authenticationString dataUsingEncoding:NSUTF8StringEncoding];
-    NSString* base64EncodedAuthString = [authenticationData base64EncodedStringWithOptions:kNilOptions];
-    return base64EncodedAuthString;
+    NSURLCredentialStorage* credentialStorage = [NSURLCredentialStorage sharedCredentialStorage];
+    NSDictionary* matchingCredentials = [credentialStorage
+                                         credentialsForProtectionSpace:self.urlProtectionSpace];
+    NSArray* allCredentials = [matchingCredentials allValues];
+    for (NSURLCredential* credential in allCredentials)
+    {
+        [credentialStorage removeCredential:credential
+                         forProtectionSpace:self.urlProtectionSpace];
+    }
 }
 
 @end

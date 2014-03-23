@@ -3,15 +3,21 @@
 @interface SYMBambooServer : _SYMBambooServer {}
 
 /**
- Sets the username and password for the client to transmit to the server when making requests.
+ @return The NSURLCredential to use when authenticating to this server. Returns nil if no username
+ and password have been set yet, and it cannot find one saved in the user's keychain.
+ */
+@property(nonatomic, readonly) NSURLCredential* loginCredential;
+
+/**
+ Sets the username and password for the client to transmit to this server when making requests.
  @param username Username
  @param password Password
  */
 - (void)setUsername:(NSString *)username password:(NSString *)password;
 
 /**
- @return The HTTP basic authentication header to use when authenticating to this Bamboo server.
+ Deletes the user's saved login credentials (if any exist) for this server.
  */
-- (NSDictionary *)HTTPBasicAuthenticationHeader;
+- (void)logout;
 
 @end

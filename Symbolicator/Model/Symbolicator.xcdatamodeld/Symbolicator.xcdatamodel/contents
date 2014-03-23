@@ -24,8 +24,8 @@
         <relationship name="server" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BambooServer" inverseName="projects" inverseEntity="BambooServer" syncable="YES"/>
     </entity>
     <entity name="BambooServer" representedClassName="SYMBambooServer" syncable="YES">
-        <attribute name="authenticationString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
+        <attribute name="urlProtectionSpace" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BambooProject" inverseName="server" inverseEntity="BambooProject" syncable="YES"/>
     </entity>
@@ -34,6 +34,6 @@
         <element name="BambooBuild" positionX="-36" positionY="54" width="128" height="105"/>
         <element name="BambooPlan" positionX="-45" positionY="27" width="128" height="105"/>
         <element name="BambooProject" positionX="-63" positionY="-9" width="128" height="105"/>
-        <element name="BambooServer" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="BambooServer" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

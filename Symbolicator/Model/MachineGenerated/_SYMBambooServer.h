@@ -5,8 +5,8 @@
 
 
 extern const struct SYMBambooServerAttributes {
-	__unsafe_unretained NSString *authenticationString;
 	__unsafe_unretained NSString *url;
+	__unsafe_unretained NSString *urlProtectionSpace;
 	__unsafe_unretained NSString *version;
 } SYMBambooServerAttributes;
 
@@ -20,7 +20,7 @@ extern const struct SYMBambooServerFetchedProperties {
 @class SYMBambooProject;
 
 
-
+@class NSObject;
 
 
 @interface SYMBambooServerID : NSManagedObjectID {}
@@ -36,21 +36,21 @@ extern const struct SYMBambooServerFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* authenticationString;
-
-
-
-//- (BOOL)validateAuthenticationString:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSString* url;
 
 
 
 //- (BOOL)validateUrl:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) id urlProtectionSpace;
+
+
+
+//- (BOOL)validateUrlProtectionSpace:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -88,14 +88,14 @@ extern const struct SYMBambooServerFetchedProperties {
 @interface _SYMBambooServer (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveAuthenticationString;
-- (void)setPrimitiveAuthenticationString:(NSString*)value;
-
-
-
-
 - (NSString*)primitiveUrl;
 - (void)setPrimitiveUrl:(NSString*)value;
+
+
+
+
+- (id)primitiveUrlProtectionSpace;
+- (void)setPrimitiveUrlProtectionSpace:(id)value;
 
 
 
