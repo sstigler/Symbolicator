@@ -11,7 +11,7 @@
 
 @implementation SYMAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification
++ (void)initialize
 {
     [MagicalRecord setupCoreDataStack];
 }
