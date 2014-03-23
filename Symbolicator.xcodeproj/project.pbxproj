@@ -22,6 +22,9 @@
 
 /* Begin PBXBuildFile section */
 		7D28E96CA90B4F7AB21F43F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 639CDD26BF984B178D64A62B /* libPods.a */; };
+		E707A5B418DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */; };
+		E707A5B518DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */; };
+		E707A5B718DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */; };
 		E7751A9618DEA76000EDF841 /* SYMBambooClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751A9518DEA76000EDF841 /* SYMBambooClient.m */; };
 		E7751A9718DEA76000EDF841 /* SYMBambooClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751A9518DEA76000EDF841 /* SYMBambooClient.m */; };
 		E7751A9F18DEAB5200EDF841 /* Symbolicator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7751A9D18DEAB5200EDF841 /* Symbolicator.xcdatamodeld */; };
@@ -75,6 +78,9 @@
 /* Begin PBXFileReference section */
 		2B87C05FA5A9412FAE82C07A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		639CDD26BF984B178D64A62B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E707A5B218DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtectionSpace+SYMAdditions.h"; sourceTree = "<group>"; };
+		E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtectionSpace+SYMAdditions.m"; sourceTree = "<group>"; };
+		E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLProtectionSpaceAdditionsTests.m; sourceTree = "<group>"; };
 		E7751A9418DEA76000EDF841 /* SYMBambooClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMBambooClient.h; sourceTree = "<group>"; };
 		E7751A9518DEA76000EDF841 /* SYMBambooClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMBambooClient.m; sourceTree = "<group>"; };
 		E7751A9E18DEAB5200EDF841 /* Symbolicator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Symbolicator.xcdatamodel; sourceTree = "<group>"; };
@@ -144,6 +150,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E707A5B118DF7F0D000AAEEE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E707A5B218DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.h */,
+				E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		E7751A9218DEA71000EDF841 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +263,7 @@
 				F529775118D7E68A001551EB /* SYMSymbolicator.h */,
 				F529775218D7E68A001551EB /* SYMSymbolicator.m */,
 				E7751A9318DEA71700EDF841 /* Bamboo REST client */,
+				E707A5B118DF7F0D000AAEEE /* Categories */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
 				F5D9565A18D25B2F00952D3C /* Images.xcassets */,
 				E7751A9218DEA71000EDF841 /* Model */,
@@ -272,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D9566718D25B2F00952D3C /* Supporting Files */,
+				E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */,
 			);
 			path = SymbolicatorTests;
 			sourceTree = "<group>";
@@ -448,6 +465,7 @@
 				E7751AC918DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */,
 				E7751A9618DEA76000EDF841 /* SYMBambooClient.m in Sources */,
 				E7751AC518DEAFEB00EDF841 /* _SYMBambooPlan.m in Sources */,
+				E707A5B418DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,7 +482,9 @@
 				E7751AAC18DEAFBD00EDF841 /* SYMBambooArtifact.m in Sources */,
 				E7751ACA18DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */,
 				E7751AA018DEAB5200EDF841 /* Symbolicator.xcdatamodeld in Sources */,
+				E707A5B718DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m in Sources */,
 				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
+				E707A5B518DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */,
 				E7751AB218DEAFBD00EDF841 /* SYMBambooProject.m in Sources */,
 				E7751AB418DEAFBD00EDF841 /* SYMBambooServer.m in Sources */,
 				E7751AB018DEAFBD00EDF841 /* SYMBambooPlan.m in Sources */,
