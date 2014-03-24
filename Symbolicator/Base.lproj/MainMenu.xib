@@ -18,6 +18,16 @@
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="YEF-mj-2aC" customClass="SYMAppController"/>
+        <customObject id="4jU-CH-p0R" customClass="SYMPreferencesController">
+            <connections>
+                <outlet property="addBambooServerSheet" destination="yvZ-dw-hIy" id="qra-TO-RvA"/>
+                <outlet property="addBambooServer_PasswordField" destination="FSO-37-RWn" id="Hrx-K9-7DT"/>
+                <outlet property="addBambooServer_URLField" destination="ZNN-2o-D7J" id="p0L-RO-kmn"/>
+                <outlet property="addBambooServer_UsernameField" destination="YPM-Xq-dnv" id="vwW-dt-U3R"/>
+                <outlet property="bambooServersArrayControllerForPreferences" destination="7gg-sW-Y7Q" id="cfq-x9-3Ra"/>
+                <outlet property="preferencesWindow" destination="Sse-vv-yQI" id="mYF-wo-fNm"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">
@@ -398,6 +408,8 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="651" y="433" width="501" height="250"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <value key="minSize" type="size" width="501" height="250"/>
+            <value key="maxSize" type="size" width="501" height="250"/>
             <view key="contentView" id="cOd-4s-2Vy">
                 <rect key="frame" x="0.0" y="0.0" width="501" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -412,23 +424,85 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yY-is-KD4">
-                        <rect key="frame" x="30" y="188" width="100" height="17"/>
+                        <rect key="frame" x="30" y="188" width="47" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Server address:" id="pFB-5A-UlT">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Server:" id="pFB-5A-UlT">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-Yt-5uA">
-                        <rect key="frame" x="136" y="185" width="345" height="22"/>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA3-3j-Qtk">
+                        <rect key="frame" x="83" y="70" width="398" height="135"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://bamboo.yourdomain.com:80" drawsBackground="YES" id="M7J-YC-FVM">
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="dfL-gA-kfw">
+                            <rect key="frame" x="1" y="1" width="396" height="133"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="Lwa-vv-10E">
+                                    <rect key="frame" x="0.0" y="0.0" width="396" height="133"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn width="393" minWidth="40" maxWidth="1000" id="Hz2-jf-Xzf">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="left" title="Text Cell" id="mWY-Fs-mfk">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="7gg-sW-Y7Q" name="value" keyPath="arrangedObjects.description" id="DUD-iq-bLH">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </tableColumn>
+                                    </tableColumns>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="mHK-U1-Bey">
+                            <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Pv5-s9-aUh">
+                            <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWN-bw-DF4">
+                        <rect key="frame" x="456" y="38" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BTj-N8-DXI">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                        </buttonCell>
+                        <connections>
+                            <action selector="showAddBambooServerSheet:" target="4jU-CH-p0R" id="dzs-1h-uYf"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eI7-kH-EdZ">
+                        <rect key="frame" x="423" y="38" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lI9-j4-U5c">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="removeSelectedBambooServer:" target="4jU-CH-p0R" id="2JK-io-GYz"/>
+                            <binding destination="7gg-sW-Y7Q" name="enabled" keyPath="canRemove" id="Rnx-ks-yx6"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
@@ -454,5 +528,148 @@
                 </constraints>
             </view>
         </window>
+        <window title="Add Bamboo Server..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="yvZ-dw-hIy" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" documentModal="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="112" width="402" height="160"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <value key="minSize" type="size" width="402" height="135"/>
+            <value key="maxSize" type="size" width="402" height="135"/>
+            <view key="contentView" id="kQM-fe-Vol">
+                <rect key="frame" x="0.0" y="0.0" width="402" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BTw-fz-Z85">
+                        <rect key="frame" x="48" y="120" width="33" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="URL:" id="jDH-Ok-Spc">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UZf-T4-T4v">
+                        <rect key="frame" x="10" y="88" width="71" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username:" id="y1r-J7-hgq">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P6d-NR-1vD">
+                        <rect key="frame" x="15" y="56" width="66" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password:" id="IFB-ua-s9P">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZNN-2o-D7J">
+                        <rect key="frame" x="87" y="118" width="295" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="295" id="eLC-Gn-HyR"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://yourbambooserver.com:8080" drawsBackground="YES" id="DPc-xB-Ez0">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <outlet property="nextKeyView" destination="YPM-Xq-dnv" id="TvM-8o-gDP"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YPM-Xq-dnv">
+                        <rect key="frame" x="87" y="86" width="295" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LAr-7f-wZZ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <outlet property="nextKeyView" destination="FSO-37-RWn" id="6T8-8O-8pE"/>
+                        </connections>
+                    </textField>
+                    <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FSO-37-RWn">
+                        <rect key="frame" x="87" y="54" width="295" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="99Q-95-EK5">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <allowedInputSourceLocales>
+                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                            </allowedInputSourceLocales>
+                        </secureTextFieldCell>
+                    </secureTextField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="945-ax-bUb">
+                        <rect key="frame" x="306" y="18" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yS9-ry-xh5">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addBambooServerFromAddBambooServerSheet:" target="4jU-CH-p0R" id="9Ee-Uo-99d"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jkM-oe-iyR">
+                        <rect key="frame" x="224" y="18" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KJU-7P-lw5">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelAddBambooServerSheet:" target="4jU-CH-p0R" id="zkB-BK-dvJ"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FSO-37-RWn" firstAttribute="trailing" secondItem="945-ax-bUb" secondAttribute="trailing" id="2VH-9p-ben"/>
+                    <constraint firstItem="FSO-37-RWn" firstAttribute="width" secondItem="YPM-Xq-dnv" secondAttribute="width" id="5xG-mY-1Yb"/>
+                    <constraint firstItem="ZNN-2o-D7J" firstAttribute="leading" secondItem="BTw-fz-Z85" secondAttribute="trailing" constant="8" id="6oO-Ma-j1T"/>
+                    <constraint firstItem="BTw-fz-Z85" firstAttribute="baseline" secondItem="ZNN-2o-D7J" secondAttribute="baseline" id="FzY-Cd-LQy"/>
+                    <constraint firstItem="FSO-37-RWn" firstAttribute="trailing" secondItem="YPM-Xq-dnv" secondAttribute="trailing" id="HNx-kt-KeD"/>
+                    <constraint firstItem="P6d-NR-1vD" firstAttribute="trailing" secondItem="UZf-T4-T4v" secondAttribute="trailing" id="HhJ-tN-InE"/>
+                    <constraint firstItem="YPM-Xq-dnv" firstAttribute="trailing" secondItem="ZNN-2o-D7J" secondAttribute="trailing" id="JDy-4f-N5s"/>
+                    <constraint firstItem="YPM-Xq-dnv" firstAttribute="top" secondItem="ZNN-2o-D7J" secondAttribute="bottom" constant="10" symbolic="YES" id="MZX-a6-jxv"/>
+                    <constraint firstItem="ZNN-2o-D7J" firstAttribute="width" secondItem="YPM-Xq-dnv" secondAttribute="width" id="OIz-1b-4ac"/>
+                    <constraint firstItem="945-ax-bUb" firstAttribute="leading" secondItem="jkM-oe-iyR" secondAttribute="trailing" constant="12" symbolic="YES" id="SHZ-5P-tIo"/>
+                    <constraint firstItem="FSO-37-RWn" firstAttribute="top" secondItem="YPM-Xq-dnv" secondAttribute="bottom" constant="10" symbolic="YES" id="SJX-A6-PSt"/>
+                    <constraint firstItem="YPM-Xq-dnv" firstAttribute="baseline" secondItem="UZf-T4-T4v" secondAttribute="baseline" id="TLw-8J-nil"/>
+                    <constraint firstItem="jkM-oe-iyR" firstAttribute="width" secondItem="945-ax-bUb" secondAttribute="width" id="TtG-R7-Dko"/>
+                    <constraint firstItem="FSO-37-RWn" firstAttribute="baseline" secondItem="P6d-NR-1vD" secondAttribute="baseline" id="ahm-1U-kpx"/>
+                    <constraint firstAttribute="trailing" secondItem="ZNN-2o-D7J" secondAttribute="trailing" constant="20" symbolic="YES" id="eAg-zO-GrX"/>
+                    <constraint firstItem="ZNN-2o-D7J" firstAttribute="top" secondItem="kQM-fe-Vol" secondAttribute="top" constant="20" symbolic="YES" id="hnB-8y-sFh"/>
+                    <constraint firstItem="945-ax-bUb" firstAttribute="top" secondItem="FSO-37-RWn" secondAttribute="bottom" constant="8" id="i8y-vm-5Z7"/>
+                    <constraint firstItem="BTw-fz-Z85" firstAttribute="trailing" secondItem="UZf-T4-T4v" secondAttribute="trailing" id="nIe-sy-hsQ"/>
+                    <constraint firstItem="jkM-oe-iyR" firstAttribute="baseline" secondItem="945-ax-bUb" secondAttribute="baseline" id="nMM-Ql-ZmC"/>
+                    <constraint firstItem="945-ax-bUb" firstAttribute="top" secondItem="FSO-37-RWn" secondAttribute="bottom" constant="8" id="vRR-2p-PDj"/>
+                </constraints>
+            </view>
+        </window>
+        <arrayController automaticallyRearrangesObjects="YES" id="7gg-sW-Y7Q" userLabel="Bamboo Servers for Preferences">
+            <connections>
+                <binding destination="4jU-CH-p0R" name="contentArray" keyPath="bambooServersToPickFrom" id="Mpn-74-DB8">
+                    <dictionary key="options">
+                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                    </dictionary>
+                </binding>
+            </connections>
+        </arrayController>
     </objects>
+    <resources>
+        <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSRemoveTemplate" width="8" height="8"/>
+    </resources>
 </document>
