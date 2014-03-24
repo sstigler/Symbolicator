@@ -56,9 +56,13 @@ extern const struct SYMBambooServerFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* version;
+@property (nonatomic, strong) NSNumber* version;
 
 
+
+@property int32_t versionValue;
+- (int32_t)versionValue;
+- (void)setVersionValue:(int32_t)value_;
 
 //- (BOOL)validateVersion:(id*)value_ error:(NSError**)error_;
 
@@ -100,8 +104,11 @@ extern const struct SYMBambooServerFetchedProperties {
 
 
 
-- (NSString*)primitiveVersion;
-- (void)setPrimitiveVersion:(NSString*)value;
+- (NSNumber*)primitiveVersion;
+- (void)setPrimitiveVersion:(NSNumber*)value;
+
+- (int32_t)primitiveVersionValue;
+- (void)setPrimitiveVersionValue:(int32_t)value_;
 
 
 

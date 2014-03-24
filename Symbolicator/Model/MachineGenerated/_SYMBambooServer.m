@@ -42,6 +42,11 @@ const struct SYMBambooServerFetchedProperties SYMBambooServerFetchedProperties =
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"versionValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"version"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -65,6 +70,25 @@ const struct SYMBambooServerFetchedProperties SYMBambooServerFetchedProperties =
 
 @dynamic version;
 
+
+
+- (int32_t)versionValue {
+	NSNumber *result = [self version];
+	return [result intValue];
+}
+
+- (void)setVersionValue:(int32_t)value_ {
+	[self setVersion:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveVersionValue {
+	NSNumber *result = [self primitiveVersion];
+	return [result intValue];
+}
+
+- (void)setPrimitiveVersionValue:(int32_t)value_ {
+	[self setPrimitiveVersion:[NSNumber numberWithInt:value_]];
+}
 
 
 
