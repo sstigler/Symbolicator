@@ -52,6 +52,8 @@
 		E7751ACA18DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751AC018DEAFEB00EDF841 /* _SYMBambooServer.m */; };
 		E7DF66B918DF903D00628202 /* SYMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DF66B818DF903D00628202 /* SYMPreferencesController.m */; };
 		E7DF66BA18DF903D00628202 /* SYMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DF66B818DF903D00628202 /* SYMPreferencesController.m */; };
+		E7DF66C218DFE16400628202 /* SYMBambooBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DF66C118DFE16400628202 /* SYMBambooBrowserController.m */; };
+		E7DF66C318DFE16400628202 /* SYMBambooBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DF66C118DFE16400628202 /* SYMBambooBrowserController.m */; };
 		F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F5D9564318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
@@ -109,6 +111,8 @@
 		E7751AC018DEAFEB00EDF841 /* _SYMBambooServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SYMBambooServer.m; path = Model/MachineGenerated/_SYMBambooServer.m; sourceTree = "<group>"; };
 		E7DF66B718DF903D00628202 /* SYMPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMPreferencesController.h; sourceTree = "<group>"; };
 		E7DF66B818DF903D00628202 /* SYMPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMPreferencesController.m; sourceTree = "<group>"; };
+		E7DF66C018DFE16400628202 /* SYMBambooBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMBambooBrowserController.h; sourceTree = "<group>"; };
+		E7DF66C118DFE16400628202 /* SYMBambooBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMBambooBrowserController.m; sourceTree = "<group>"; };
 		F529775118D7E68A001551EB /* SYMSymbolicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMSymbolicator.h; sourceTree = "<group>"; };
 		F529775218D7E68A001551EB /* SYMSymbolicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMSymbolicator.m; sourceTree = "<group>"; };
 		F5D9563F18D25B2F00952D3C /* Symbolicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symbolicator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +222,19 @@
 			name = Machine;
 			sourceTree = "<group>";
 		};
+		E7DF66C418DFE16F00628202 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5D9567618D25DFA00952D3C /* SYMAppController.h */,
+				F5D9567718D25DFA00952D3C /* SYMAppController.m */,
+				E7DF66C018DFE16400628202 /* SYMBambooBrowserController.h */,
+				E7DF66C118DFE16400628202 /* SYMBambooBrowserController.m */,
+				E7DF66B718DF903D00628202 /* SYMPreferencesController.h */,
+				E7DF66B818DF903D00628202 /* SYMPreferencesController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		F5D9563618D25B2F00952D3C = {
 			isa = PBXGroup;
 			children = (
@@ -262,16 +279,13 @@
 		F5D9564818D25B2F00952D3C /* Symbolicator */ = {
 			isa = PBXGroup;
 			children = (
-				F5D9567618D25DFA00952D3C /* SYMAppController.h */,
-				F5D9567718D25DFA00952D3C /* SYMAppController.m */,
 				F5D9565418D25B2F00952D3C /* SYMAppDelegate.h */,
 				F5D9565518D25B2F00952D3C /* SYMAppDelegate.m */,
-				E7DF66B718DF903D00628202 /* SYMPreferencesController.h */,
-				E7DF66B818DF903D00628202 /* SYMPreferencesController.m */,
 				F529775118D7E68A001551EB /* SYMSymbolicator.h */,
 				F529775218D7E68A001551EB /* SYMSymbolicator.m */,
 				E7751A9318DEA71700EDF841 /* Bamboo REST client */,
 				E707A5B118DF7F0D000AAEEE /* Categories */,
+				E7DF66C418DFE16F00628202 /* Controllers */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
 				F5D9565A18D25B2F00952D3C /* Images.xcassets */,
 				E7751A9218DEA71000EDF841 /* Model */,
@@ -495,6 +509,7 @@
 				E7DF66B918DF903D00628202 /* SYMPreferencesController.m in Sources */,
 				E7751AB118DEAFBD00EDF841 /* SYMBambooProject.m in Sources */,
 				E7751A9F18DEAB5200EDF841 /* Symbolicator.xcdatamodeld in Sources */,
+				E7DF66C218DFE16400628202 /* SYMBambooBrowserController.m in Sources */,
 				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
 				E7751AC118DEAFEB00EDF841 /* _SYMBambooArtifact.m in Sources */,
@@ -529,6 +544,7 @@
 				E7751AB218DEAFBD00EDF841 /* SYMBambooProject.m in Sources */,
 				E7751AB418DEAFBD00EDF841 /* SYMBambooServer.m in Sources */,
 				E7751AB018DEAFBD00EDF841 /* SYMBambooPlan.m in Sources */,
+				E7DF66C318DFE16400628202 /* SYMBambooBrowserController.m in Sources */,
 				E7DF66BA18DF903D00628202 /* SYMPreferencesController.m in Sources */,
 				F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */,
 				E7751AC218DEAFEB00EDF841 /* _SYMBambooArtifact.m in Sources */,
