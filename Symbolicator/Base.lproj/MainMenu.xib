@@ -363,7 +363,7 @@
                             <binding destination="YEF-mj-2aC" name="value" keyPath="dSYMURL" id="glg-AU-WUW"/>
                         </connections>
                     </pathControl>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-jo-9TB">
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="y6d-jo-9TB">
                         <rect key="frame" x="18" y="13" width="298" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Choose files from Bamboo instead of Finder" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zK6-Cm-BUb">
@@ -381,6 +381,7 @@
                     <constraint firstItem="79f-4y-Q4K" firstAttribute="centerY" secondItem="Ss9-fV-daf" secondAttribute="centerY" id="AE0-YX-awn"/>
                     <constraint firstItem="F6G-jp-sD2" firstAttribute="leading" relation="lessThanOrEqual" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="15" id="FIn-Vi-X0b"/>
                     <constraint firstItem="Ss9-fV-daf" firstAttribute="width" secondItem="ezS-Uh-ixK" secondAttribute="width" id="JfR-py-IZ4"/>
+                    <constraint firstItem="y6d-jo-9TB" firstAttribute="top" secondItem="9f5-FJ-awc" secondAttribute="bottom" constant="20" id="KEY-Z8-xSF"/>
                     <constraint firstItem="9f5-FJ-awc" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="MWJ-ML-GSs"/>
                     <constraint firstItem="ezS-Uh-ixK" firstAttribute="centerY" secondItem="OWV-ii-E9k" secondAttribute="centerY" id="MpF-Er-2Zj"/>
                     <constraint firstItem="9f5-FJ-awc" firstAttribute="top" secondItem="k5x-3n-C7c" secondAttribute="bottom" constant="15" id="PBd-Av-sdQ"/>
@@ -394,6 +395,7 @@
                     <constraint firstItem="NhH-02-68q" firstAttribute="centerY" secondItem="Ss9-fV-daf" secondAttribute="centerY" id="gF3-pS-yaS"/>
                     <constraint firstItem="9f5-FJ-awc" firstAttribute="leading" secondItem="k5x-3n-C7c" secondAttribute="leading" id="hJh-BW-QBl"/>
                     <constraint firstAttribute="trailing" secondItem="9f5-FJ-awc" secondAttribute="trailing" constant="20" symbolic="YES" id="ir6-26-6D0"/>
+                    <constraint firstItem="y6d-jo-9TB" firstAttribute="leading" secondItem="9f5-FJ-awc" secondAttribute="leading" id="j6k-9W-MSc"/>
                     <constraint firstItem="Ss9-fV-daf" firstAttribute="centerY" secondItem="79f-4y-Q4K" secondAttribute="centerY" id="mu9-to-GTr"/>
                     <constraint firstItem="ezS-Uh-ixK" firstAttribute="leading" secondItem="OWV-ii-E9k" secondAttribute="trailing" constant="8" symbolic="YES" id="nCU-wP-vqI"/>
                     <constraint firstItem="M9f-EO-l6V" firstAttribute="top" secondItem="9f5-FJ-awc" secondAttribute="bottom" constant="20" symbolic="YES" id="nfc-Ml-Gv3"/>
@@ -415,7 +417,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="501" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnH-2L-0lb">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wnH-2L-0lb">
                         <rect key="frame" x="18" y="213" width="129" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bamboo integration" id="JR8-zV-eqO">
@@ -424,7 +426,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yY-is-KD4">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2yY-is-KD4">
                         <rect key="frame" x="30" y="188" width="47" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Server:" id="pFB-5A-UlT">
@@ -433,10 +435,10 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA3-3j-Qtk">
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA3-3j-Qtk">
                         <rect key="frame" x="83" y="70" width="398" height="135"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="dfL-gA-kfw">
+                        <clipView key="contentView" id="dfL-gA-kfw">
                             <rect key="frame" x="1" y="1" width="396" height="133"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -475,12 +477,16 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="135" id="G1M-xF-HOK"/>
+                            <constraint firstAttribute="width" constant="398" id="cM1-q9-bT9"/>
+                        </constraints>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="mHK-U1-Bey">
                             <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Pv5-s9-aUh">
-                            <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
+                            <rect key="frame" x="381" y="1" width="16" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -508,6 +514,14 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="wnH-2L-0lb" firstAttribute="top" secondItem="cOd-4s-2Vy" secondAttribute="top" constant="20" symbolic="YES" id="75v-MR-Agd"/>
+                    <constraint firstItem="QA3-3j-Qtk" firstAttribute="top" secondItem="2yY-is-KD4" secondAttribute="top" id="Mce-46-60q"/>
+                    <constraint firstItem="2yY-is-KD4" firstAttribute="top" secondItem="wnH-2L-0lb" secondAttribute="bottom" constant="8" id="Rbw-Fd-oqv"/>
+                    <constraint firstItem="wnH-2L-0lb" firstAttribute="leading" secondItem="cOd-4s-2Vy" secondAttribute="leading" constant="20" id="bkq-H9-n4m"/>
+                    <constraint firstItem="QA3-3j-Qtk" firstAttribute="leading" secondItem="2yY-is-KD4" secondAttribute="trailing" constant="8" id="cbA-hE-Ci1"/>
+                    <constraint firstAttribute="trailing" secondItem="QA3-3j-Qtk" secondAttribute="trailing" constant="20" id="yXC-Xr-ZZj"/>
+                </constraints>
             </view>
         </window>
         <window title="Bamboo Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1NI-z9-eH0" customClass="NSPanel">
