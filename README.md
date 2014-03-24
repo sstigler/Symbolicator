@@ -6,7 +6,7 @@ Symbolicator is a Mac app for symbolicating crash reports. It leverages the buil
 Documentation
 --------------
 
-Symbolicator is really easy to use: Simply choose a .crash file, choose the .dSYM file for the build for that the crash was reported on, and click the "Symbolicate" button. Symbolicator will show you the symbolicated crash report in a text view, and then give you the option to export it as a .crash file.
+Symbolicator is really easy to use: Simply choose a .crash file, choose the .dSYM file for the build that the crash was reported on, and click the "Symbolicate" button. Symbolicator will show you the symbolicated crash report in a text view, and then give you the option to export it as a .crash file.
 
 
 System Requirements
