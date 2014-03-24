@@ -25,6 +25,7 @@
                 <outlet property="addBambooServer_URLField" destination="ZNN-2o-D7J" id="p0L-RO-kmn"/>
                 <outlet property="addBambooServer_UsernameField" destination="YPM-Xq-dnv" id="vwW-dt-U3R"/>
                 <outlet property="bambooServersArrayControllerForPreferences" destination="7gg-sW-Y7Q" id="cfq-x9-3Ra"/>
+                <outlet property="bambooServersTableView" destination="Lwa-vv-10E" id="BIl-CY-ILJ"/>
                 <outlet property="preferencesWindow" destination="Sse-vv-yQI" id="mYF-wo-fNm"/>
             </connections>
         </customObject>
@@ -467,6 +468,9 @@
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="delegate" destination="4jU-CH-p0R" id="JVV-OH-DVD"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

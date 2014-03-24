@@ -14,10 +14,12 @@ static NSString* const kBambooServerEntityName = @"BambooServer";
 static NSString* const kNoBambooServersMenuPlaceholderString = @"No Bamboo servers are saved.";
 static NSString* const kAddBambooServerMenuItemString = @"Add Server...";
 
+static NSString* const kSelectedBambooURLDefaultsKey = @"selectedBambooURLIndex";
+
 static NSInteger const kDefaultHTTPPort = 80;
 static NSInteger const kDefaultHTTPSPort = 443;
 
-@interface SYMPreferencesController ()
+@interface SYMPreferencesController () <NSTableViewDelegate>
 
 @property(nonatomic, weak) IBOutlet NSPanel* preferencesWindow;
 @property(nonatomic, weak) IBOutlet NSPanel* addBambooServerSheet;
@@ -25,6 +27,7 @@ static NSInteger const kDefaultHTTPSPort = 443;
 @property(nonatomic, weak) IBOutlet NSTextField* addBambooServer_UsernameField;
 @property(nonatomic, weak) IBOutlet NSSecureTextField* addBambooServer_PasswordField;
 @property(nonatomic, weak) IBOutlet NSArrayController* bambooServersArrayControllerForPreferences;
+@property(nonatomic, weak) IBOutlet NSTableView* bambooServersTableView;
 
 @property(nonatomic, strong) NSMenu* bambooServersPopUpMenu;
 @property(nonatomic, readonly) NSArray* bambooServersToPickFrom;
@@ -38,6 +41,25 @@ static NSInteger const kDefaultHTTPSPort = 443;
 
 
 @implementation SYMPreferencesController
+
+- (void)awakeFromNib
+{
+    NSString* bambooURLToSelect = [[NSUserDefaults standardUserDefaults]
+                                   stringForKey:kSelectedBambooURLDefaultsKey];
+    if (bambooURLToSelect != nil)
+    {
+        NSUInteger indexToSelectInTableView = [[self bambooServersToPickFrom]
+                                               indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                                                   return [obj isEqualToString:bambooURLToSelect];
+                                               }];
+        if (indexToSelectInTableView != NSNotFound)
+        {
+            NSIndexSet* rowToSelect = [NSIndexSet indexSetWithIndex:indexToSelectInTableView];
+            [self.bambooServersTableView selectRowIndexes:rowToSelect byExtendingSelection:NO];
+        }
+    }
+}
+
 
 - (NSArray *)bambooServersToPickFrom
 {
@@ -247,6 +269,17 @@ static NSInteger const kDefaultHTTPSPort = 443;
     [serverToRemove MR_deleteEntity];
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     [self didChangeValueForKey:NSStringFromSelector(@selector(bambooServersToPickFrom))];
+}
+
+
+#pragma mark - Bamboo Server list table view delegate
+
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSString* selectedURL = [self.bambooServersArrayControllerForPreferences selectedObjects][0];
+    [[NSUserDefaults standardUserDefaults] setObject:selectedURL
+                                              forKey:kSelectedBambooURLDefaultsKey];
 }
 
 @end
