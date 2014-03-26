@@ -6,8 +6,5 @@
 //  Copyright (c) 2014 Symbolicator. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface SYMNotificationConstants : NSObject
-
-@end
+NSString* const SYMBambooServerVersionUpdatedNotification;
+NSString* const SYMBambooProjectsUpdatedNotification;

@@ -26,6 +26,8 @@
 		E707A5B418DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */; };
 		E707A5B518DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */; };
 		E707A5B718DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */; };
+		E756B2FB18E290C900805448 /* SYMNotificationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E756B2FA18E290C900805448 /* SYMNotificationConstants.m */; };
+		E756B2FC18E290C900805448 /* SYMNotificationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E756B2FA18E290C900805448 /* SYMNotificationConstants.m */; };
 		E7751A9618DEA76000EDF841 /* SYMBambooClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751A9518DEA76000EDF841 /* SYMBambooClient.m */; };
 		E7751A9718DEA76000EDF841 /* SYMBambooClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751A9518DEA76000EDF841 /* SYMBambooClient.m */; };
 		E7751A9F18DEAB5200EDF841 /* Symbolicator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7751A9D18DEAB5200EDF841 /* Symbolicator.xcdatamodeld */; };
@@ -86,6 +88,8 @@
 		E707A5B218DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtectionSpace+SYMAdditions.h"; sourceTree = "<group>"; };
 		E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtectionSpace+SYMAdditions.m"; sourceTree = "<group>"; };
 		E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLProtectionSpaceAdditionsTests.m; sourceTree = "<group>"; };
+		E756B2F918E290C900805448 /* SYMNotificationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMNotificationConstants.h; sourceTree = "<group>"; };
+		E756B2FA18E290C900805448 /* SYMNotificationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMNotificationConstants.m; sourceTree = "<group>"; };
 		E7751A9418DEA76000EDF841 /* SYMBambooClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMBambooClient.h; sourceTree = "<group>"; };
 		E7751A9518DEA76000EDF841 /* SYMBambooClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMBambooClient.m; sourceTree = "<group>"; };
 		E7751A9E18DEAB5200EDF841 /* Symbolicator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Symbolicator.xcdatamodel; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 		F5D9564918D25B2F00952D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E756B2F918E290C900805448 /* SYMNotificationConstants.h */,
+				E756B2FA18E290C900805448 /* SYMNotificationConstants.m */,
 				F5D9564A18D25B2F00952D3C /* Symbolicator-Info.plist */,
 				F5D9564B18D25B2F00952D3C /* InfoPlist.strings */,
 				F5D9564E18D25B2F00952D3C /* main.m */,
@@ -309,8 +315,8 @@
 		F5D9566618D25B2F00952D3C /* SymbolicatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5D9566718D25B2F00952D3C /* Supporting Files */,
 				E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */,
+				F5D9566718D25B2F00952D3C /* Supporting Files */,
 			);
 			path = SymbolicatorTests;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				E7751AAF18DEAFBD00EDF841 /* SYMBambooPlan.m in Sources */,
 				E7751AAD18DEAFBD00EDF841 /* SYMBambooBuild.m in Sources */,
 				E7751AAB18DEAFBD00EDF841 /* SYMBambooArtifact.m in Sources */,
+				E756B2FB18E290C900805448 /* SYMNotificationConstants.m in Sources */,
 				E7751AC918DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */,
 				E7751A9618DEA76000EDF841 /* SYMBambooClient.m in Sources */,
 				E7751AC518DEAFEB00EDF841 /* _SYMBambooPlan.m in Sources */,
@@ -535,6 +542,7 @@
 				E7751AC618DEAFEB00EDF841 /* _SYMBambooPlan.m in Sources */,
 				E7751AC818DEAFEB00EDF841 /* _SYMBambooProject.m in Sources */,
 				E7751A9718DEA76000EDF841 /* SYMBambooClient.m in Sources */,
+				E756B2FC18E290C900805448 /* SYMNotificationConstants.m in Sources */,
 				E7751AAC18DEAFBD00EDF841 /* SYMBambooArtifact.m in Sources */,
 				E7751ACA18DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */,
 				E7751AA018DEAB5200EDF841 /* Symbolicator.xcdatamodeld in Sources */,
