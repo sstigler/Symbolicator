@@ -20,4 +20,9 @@
  */
 - (void)logout;
 
+/**
+ Prefetches all the projects on this server.
+ */
+- (void)prefetchProjects;
+
 @end
