@@ -2,11 +2,14 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
+  - OCMock (2.2.3)
 
 DEPENDENCIES:
   - MagicalRecord (~> 2.2)
+  - OCMock (~> 2.2)
 
 SPEC CHECKSUMS:
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
+  OCMock: 74e4ddbcef134170dcc844f91c691f13868075d7
 
 COCOAPODS: 0.29.0
