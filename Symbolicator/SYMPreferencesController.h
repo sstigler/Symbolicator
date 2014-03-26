@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* const kSelectedBambooURLDefaultsKey;
+
 @interface SYMPreferencesController : NSObject
 
 @end

@@ -14,7 +14,7 @@ static NSString* const kBambooServerEntityName = @"BambooServer";
 static NSString* const kNoBambooServersMenuPlaceholderString = @"No Bamboo servers are saved.";
 static NSString* const kAddBambooServerMenuItemString = @"Add Server...";
 
-static NSString* const kSelectedBambooURLDefaultsKey = @"selectedBambooURLIndex";
+NSString* const kSelectedBambooURLDefaultsKey = @"selectedBambooURLIndex";
 
 static NSInteger const kDefaultHTTPPort = 80;
 static NSInteger const kDefaultHTTPSPort = 443;
