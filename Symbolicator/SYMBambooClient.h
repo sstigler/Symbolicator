@@ -6,11 +6,36 @@
 //  Copyright (c) 2014 Symbolicator. All rights reserved.
 //
 
+#import <AFNetworking/AFHTTPSessionManager.h>
 #import <Foundation/Foundation.h>
 
 @class SYMBambooServer;
 
+/** 
+ All-inclusive Bamboo client that manages AFHTTPSessionManagers for one or more Bamboo servers.
+ */
 @interface SYMBambooClient : NSObject
+
+/**
+ Shared singleton Bamboo client.
+ */
++ (instancetype)sharedClient;
+
+/** 
+ Registers the given server base URL with the Bamboo client.
+ @discussion This is the method that creates a session manager for the given base URL. This method
+ does nothing if the base URL is already registered with the Bamboo client.
+ @param baseURL The base URL to register with the client.
+ */
++ (void)registerBaseURL:(NSString *)baseURL;
+
+/**
+ Unregisters the given server base URL from the Bamboo client.
+ @discussion This is the method that destroys a pre-existing session manager (if any) for the given
+ base URL. This method does nothing if the base URL is not already registered with the Bamboo client.
+ @param baseURL The base URL to unregister from the client.
+ */
++ (void)unregisterBaseURL:(NSString *)baseURL;
 
 /**
  Fetches the server version of the specified Bamboo server, and updates the persistent store if necessary.
