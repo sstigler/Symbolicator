@@ -7,12 +7,15 @@
 //
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MMRecord/AFMMRecordResponseSerializationMapper.h>
 #import "SYMBambooClient.h"
+#import "SYMBambooPlan.h"
+#import "SYMBambooProject.h"
 #import "SYMBambooServer.h"
 
-static NSString* const kServerInformationPath = @"rest/api/latest/info";
-static NSString* const kServerProjectsPath = @"rest/api/latest/projects";
-
+static NSString* const kServerInformationPath = @"rest/api/latest/info.json";
+NSString* const kProjectsPath = @"rest/api/latest/projects.json";
+static NSString* const kPlansPath = @"rest/api/latest/plans.json";
 static NSString* const kServerVersionJSONKey = @"version";
 
 /**
@@ -81,24 +84,6 @@ static NSMutableDictionary* sessionManagersByServerURL;
 }
 
 
-- (void)fetchProjectsOnBambooServer:(SYMBambooServer *)server
-                withCompletionBlock:(void (^)(NSArray *projects, NSError *error))completionBlock
-{
-    if (completionBlock != nil)
-    {
-        AFHTTPSessionManager* sessionManager = [[self class] sessionManagerForServer:server];
-        [sessionManager
-         GET:kServerProjectsPath
-         parameters:nil
-         success:^(NSURLSessionDataTask *task, id responseObject) {
-             // TODO: Fill this in.
-         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-             completionBlock(nil, error);
-         }];
-    }
-}
-
-
 #pragma mark - AFHTTPSessionManager utility methods
 
 
@@ -110,8 +95,7 @@ static NSMutableDictionary* sessionManagersByServerURL;
              @"Expected baseURLString to represent a valid URL.");
     
     AFHTTPSessionManager* sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    AFJSONResponseSerializer* responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:kNilOptions];
-    sessionManager.responseSerializer = responseSerializer;
+    sessionManager.responseSerializer = [[self class] MMRecordResponseSerializer];
     return sessionManager;
 }
 
@@ -158,6 +142,26 @@ static NSMutableDictionary* sessionManagersByServerURL;
     {
         sessionManagersByServerURL = [[NSMutableDictionary alloc] initWithCapacity:1];
     }
+}
+
+
++ (AFMMRecordResponseSerializer *)MMRecordResponseSerializer
+{
+    AFMMRecordResponseSerializationMapper* responseSerializationMapper = [[AFMMRecordResponseSerializationMapper alloc] init];
+    [responseSerializationMapper registerEntityName:NSStringFromClass([SYMBambooServer class])
+                           forEndpointPathComponent:kServerInformationPath];
+    [responseSerializationMapper registerEntityName:NSStringFromClass([SYMBambooProject class])
+                           forEndpointPathComponent:kProjectsPath];
+    [responseSerializationMapper registerEntityName:NSStringFromClass([SYMBambooPlan class])
+                           forEndpointPathComponent:kPlansPath];
+    
+    AFJSONResponseSerializer* JSONResponseSerializer = [[AFJSONResponseSerializer alloc] init];
+    NSManagedObjectContext* context = [NSManagedObjectContext MR_contextForCurrentThread];
+    AFMMRecordResponseSerializer* MMRecordResponseSerializer = [AFMMRecordResponseSerializer
+                                                                serializerWithManagedObjectContext:context
+                                                                responseObjectSerializer:JSONResponseSerializer
+                                                                entityMapper:responseSerializationMapper];
+    return MMRecordResponseSerializer;
 }
 
 
