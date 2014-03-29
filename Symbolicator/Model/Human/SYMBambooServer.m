@@ -2,6 +2,7 @@
 #import "SYMBambooClient+Projects.h"
 #import "SYMBambooServer.h"
 #import "SYMNotificationConstants.h"
+#import "SYMPreferencesController.h"
 #import "NSURLProtectionSpace+SYMAdditions.h"
 
 @interface SYMBambooServer ()
@@ -9,6 +10,22 @@
 @end
 
 @implementation SYMBambooServer
+
++ (instancetype)selectedServer
+{
+    NSString* selectedServerURLString = [[NSUserDefaults standardUserDefaults]
+                                         stringForKey:kSelectedBambooURLDefaultsKey];
+    if (selectedServerURLString == nil)
+    {
+        return nil;
+    } else
+    {
+        SYMBambooServer* server = [[self class] MR_findFirstByAttribute:selectedServerURLString
+                                                              withValue:SYMBambooServerAttributes.url];
+        return server;
+    }
+}
+
 
 - (void)setUrl:(NSString *)url
 {

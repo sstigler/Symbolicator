@@ -8,6 +8,13 @@
  */
 @property(nonatomic, readonly) NSURLCredential* loginCredential;
 
+
+/**
+ @return The server that is currently selected in NSUserDefaults. Returns nil if no server is
+ currently selected, or it can't find that server in the default managed object context.
+*/
++ (instancetype)selectedServer;
+ 
 /**
  Sets the username and password for the client to transmit to this server when making requests.
  @param username Username
