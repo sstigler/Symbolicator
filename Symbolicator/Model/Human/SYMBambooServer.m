@@ -92,8 +92,11 @@
     [[SYMBambooClient sharedClient]
      fetchProjectsOnBambooServer:self
      withCompletionBlock:^(NSError *error) {
-         [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
-                                                             object:weakSelf];
+         if (error != nil)
+         {
+             [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
+                                                                 object:weakSelf];
+         }
      }];
 }
 
