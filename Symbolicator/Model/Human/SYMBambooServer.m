@@ -1,5 +1,5 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "SYMBambooClient.h"
+#import "SYMBambooClient+Projects.h"
 #import "SYMBambooServer.h"
 #import "SYMNotificationConstants.h"
 #import "NSURLProtectionSpace+SYMAdditions.h"
@@ -74,13 +74,9 @@
     __weak typeof(self) weakSelf = self;
     [[SYMBambooClient sharedClient]
      fetchProjectsOnBambooServer:self
-     withCompletionBlock:^(NSArray *projects, NSError *error) {
-         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-             // TODO: Fill this in!
-         } completion:^(BOOL success, NSError *error) {
-             [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
-                                                                 object:weakSelf];
-         }];
+     withCompletionBlock:^(NSError *error) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
+                                                             object:weakSelf];
      }];
 }
 
