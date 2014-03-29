@@ -67,6 +67,7 @@ static NSMutableDictionary* sessionManagersByServerURL;
     if (completionBlock != nil)
     {
         AFHTTPSessionManager* sessionManager = [[self class] sessionManagerForServer:server];
+        sessionManager.responseSerializer = [[AFJSONResponseSerializer alloc] init];
         [sessionManager
          GET:kServerInformationPath
          parameters:nil
