@@ -54,6 +54,8 @@
 		E7751AC818DEAFEB00EDF841 /* _SYMBambooProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751ABE18DEAFEB00EDF841 /* _SYMBambooProject.m */; };
 		E7751AC918DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751AC018DEAFEB00EDF841 /* _SYMBambooServer.m */; };
 		E7751ACA18DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7751AC018DEAFEB00EDF841 /* _SYMBambooServer.m */; };
+		E7CBEAD718E75F1700B461C1 /* SYMBambooClient+Plans.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CBEAD618E75F1700B461C1 /* SYMBambooClient+Plans.m */; };
+		E7CBEAD818E75F1700B461C1 /* SYMBambooClient+Plans.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CBEAD618E75F1700B461C1 /* SYMBambooClient+Plans.m */; };
 		E7DA403818E67A6100662884 /* SYMBambooPaginationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DA403718E67A6100662884 /* SYMBambooPaginationManager.m */; };
 		E7DA403918E67A6100662884 /* SYMBambooPaginationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DA403718E67A6100662884 /* SYMBambooPaginationManager.m */; };
 		E7DA403C18E68DED00662884 /* SYMBambooClient+Paging.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DA403B18E68DED00662884 /* SYMBambooClient+Paging.m */; };
@@ -122,6 +124,8 @@
 		E7751ABE18DEAFEB00EDF841 /* _SYMBambooProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SYMBambooProject.m; path = Model/MachineGenerated/_SYMBambooProject.m; sourceTree = "<group>"; };
 		E7751ABF18DEAFEB00EDF841 /* _SYMBambooServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SYMBambooServer.h; path = Model/MachineGenerated/_SYMBambooServer.h; sourceTree = "<group>"; };
 		E7751AC018DEAFEB00EDF841 /* _SYMBambooServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SYMBambooServer.m; path = Model/MachineGenerated/_SYMBambooServer.m; sourceTree = "<group>"; };
+		E7CBEAD518E75F1700B461C1 /* SYMBambooClient+Plans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SYMBambooClient+Plans.h"; sourceTree = "<group>"; };
+		E7CBEAD618E75F1700B461C1 /* SYMBambooClient+Plans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SYMBambooClient+Plans.m"; sourceTree = "<group>"; };
 		E7DA403618E67A6100662884 /* SYMBambooPaginationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMBambooPaginationManager.h; sourceTree = "<group>"; };
 		E7DA403718E67A6100662884 /* SYMBambooPaginationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMBambooPaginationManager.m; sourceTree = "<group>"; };
 		E7DA403A18E68DED00662884 /* SYMBambooClient+Paging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SYMBambooClient+Paging.h"; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				E7751A9518DEA76000EDF841 /* SYMBambooClient.m */,
 				E7DA403A18E68DED00662884 /* SYMBambooClient+Paging.h */,
 				E7DA403B18E68DED00662884 /* SYMBambooClient+Paging.m */,
+				E7CBEAD518E75F1700B461C1 /* SYMBambooClient+Plans.h */,
+				E7CBEAD618E75F1700B461C1 /* SYMBambooClient+Plans.m */,
 				E74085FC18E65EA20058AB37 /* SYMBambooClient+Projects.h */,
 				E74085FD18E65EA20058AB37 /* SYMBambooClient+Projects.m */,
 				E7DA403618E67A6100662884 /* SYMBambooPaginationManager.h */,
@@ -549,6 +555,7 @@
 				E756B2FB18E290C900805448 /* SYMNotificationConstants.m in Sources */,
 				E7751AC918DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */,
 				E7751A9618DEA76000EDF841 /* SYMBambooClient.m in Sources */,
+				E7CBEAD718E75F1700B461C1 /* SYMBambooClient+Plans.m in Sources */,
 				E7751AC518DEAFEB00EDF841 /* _SYMBambooPlan.m in Sources */,
 				E707A5B418DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */,
 				E74085FE18E65EA20058AB37 /* SYMBambooClient+Projects.m in Sources */,
@@ -571,6 +578,7 @@
 				E756B2FC18E290C900805448 /* SYMNotificationConstants.m in Sources */,
 				E7751AAC18DEAFBD00EDF841 /* SYMBambooArtifact.m in Sources */,
 				E7751ACA18DEAFEB00EDF841 /* _SYMBambooServer.m in Sources */,
+				E7CBEAD818E75F1700B461C1 /* SYMBambooClient+Plans.m in Sources */,
 				E7751AA018DEAB5200EDF841 /* Symbolicator.xcdatamodeld in Sources */,
 				E707A5B718DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m in Sources */,
 				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
