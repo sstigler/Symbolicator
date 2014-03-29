@@ -42,17 +42,17 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_Serialization 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_Serialization 1
 
-// MMRecord
-#define COCOAPODS_POD_AVAILABLE_MMRecord
-#define COCOAPODS_VERSION_MAJOR_MMRecord 1
-#define COCOAPODS_VERSION_MINOR_MMRecord 3
-#define COCOAPODS_VERSION_PATCH_MMRecord 0
-
 // MMRecord/Core
 #define COCOAPODS_POD_AVAILABLE_MMRecord_Core
 #define COCOAPODS_VERSION_MAJOR_MMRecord_Core 1
 #define COCOAPODS_VERSION_MINOR_MMRecord_Core 3
 #define COCOAPODS_VERSION_PATCH_MMRecord_Core 0
+
+// MMRecord/ResponseSerializer
+#define COCOAPODS_POD_AVAILABLE_MMRecord_ResponseSerializer
+#define COCOAPODS_VERSION_MAJOR_MMRecord_ResponseSerializer 1
+#define COCOAPODS_VERSION_MINOR_MMRecord_ResponseSerializer 3
+#define COCOAPODS_VERSION_PATCH_MMRecord_ResponseSerializer 0
 
 // MagicalRecord
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord

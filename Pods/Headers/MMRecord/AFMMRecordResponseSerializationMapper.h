@@ -1,0 +1,1 @@
+../../MMRecord/Source/AFMMRecordResponseSerializer/AFMMRecordResponseSerializationMapper.h
