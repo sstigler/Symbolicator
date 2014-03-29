@@ -6,5 +6,6 @@
 //  Copyright (c) 2014 Symbolicator. All rights reserved.
 //
 
-NSString* const SYMBambooServerVersionUpdatedNotification = @"SYMBambooServerVersionUpdatedNotification";
+NSString* const SYMBambooPlansUpdatedNotification = @"SYMBambooPlansUpdatedNotification";
 NSString* const SYMBambooProjectsUpdatedNotification = @"SYMBambooProjectsUpdatedNotification";
+NSString* const SYMBambooServerVersionUpdatedNotification = @"SYMBambooServerVersionUpdatedNotification";
