@@ -2,7 +2,7 @@
 // Make changes to SYMBambooServer.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "MMRecord.h"
 
 extern const struct SYMBambooServerAttributes {
 	__unsafe_unretained NSString *url;
@@ -26,7 +26,7 @@ extern const struct SYMBambooServerFetchedProperties {
 @interface SYMBambooServerID : NSManagedObjectID {}
 @end
 
-@interface _SYMBambooServer : NSManagedObject {}
+@interface _SYMBambooServer : MMRecord {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

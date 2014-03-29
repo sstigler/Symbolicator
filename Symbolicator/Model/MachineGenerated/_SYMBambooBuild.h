@@ -2,7 +2,7 @@
 // Make changes to SYMBambooBuild.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "MMRecord.h"
 
 extern const struct SYMBambooBuildAttributes {
 	__unsafe_unretained NSString *number;
@@ -26,7 +26,7 @@ extern const struct SYMBambooBuildFetchedProperties {
 @interface SYMBambooBuildID : NSManagedObjectID {}
 @end
 
-@interface _SYMBambooBuild : NSManagedObject {}
+@interface _SYMBambooBuild : MMRecord {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

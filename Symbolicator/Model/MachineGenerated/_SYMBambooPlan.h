@@ -2,7 +2,7 @@
 // Make changes to SYMBambooPlan.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "MMRecord.h"
 
 extern const struct SYMBambooPlanAttributes {
 	__unsafe_unretained NSString *key;
@@ -26,7 +26,7 @@ extern const struct SYMBambooPlanFetchedProperties {
 @interface SYMBambooPlanID : NSManagedObjectID {}
 @end
 
-@interface _SYMBambooPlan : NSManagedObject {}
+@interface _SYMBambooPlan : MMRecord {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

@@ -2,7 +2,7 @@
 // Make changes to SYMBambooArtifact.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "MMRecord.h"
 
 extern const struct SYMBambooArtifactAttributes {
 	__unsafe_unretained NSString *name;
@@ -24,7 +24,7 @@ extern const struct SYMBambooArtifactFetchedProperties {
 @interface SYMBambooArtifactID : NSManagedObjectID {}
 @end
 
-@interface _SYMBambooArtifact : NSManagedObject {}
+@interface _SYMBambooArtifact : MMRecord {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
