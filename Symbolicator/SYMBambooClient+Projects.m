@@ -12,6 +12,7 @@
 #import "SYMBambooClient_Subclass.h"
 #import "SYMBambooPaginationManager.h"
 #import "SYMBambooProject.h"
+#import "SYMNotificationConstants.h"
 
 @implementation SYMBambooClient (Projects)
 
@@ -23,7 +24,19 @@
      URN:kProjectsPath
      parameters:nil
      recordClass:[SYMBambooProject class]
-     completionBlock:completionBlock];
+     completionBlock:^(NSError *error) {
+         if (error == nil)
+         {
+             [[NSNotificationCenter defaultCenter]
+              postNotificationName:SYMBambooProjectsUpdatedNotification
+              object:server];
+         }
+         
+         if (completionBlock != nil)
+         {
+             completionBlock(error);
+         }
+     }];
 }
 
 @end
