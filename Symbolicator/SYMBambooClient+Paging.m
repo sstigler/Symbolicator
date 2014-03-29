@@ -35,7 +35,7 @@
          SYMBambooPaginationManager* paginationManager = [[SYMBambooPaginationManager alloc]
                                                           initWithResponseObject:responseObject
                                                           requestURN:URN
-                                                          requestData:@{}
+                                                          requestData:nonNilParameters
                                                           recordClass:[SYMBambooProject class]];
          if ([paginationManager canRequestNextPage])
          {
