@@ -8,6 +8,9 @@
 
 @implementation SYMBambooProject
 
-// Custom logic goes here.
++ (NSString *)keyPathForResponseObject
+{
+    return @"projects.project";
+}
 
 @end
