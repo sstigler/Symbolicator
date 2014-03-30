@@ -21,8 +21,8 @@
         return nil;
     } else
     {
-        SYMBambooServer* server = [[self class] MR_findFirstByAttribute:selectedServerURLString
-                                                              withValue:SYMBambooServerAttributes.url];
+        SYMBambooServer* server = [[self class] MR_findFirstByAttribute:SYMBambooServerAttributes.url
+                                                              withValue:selectedServerURLString];
         return server;
     }
 }
