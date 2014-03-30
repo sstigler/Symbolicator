@@ -29,7 +29,8 @@ typedef NS_ENUM(NSInteger, SYMBambooBrowserColumn)
 
 @interface SYMBambooBrowserController () <NSBrowserDelegate>
 
-@property(nonatomic, weak) IBOutlet NSBrowser* browser;
+@property(nonatomic, weak) NSBrowser* browser;
+@property(nonatomic, weak) NSWindow* browserWindow;
 
 @property(nonatomic, strong) SYMBambooClient* bambooClient;
 
@@ -59,11 +60,13 @@ static NSString* const kArtifactsColumnTitle = @"Artifacts";
 }
 
 
-- (instancetype)init
+- (instancetype)initWithWindow:(NSWindow *)window
 {
     self = [super init];
     if (self != nil)
     {
+        _browserWindow = window;
+        
         _bambooClient = [[SYMBambooClient alloc] init];
         
         [self registerForNotifications];

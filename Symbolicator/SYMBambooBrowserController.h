@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Symbolicator. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
-@interface SYMBambooBrowserController : NSObject
+@interface SYMBambooBrowserController : NSWindowController
 
 @end

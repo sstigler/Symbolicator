@@ -26,6 +26,8 @@
 		E707A5B418DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */; };
 		E707A5B518DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */; };
 		E707A5B718DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */; };
+		E710DAED18E8B165009B335D /* BambooBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = E710DAEC18E8B165009B335D /* BambooBrowser.xib */; };
+		E710DAEE18E8B165009B335D /* BambooBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = E710DAEC18E8B165009B335D /* BambooBrowser.xib */; };
 		E74085FE18E65EA20058AB37 /* SYMBambooClient+Projects.m in Sources */ = {isa = PBXBuildFile; fileRef = E74085FD18E65EA20058AB37 /* SYMBambooClient+Projects.m */; };
 		E74085FF18E65EA20058AB37 /* SYMBambooClient+Projects.m in Sources */ = {isa = PBXBuildFile; fileRef = E74085FD18E65EA20058AB37 /* SYMBambooClient+Projects.m */; };
 		E756B2FB18E290C900805448 /* SYMNotificationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E756B2FA18E290C900805448 /* SYMNotificationConstants.m */; };
@@ -96,6 +98,7 @@
 		E707A5B218DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtectionSpace+SYMAdditions.h"; sourceTree = "<group>"; };
 		E707A5B318DF7F3E000AAEEE /* NSURLProtectionSpace+SYMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtectionSpace+SYMAdditions.m"; sourceTree = "<group>"; };
 		E707A5B618DF80B4000AAEEE /* NSURLProtectionSpaceAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLProtectionSpaceAdditionsTests.m; sourceTree = "<group>"; };
+		E710DAEC18E8B165009B335D /* BambooBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BambooBrowser.xib; sourceTree = "<group>"; };
 		E74085FC18E65EA20058AB37 /* SYMBambooClient+Projects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SYMBambooClient+Projects.h"; sourceTree = "<group>"; };
 		E74085FD18E65EA20058AB37 /* SYMBambooClient+Projects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SYMBambooClient+Projects.m"; sourceTree = "<group>"; };
 		E740860018E65EF70058AB37 /* SYMBambooClient_Subclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMBambooClient_Subclass.h; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 				E707A5B118DF7F0D000AAEEE /* Categories */,
 				E7DF66C418DFE16F00628202 /* Controllers */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
+				E710DAEC18E8B165009B335D /* BambooBrowser.xib */,
 				F5D9565A18D25B2F00952D3C /* Images.xcassets */,
 				E7751A9218DEA71000EDF841 /* Model */,
 				F5D9564918D25B2F00952D3C /* Supporting Files */,
@@ -444,6 +448,7 @@
 				F5D9565B18D25B2F00952D3C /* Images.xcassets in Resources */,
 				F5D9565318D25B2F00952D3C /* Credits.rtf in Resources */,
 				F5D9565918D25B2F00952D3C /* MainMenu.xib in Resources */,
+				E710DAED18E8B165009B335D /* BambooBrowser.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E710DAEE18E8B165009B335D /* BambooBrowser.xib in Resources */,
 				F5D9566B18D25B2F00952D3C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
