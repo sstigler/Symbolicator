@@ -124,6 +124,7 @@
 		E7751ABE18DEAFEB00EDF841 /* _SYMBambooProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SYMBambooProject.m; path = Model/MachineGenerated/_SYMBambooProject.m; sourceTree = "<group>"; };
 		E7751ABF18DEAFEB00EDF841 /* _SYMBambooServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _SYMBambooServer.h; path = Model/MachineGenerated/_SYMBambooServer.h; sourceTree = "<group>"; };
 		E7751AC018DEAFEB00EDF841 /* _SYMBambooServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _SYMBambooServer.m; path = Model/MachineGenerated/_SYMBambooServer.m; sourceTree = "<group>"; };
+		E7BEBCD618E7DC5A0024854A /* SYMTreeNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMTreeNode.h; sourceTree = "<group>"; };
 		E7CBEAD518E75F1700B461C1 /* SYMBambooClient+Plans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SYMBambooClient+Plans.h"; sourceTree = "<group>"; };
 		E7CBEAD618E75F1700B461C1 /* SYMBambooClient+Plans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SYMBambooClient+Plans.m"; sourceTree = "<group>"; };
 		E7DA403618E67A6100662884 /* SYMBambooPaginationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMBambooPaginationManager.h; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				E7751A9D18DEAB5200EDF841 /* Symbolicator.xcdatamodeld */,
+				E7BEBCD618E7DC5A0024854A /* SYMTreeNode.h */,
 				E7751AB518DEAFD200EDF841 /* Human */,
 				E7751AB618DEAFDB00EDF841 /* Machine */,
 			);

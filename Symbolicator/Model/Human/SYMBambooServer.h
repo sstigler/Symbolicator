@@ -1,6 +1,7 @@
 #import "_SYMBambooServer.h"
+#import "SYMTreeNode.h"
 
-@interface SYMBambooServer : _SYMBambooServer {}
+@interface SYMBambooServer : _SYMBambooServer <SYMTreeNode> {}
 
 /**
  @return The NSURLCredential to use when authenticating to this server. Returns nil if no username
@@ -31,5 +32,6 @@
  Prefetches all the projects on this server.
  */
 - (void)prefetchProjects;
+
 
 @end

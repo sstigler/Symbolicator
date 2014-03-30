@@ -29,6 +29,11 @@
                 <outlet property="preferencesWindow" destination="Sse-vv-yQI" id="mYF-wo-fNm"/>
             </connections>
         </customObject>
+        <customObject id="VQl-ov-6am" customClass="SYMBambooBrowserController">
+            <connections>
+                <outlet property="browser" destination="4l2-UF-F84" id="XVu-Km-Y5r"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">
@@ -533,15 +538,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="828" height="297"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <browser verticalHuggingPriority="750" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsEmptySelection="YES" allowsBranchSelection="YES" defaultColumnWidth="100" minColumnWidth="100" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-UF-F84">
-                        <rect key="frame" x="0.0" y="0.0" width="828" height="319"/>
+                    <browser verticalHuggingPriority="750" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsEmptySelection="YES" allowsBranchSelection="YES" defaultColumnWidth="100" minColumnWidth="100" maxVisibleColumns="4" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-UF-F84">
+                        <rect key="frame" x="0.0" y="50" width="828" height="269"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </browser>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-GK-vSq">
+                        <rect key="frame" x="14" y="8" width="87" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vBl-jW-YGX">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="4l2-UF-F84" secondAttribute="bottom" id="AUc-cX-VWE"/>
+                    <constraint firstItem="PiP-GK-vSq" firstAttribute="leading" secondItem="gS0-5v-paM" secondAttribute="leading" constant="20" id="A70-Af-iSh"/>
+                    <constraint firstAttribute="bottom" secondItem="4l2-UF-F84" secondAttribute="bottom" constant="50" id="AUc-cX-VWE"/>
                     <constraint firstAttribute="trailing" secondItem="4l2-UF-F84" secondAttribute="trailing" id="DDO-Wr-Jiu"/>
                     <constraint firstItem="4l2-UF-F84" firstAttribute="leading" secondItem="gS0-5v-paM" secondAttribute="leading" id="TAc-JB-Qbv"/>
+                    <constraint firstAttribute="bottom" secondItem="PiP-GK-vSq" secondAttribute="bottom" constant="15" id="V2l-x6-5r2"/>
                     <constraint firstItem="4l2-UF-F84" firstAttribute="top" secondItem="gS0-5v-paM" secondAttribute="top" id="mFN-lw-nEd"/>
                 </constraints>
             </view>

@@ -1,5 +1,6 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "SYMBambooClient+Projects.h"
+#import "SYMBambooProject.h"
 #import "SYMBambooServer.h"
 #import "SYMNotificationConstants.h"
 #import "SYMPreferencesController.h"
@@ -94,10 +95,52 @@
      withCompletionBlock:^(NSError *error) {
          if (error != nil)
          {
-             [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
-                                                                 object:weakSelf];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
+                                                                     object:weakSelf];
+             });
          }
      }];
+}
+
+
+#pragma mark - Tree node methods
+
+
+- (NSArray *)orderedChildren
+{
+    NSArray* sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:SYMBambooProjectAttributes.name
+                                                               ascending:YES],
+                                 [NSSortDescriptor sortDescriptorWithKey:SYMBambooProjectAttributes.key
+                                                               ascending:YES]];
+    NSArray* ordered = [self.projects sortedArrayUsingDescriptors:sortDescriptors];
+    return ordered;
+}
+
+
+- (instancetype)childAtIndex:(NSInteger)index
+{
+    NSArray* allChildren = [self orderedChildren];
+    if (index < [allChildren count])
+    {
+        return allChildren[index];
+    } else
+    {
+        return nil;
+    }
+}
+
+
+- (NSInteger)numberOfChildren
+{
+    return [self.projects count];
+}
+
+
+- (BOOL)isLeaf
+{
+    BOOL isLeaf = ([self numberOfChildren] == 0);
+    return isLeaf;
 }
 
 @end
