@@ -277,9 +277,13 @@ static NSInteger const kDefaultHTTPSPort = 443;
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    NSString* selectedURL = [self.bambooServersArrayControllerForPreferences selectedObjects][0];
-    [[NSUserDefaults standardUserDefaults] setObject:selectedURL
-                                              forKey:kSelectedBambooURLDefaultsKey];
+    NSArray* selectedObjects = [self.bambooServersArrayControllerForPreferences selectedObjects];
+    if ([selectedObjects count] > 0)
+    {
+        NSString* selectedURL = selectedObjects[0];
+        [[NSUserDefaults standardUserDefaults] setObject:selectedURL
+                                                  forKey:kSelectedBambooURLDefaultsKey];
+    }
 }
 
 @end

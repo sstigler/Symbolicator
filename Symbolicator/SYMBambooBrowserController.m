@@ -7,6 +7,7 @@
 //
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "SYMAppDelegate.h"
 #import "SYMBambooArtifact.h"
 #import "SYMBambooBrowserController.h"
 #import "SYMBambooBuild.h"
@@ -48,6 +49,15 @@ static NSString* const kBuildsColumnTitle = @"Builds";
 static NSString* const kArtifactsColumnTitle = @"Artifacts";
 
 @implementation SYMBambooBrowserController
+
++ (void)initialize
+{
+    if ([SYMAppDelegate isCoreDataSetUp] == NO)
+    {
+        [[self class] setUpCoreData];
+    }
+}
+
 
 - (instancetype)init
 {

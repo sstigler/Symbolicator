@@ -12,4 +12,8 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
++ (BOOL)isCoreDataSetUp;
+
++ (void)setUpCoreData;
+
 @end

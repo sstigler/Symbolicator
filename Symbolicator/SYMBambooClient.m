@@ -8,13 +8,14 @@
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <MMRecord/AFMMRecordResponseSerializationMapper.h>
+#import "SYMAppDelegate.h"
 #import "SYMBambooClient.h"
 #import "SYMBambooPlan.h"
 #import "SYMBambooProject.h"
 #import "SYMBambooServer.h"
 
 static NSString* const kServerInformationPath = @"rest/api/latest/info.json";
-NSString* const kProjectsPath = @"rest/api/latest/projects.json";
+NSString* const kProjectsPath = @"rest/api/latest/project.json";
 static NSString* const kPlansPath = @"rest/api/latest/plans.json";
 static NSString* const kServerVersionJSONKey = @"version";
 
@@ -26,6 +27,15 @@ static NSString* const kServerVersionJSONKey = @"version";
 static NSMutableDictionary* sessionManagersByServerURL;
 
 @implementation SYMBambooClient
+
++ (void)initialize
+{
+    if ([SYMAppDelegate isCoreDataSetUp] == NO)
+    {
+        [[self class] setUpCoreData];
+    }
+}
+
 
 + (instancetype)sharedClient
 {

@@ -9,11 +9,29 @@
 
 #import "SYMAppDelegate.h"
 
+static BOOL coreDataSetUp;
+
 @implementation SYMAppDelegate
 
 + (void)initialize
 {
+    if (coreDataSetUp == NO)
+    {
+        [[self class] setUpCoreData];
+    }
+}
+
+
++ (void)setUpCoreData
+{
     [MagicalRecord setupCoreDataStack];
+    coreDataSetUp = YES;
+}
+
+
++ (BOOL)isCoreDataSetUp
+{
+    return coreDataSetUp;
 }
 
 

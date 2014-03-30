@@ -89,7 +89,6 @@
 
 - (void)prefetchProjects
 {
-    __weak typeof(self) weakSelf = self;
     [[SYMBambooClient sharedClient]
      fetchProjectsOnBambooServer:self
      withCompletionBlock:^(NSError *error) {
@@ -97,7 +96,7 @@
          {
              dispatch_async(dispatch_get_main_queue(), ^{
                  [[NSNotificationCenter defaultCenter] postNotificationName:SYMBambooProjectsUpdatedNotification
-                                                                     object:weakSelf];
+                                                                     object:self];
              });
          }
      }];
