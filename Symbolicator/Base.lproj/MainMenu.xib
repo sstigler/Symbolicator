@@ -29,7 +29,6 @@
                 <outlet property="preferencesWindow" destination="Sse-vv-yQI" id="mYF-wo-fNm"/>
             </connections>
         </customObject>
-        <customObject id="VQl-ov-6am" customClass="SYMBambooBrowserController"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">
@@ -365,12 +364,22 @@
                         </connections>
                     </pathControl>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="y6d-jo-9TB">
-                        <rect key="frame" x="18" y="13" width="298" height="18"/>
+                        <rect key="frame" x="18" y="13" width="307" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Choose files from Bamboo instead of Finder" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zK6-Cm-BUb">
+                        <buttonCell key="cell" type="check" title="Choose dSYM from Bamboo instead of Finder" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zK6-Cm-BUb">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <binding destination="YEF-mj-2aC" name="value" keyPath="bambooCheckboxIsChecked" id="qco-qn-Qgi">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="0"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="0"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="0"/>
+                                    <integer key="NSNullPlaceholder" value="0"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

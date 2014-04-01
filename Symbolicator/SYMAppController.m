@@ -7,6 +7,7 @@
 //
 
 #import "SYMAppController.h"
+#import "SYMBambooBrowserController.h"
 #import "SYMSymbolicator.h"
 
 @interface SYMAppController ()
@@ -17,6 +18,10 @@
 - (IBAction)export:(id)sender;
 
 @end
+
+
+static NSString* const kBambooBrowserWindowNibName = @"BambooBrowser";
+
 
 @implementation SYMAppController
 
@@ -38,6 +43,18 @@
 
 - (void)chooseDSYM:(id)sender
 {
+    if ([self.bambooCheckboxIsChecked boolValue] == NO)
+    {
+        [self chooseLocalDSYMFile];
+    } else
+    {
+        [self chooseDSYMFromBamboo:sender];
+    }
+}
+
+
+- (void)chooseLocalDSYMFile
+{
     __weak typeof(self) weakSelf = self;
     
     NSOpenPanel* dSYMChooser = [self fileChooserWithMessage:@"Which dSYM goes with the crash report?" fileType:@"dSYM"];
@@ -49,6 +66,14 @@
              weakSelf.dSYMURL = [dSYMChooser URL];
          }
      }];
+}
+
+
+- (void)chooseDSYMFromBamboo:(id)sender
+{
+    SYMBambooBrowserController* browserController = [[SYMBambooBrowserController alloc]
+                                                     initWithWindowNibName:kBambooBrowserWindowNibName];
+    [browserController showWindow:sender];
 }
 
 
@@ -129,5 +154,6 @@
         [alert runModal];
     });
 }
+
 
 @end

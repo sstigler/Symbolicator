@@ -15,4 +15,6 @@
 
 @property(nonatomic, copy) NSString* symbolicatedReport;
 
+@property(nonatomic, strong) NSNumber* bambooCheckboxIsChecked;
+
 @end

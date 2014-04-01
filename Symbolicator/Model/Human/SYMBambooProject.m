@@ -72,4 +72,10 @@
     }
 }
 
+
+- (NSString *)displayName
+{
+    return self.name;
+}
+
 @end

@@ -142,4 +142,10 @@
     return isLeaf;
 }
 
+
+- (NSString *)displayName
+{
+    return self.url;
+}
+
 @end

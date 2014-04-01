@@ -30,7 +30,6 @@ typedef NS_ENUM(NSInteger, SYMBambooBrowserColumn)
 @interface SYMBambooBrowserController () <NSBrowserDelegate>
 
 @property(nonatomic, weak) NSBrowser* browser;
-@property(nonatomic, weak) NSWindow* browserWindow;
 
 @property(nonatomic, strong) SYMBambooClient* bambooClient;
 
@@ -62,11 +61,9 @@ static NSString* const kArtifactsColumnTitle = @"Artifacts";
 
 - (instancetype)initWithWindow:(NSWindow *)window
 {
-    self = [super init];
+    self = [super initWithWindow:window];
     if (self != nil)
     {
-        _browserWindow = window;
-        
         _bambooClient = [[SYMBambooClient alloc] init];
         
         [self registerForNotifications];
@@ -184,6 +181,12 @@ static NSString* const kArtifactsColumnTitle = @"Artifacts";
     return isValid;
 }
 
+
+- (id)browser:(NSBrowser *)browser objectValueForItem:(id)item
+{
+    NSParameterAssert([item conformsToProtocol:@protocol(SYMTreeNode)]);
+    return [item displayName];
+}
 
 #pragma mark - Interaction with model
 
