@@ -30,4 +30,10 @@
  */
 - (NSArray *)orderedChildren;
 
+
+/**
+ @return The node's display name, for display in a user interface.
+ */
+- (NSString *)displayName;
+
 @end
