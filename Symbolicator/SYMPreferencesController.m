@@ -252,6 +252,8 @@ static NSInteger const kDefaultHTTPSPort = 443;
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
         SYMBambooServer* server = [SYMBambooServer MR_createInContext:localContext];
         server.url = [weakSelf.addBambooServer_URLField stringValue];
+        [server setUsername:[self.addBambooServer_UsernameField stringValue]
+                   password:[self.addBambooServer_PasswordField stringValue]];
     }];
     [self didChangeValueForKey:NSStringFromSelector(@selector(bambooServersToPickFrom))];
 }
