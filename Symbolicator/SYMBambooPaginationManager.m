@@ -123,7 +123,7 @@ static NSInteger const kMaxResultsPerPage = 25;
 
 - (NSInteger)currentProjectStartIndexFromProjectsDictionary:(NSDictionary *)projectsDictionary
 {
-    NSNumber* startIndexNumber = projectsDictionary[kJSONTotalCountKey];
+    NSNumber* startIndexNumber = projectsDictionary[kJSONStartIndexKey];
     NSInteger startIndex = [startIndexNumber integerValue];
     return startIndex;
 }
