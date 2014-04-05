@@ -12,6 +12,7 @@
 static NSString* const kJSONProjectsKey = @"projects";
 static NSString* const kJSONTotalCountKey = @"size";
 static NSString* const kJSONStartIndexKey = @"start-index";
+static NSString* const kJSONResultsPerPageKey = @"max-result";
 
 static NSInteger const kMaxResultsPerPage = 25;
 
@@ -23,6 +24,7 @@ static NSInteger const kMaxResultsPerPage = 25;
 
 @property(nonatomic, assign) NSInteger totalCount;
 @property(nonatomic, assign) NSInteger currentStartIndex;
+@property(nonatomic, assign) NSInteger countOfResultsOnCurrentPage;
 
 @end
 
@@ -51,7 +53,7 @@ static NSInteger const kMaxResultsPerPage = 25;
         [self initializeForProjectEntityWithResponseObject:dict];
     }
     
-    return nil;
+    return self;
 }
 
 
@@ -62,6 +64,7 @@ static NSInteger const kMaxResultsPerPage = 25;
     {
         self.totalCount = [self totalProjectCountFromProjectsDictionary:projectsDictionary];
         self.currentStartIndex = [self currentProjectStartIndexFromProjectsDictionary:projectsDictionary];
+        self.countOfResultsOnCurrentPage = [self resultsPerPageFromProjectsDictionary:projectsDictionary];
     } else
     {
         _totalCount = 0;
@@ -79,17 +82,14 @@ static NSInteger const kMaxResultsPerPage = 25;
 
 - (NSInteger)resultsPerPage
 {
-    NSAssert(self.totalCount >= 0, @"totalCount hasn't been initialized yet!");
-    NSAssert(self.currentStartIndex >= 0, @"currentStartIndex hasn't been initialized yet!");
-    
-    NSInteger resultsOnCurrentPage = self.totalCount - self.currentStartIndex;
-    return resultsOnCurrentPage;
+    return self.countOfResultsOnCurrentPage;
 }
 
 
 - (BOOL)canRequestNextPage
 {
-    BOOL nextPageExists = (self.resultsPerPage == kMaxResultsPerPage);
+    BOOL nextPageExists = ((self.countOfResultsOnCurrentPage == kMaxResultsPerPage) &&
+                           (self.currentStartIndex < self.totalCount));
     return nextPageExists;
 }
 
@@ -102,9 +102,9 @@ static NSInteger const kMaxResultsPerPage = 25;
 
 - (NSDictionary *)nextPageData
 {
-    NSMutableDictionary* nextPageParameters = [NSMutableDictionary dictionaryWithDictionary:self.nextPageData];
+    NSMutableDictionary* nextPageParameters = [NSMutableDictionary dictionaryWithDictionary:self.requestData];
     
-    NSInteger nextStartIndex = self.currentStartIndex + 1;
+    NSInteger nextStartIndex = self.currentStartIndex + self.countOfResultsOnCurrentPage;
     nextPageParameters[kJSONStartIndexKey] = @(nextStartIndex);
     return nextPageParameters;
 }
@@ -126,6 +126,14 @@ static NSInteger const kMaxResultsPerPage = 25;
     NSNumber* startIndexNumber = projectsDictionary[kJSONStartIndexKey];
     NSInteger startIndex = [startIndexNumber integerValue];
     return startIndex;
+}
+
+
+- (NSInteger)resultsPerPageFromProjectsDictionary:(NSDictionary *)projectsDictionary
+{
+    NSNumber* resultsPerPageNumber = projectsDictionary[kJSONResultsPerPageKey];
+    NSInteger resultsPerPage = [resultsPerPageNumber integerValue];
+    return resultsPerPage;
 }
 
 @end
