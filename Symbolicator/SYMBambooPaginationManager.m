@@ -51,7 +51,7 @@ static NSInteger const kMaxResultsPerPage = 25;
         [self initializeForProjectEntityWithResponseObject:dict];
     }
     
-    return nil;
+    return self;
 }
 
 
