@@ -159,11 +159,11 @@ static NSMutableDictionary* sessionManagersByServerURL;
 + (AFMMRecordResponseSerializer *)MMRecordResponseSerializer
 {
     AFMMRecordResponseSerializationMapper* responseSerializationMapper = [[AFMMRecordResponseSerializationMapper alloc] init];
-    [responseSerializationMapper registerEntityName:NSStringFromClass([SYMBambooServer class])
+    [responseSerializationMapper registerEntityName:@"BambooServer"
                            forEndpointPathComponent:kServerInformationPath];
-    [responseSerializationMapper registerEntityName:NSStringFromClass([SYMBambooProject class])
+    [responseSerializationMapper registerEntityName:@"BambooProject"
                            forEndpointPathComponent:kProjectsPath];
-    [responseSerializationMapper registerEntityName:NSStringFromClass([SYMBambooPlan class])
+    [responseSerializationMapper registerEntityName:@"BambooPlan"
                            forEndpointPathComponent:kPlansPath];
     
     AFJSONResponseSerializer* JSONResponseSerializer = [[AFJSONResponseSerializer alloc] init];

@@ -35,7 +35,6 @@
     
     [sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:credential.user
                                                                      password:credential.password];
-    sessionManager.responseSerializer = [[AFJSONResponseSerializer alloc] init];
     [sessionManager
      GET:URN
      parameters:nonNilParameters
