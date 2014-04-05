@@ -10,6 +10,7 @@
 #import "SYMBambooClient_Subclass.h"
 #import "SYMBambooPaginationManager.h"
 #import "SYMBambooProject.h"
+#import "SYMBambooServer.h"
 
 @implementation SYMBambooClient (Paging)
 
@@ -28,6 +29,13 @@
     }
     
     AFHTTPSessionManager* sessionManager = [[self class] sessionManagerForServer:server];
+    
+    NSDictionary* credentials = [[NSURLCredentialStorage sharedCredentialStorage] credentialsForProtectionSpace:server.urlProtectionSpace];
+    NSURLCredential* credential = [[credentials allValues] firstObject];
+    
+    [sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:credential.user
+                                                                     password:credential.password];
+    sessionManager.responseSerializer = [[AFJSONResponseSerializer alloc] init];
     [sessionManager
      GET:URN
      parameters:nonNilParameters
