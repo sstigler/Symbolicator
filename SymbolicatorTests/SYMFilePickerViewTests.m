@@ -33,13 +33,15 @@
 }
 
 
-- (void)testModeDefaultsToFinderOnly {
+- (void)testModeDefaultsToFinderOnly
+{
     XCTAssertEqual(self.view.mode, SYMFilePickerModeFinderOnly,
                    @"Expected mode to default to SYMFilePickerModeFinderOnly.");
 }
 
 
-- (void)testIconViewIsNSImageView {
+- (void)testIconViewIsNSImageView
+{
     XCTAssertTrue([self.view.iconView isKindOfClass:[NSImageView class]],
                   @"Expected icon view to be an NSImageView.");
 }
@@ -48,13 +50,15 @@
 #pragma mark - Drag-and-drop support
 
 
-- (void)testConformsToNSDraggingDestination {
-    XCTAssertTrue([self.view conformsToProtocol:@protocol(NSDraggingDestination)],
-                  @"Expected view to conform to the NSDraggingDestination protocol.");
+- (void)testImplementsDraggingEntered
+{
+    XCTAssertTrue([self.view respondsToSelector:@selector(draggingEntered:)],
+                  @"Expected view to implement -draggingEntered: .");
 }
 
 
-- (void)testInitiallyAcceptsPlainTextFileTypeAndNothingElse {
+- (void)testInitiallyAcceptsPlainTextFileTypeAndNothingElse
+{
     XCTAssertEqualObjects(self.view.fileType, (__bridge NSString *)kUTTypePlainText,
                           @"Expected view's fileType to default to public.text.");
 
@@ -66,7 +70,8 @@
 }
 
 
-- (void)testSettingFileTypeToCrashReport {
+- (void)testSettingFileTypeToCrashReport
+{
     self.view.fileType = kCrashReportUTI;
 
     XCTAssertEqualObjects(self.view.fileType, kCrashReportUTI,
@@ -80,7 +85,8 @@
 }
 
 
-- (void)testSettingFileTypeToDSYM {
+- (void)testSettingFileTypeToDSYM
+{
     self.view.fileType = kDSYMUTI;
 
     XCTAssertEqualObjects(self.view.fileType, kDSYMUTI,
