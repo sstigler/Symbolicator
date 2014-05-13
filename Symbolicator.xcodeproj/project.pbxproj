@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5273F3E191DE61E00E792DB /* SYMFilePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */; };
+		F5273F3F191DE61E00E792DB /* SYMFilePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */; };
+		F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F40191DE7BE00E792DB /* SYMFilePickerViewTests.m */; };
 		F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F5D9564318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
@@ -19,7 +22,6 @@
 		F5D9566218D25B2F00952D3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9566118D25B2F00952D3C /* XCTest.framework */; };
 		F5D9566318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
 		F5D9566B18D25B2F00952D3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5D9566918D25B2F00952D3C /* InfoPlist.strings */; };
-		F5D9566D18D25B2F00952D3C /* SymbolicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9566C18D25B2F00952D3C /* SymbolicatorTests.m */; };
 		F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9567718D25DFA00952D3C /* SYMAppController.m */; };
 		F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9567718D25DFA00952D3C /* SYMAppController.m */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F5273F3C191DE61E00E792DB /* SYMFilePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMFilePickerView.h; sourceTree = "<group>"; };
+		F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMFilePickerView.m; sourceTree = "<group>"; };
+		F5273F40191DE7BE00E792DB /* SYMFilePickerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMFilePickerViewTests.m; sourceTree = "<group>"; };
+		F5273F42191DEB5000E792DB /* SYMFilePickerView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMFilePickerView_Private.h; sourceTree = "<group>"; };
 		F529775118D7E68A001551EB /* SYMSymbolicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMSymbolicator.h; sourceTree = "<group>"; };
 		F529775218D7E68A001551EB /* SYMSymbolicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMSymbolicator.m; sourceTree = "<group>"; };
 		F5D9563F18D25B2F00952D3C /* Symbolicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symbolicator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +61,6 @@
 		F5D9566118D25B2F00952D3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F5D9566818D25B2F00952D3C /* SymbolicatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SymbolicatorTests-Info.plist"; sourceTree = "<group>"; };
 		F5D9566A18D25B2F00952D3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F5D9566C18D25B2F00952D3C /* SymbolicatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolicatorTests.m; sourceTree = "<group>"; };
 		F5D9567618D25DFA00952D3C /* SYMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMAppController.h; sourceTree = "<group>"; };
 		F5D9567718D25DFA00952D3C /* SYMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMAppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +137,9 @@
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
 				F5D9565A18D25B2F00952D3C /* Images.xcassets */,
 				F5D9564918D25B2F00952D3C /* Supporting Files */,
+				F5273F3C191DE61E00E792DB /* SYMFilePickerView.h */,
+				F5273F42191DEB5000E792DB /* SYMFilePickerView_Private.h */,
+				F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */,
 			);
 			path = Symbolicator;
 			sourceTree = "<group>";
@@ -151,7 +159,7 @@
 		F5D9566618D25B2F00952D3C /* SymbolicatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5D9566C18D25B2F00952D3C /* SymbolicatorTests.m */,
+				F5273F40191DE7BE00E792DB /* SYMFilePickerViewTests.m */,
 				F5D9566718D25B2F00952D3C /* Supporting Files */,
 			);
 			path = SymbolicatorTests;
@@ -268,6 +276,7 @@
 				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
 				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
+				F5273F3E191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,8 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */,
+				F5273F3F191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
 				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
-				F5D9566D18D25B2F00952D3C /* SymbolicatorTests.m in Sources */,
 				F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
