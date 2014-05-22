@@ -21,6 +21,7 @@ NSString* const kDSYMUTI = @"com.apple.xcode.dsym";
     self = [super initWithFrame:frameRect];
     if (self != nil)
     {
+        [self setWantsLayer:YES];
         [self showNonDraggingBorder];
 
         self.fileType = (__bridge NSString *)(kUTTypePlainText);
