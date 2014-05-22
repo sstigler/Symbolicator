@@ -17,7 +17,12 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="YEF-mj-2aC" customClass="SYMAppController"/>
+        <customObject id="YEF-mj-2aC" customClass="SYMAppController">
+            <connections>
+                <outlet property="crashReportFilePickerView" destination="nCL-Xx-KkQ" id="cgI-SO-Jzh"/>
+                <outlet property="dSYMFilePickerView" destination="dyc-GZ-Z8j" id="PeR-96-JTI"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">
@@ -283,7 +288,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="nCL-Xx-KkQ" customClass="SYMFilePickerView">
+                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCL-Xx-KkQ" customClass="SYMFilePickerView">
                         <rect key="frame" x="20" y="211" width="275" height="150"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
@@ -291,7 +296,7 @@
                             <constraint firstAttribute="height" constant="150" id="jZp-0I-u4u"/>
                         </constraints>
                     </customView>
-                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyc-GZ-Z8j" customClass="SYMFilePickerView">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dyc-GZ-Z8j" customClass="SYMFilePickerView">
                         <rect key="frame" x="304" y="211" width="275" height="150"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>

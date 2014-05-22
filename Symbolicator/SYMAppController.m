@@ -7,9 +7,14 @@
 //
 
 #import "SYMAppController.h"
+
+#import "SYMFilePickerView.h"
 #import "SYMSymbolicator.h"
 
 @interface SYMAppController ()
+
+@property(nonatomic, weak) IBOutlet SYMFilePickerView* crashReportFilePickerView;
+@property(nonatomic, weak) IBOutlet SYMFilePickerView* dSYMFilePickerView;
 
 - (IBAction)chooseCrashReport:(id)sender;
 - (IBAction)chooseDSYM:(id)sender;
@@ -19,6 +24,13 @@
 @end
 
 @implementation SYMAppController
+
+- (void)awakeFromNib
+{
+    [self.crashReportFilePickerView setFileType:kCrashReportUTI];
+    [self.dSYMFilePickerView setFileType:kDSYMUTI];
+}
+
 
 - (void)chooseCrashReport:(id)sender
 {
