@@ -17,4 +17,8 @@
 
 @property(nonatomic, strong) NSURL* fileURL;
 
+@property(nonatomic, assign) BOOL alreadyAddedConstraints;
+
+@property(nonatomic, strong) NSDictionary* viewsForAutolayout;
+
 @end
