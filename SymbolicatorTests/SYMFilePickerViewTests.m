@@ -33,6 +33,13 @@
 }
 
 
+- (void)testHasLayer
+{
+    XCTAssertNotNil(self.view.layer,
+                    @"Expected view to have a backing layer.");
+}
+
+
 - (void)testModeDefaultsToFinderOnly
 {
     XCTAssertEqual(self.view.mode, SYMFilePickerModeFinderOnly,
