@@ -17,7 +17,12 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="YEF-mj-2aC" customClass="SYMAppController"/>
+        <customObject id="YEF-mj-2aC" customClass="SYMAppController">
+            <connections>
+                <outlet property="crashReportFilePickerView" destination="nCL-Xx-KkQ" id="cgI-SO-Jzh"/>
+                <outlet property="dSYMFilePickerView" destination="dyc-GZ-Z8j" id="PeR-96-JTI"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">
@@ -185,6 +190,137 @@
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="599" height="403"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k5x-3n-C7c">
+                        <rect key="frame" x="14" y="163" width="571" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Symbolicate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zap-YD-PUc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="symbolicate:" target="YEF-mj-2aC" id="uGT-Tq-u5Y"/>
+                            <binding destination="YEF-mj-2aC" name="enabled" keyPath="crashReportURL" id="AxX-PZ-9F9">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="YEF-mj-2aC" name="enabled2" keyPath="dSYMURL" previousBinding="AxX-PZ-9F9" id="4Y1-cX-62p">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-FJ-awc">
+                        <rect key="frame" x="20" y="61" width="559" height="89"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <clipView key="contentView" id="K59-MA-Hzt">
+                            <rect key="frame" x="1" y="1" width="557" height="87"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="iEt-GK-jIp">
+                                    <rect key="frame" x="0.0" y="0.0" width="557" height="87"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="557" height="87"/>
+                                    <size key="maxSize" width="567" height="10000000"/>
+                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="557" height="87"/>
+                                    <size key="maxSize" width="567" height="10000000"/>
+                                    <connections>
+                                        <binding destination="YEF-mj-2aC" name="value" keyPath="symbolicatedReport" id="0A6-Bl-3wi">
+                                            <dictionary key="options">
+                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                <string key="NSNullPlaceholder">Symbolicated report will go here.</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="4dr-Ga-aD8">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="htU-YK-urD">
+                            <rect key="frame" x="542" y="1" width="16" height="87"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9f-EO-l6V">
+                        <rect key="frame" x="486" y="13" width="94" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Export..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bve-tc-WsU">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="export:" target="YEF-mj-2aC" id="rVa-hS-Udq"/>
+                            <binding destination="YEF-mj-2aC" name="enabled" keyPath="crashReportURL" id="ZLm-KZ-wUi">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="YEF-mj-2aC" name="enabled2" keyPath="dSYMURL" previousBinding="ZLm-KZ-wUi" id="RPD-n6-Far">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2JH-np-UFe">
+                        <rect key="frame" x="18" y="369" width="106" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="drag and drop files" id="tww-F1-7nD">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCL-Xx-KkQ" customClass="SYMFilePickerView">
+                        <rect key="frame" x="20" y="211" width="275" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="d3q-Un-YJZ"/>
+                            <constraint firstAttribute="height" constant="150" id="jZp-0I-u4u"/>
+                        </constraints>
+                    </customView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dyc-GZ-Z8j" customClass="SYMFilePickerView">
+                        <rect key="frame" x="304" y="211" width="275" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9f5-FJ-awc" firstAttribute="top" secondItem="k5x-3n-C7c" secondAttribute="bottom" constant="20" symbolic="YES" id="2rh-La-cbq"/>
+                    <constraint firstItem="nCL-Xx-KkQ" firstAttribute="leading" secondItem="2JH-np-UFe" secondAttribute="leading" id="3n8-MX-V4O"/>
+                    <constraint firstAttribute="bottom" secondItem="M9f-EO-l6V" secondAttribute="bottom" constant="20" symbolic="YES" id="6B1-yS-uiL"/>
+                    <constraint firstItem="nCL-Xx-KkQ" firstAttribute="height" secondItem="dyc-GZ-Z8j" secondAttribute="height" id="B7M-1E-lqO"/>
+                    <constraint firstItem="nCL-Xx-KkQ" firstAttribute="width" secondItem="dyc-GZ-Z8j" secondAttribute="width" id="Erq-bZ-JXd"/>
+                    <constraint firstItem="nCL-Xx-KkQ" firstAttribute="bottom" secondItem="dyc-GZ-Z8j" secondAttribute="bottom" id="KjC-0H-oIP"/>
+                    <constraint firstItem="9f5-FJ-awc" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="MWJ-ML-GSs"/>
+                    <constraint firstItem="k5x-3n-C7c" firstAttribute="trailing" secondItem="dyc-GZ-Z8j" secondAttribute="trailing" id="SeG-ya-jh3"/>
+                    <constraint firstAttribute="trailing" secondItem="dyc-GZ-Z8j" secondAttribute="trailing" constant="20" symbolic="YES" id="TdC-1F-1P7"/>
+                    <constraint firstAttribute="trailing" secondItem="M9f-EO-l6V" secondAttribute="trailing" constant="25" id="d8j-J8-d5w"/>
+                    <constraint firstItem="k5x-3n-C7c" firstAttribute="top" secondItem="nCL-Xx-KkQ" secondAttribute="bottom" constant="20" symbolic="YES" id="emf-SM-xja"/>
+                    <constraint firstItem="nCL-Xx-KkQ" firstAttribute="top" secondItem="2JH-np-UFe" secondAttribute="bottom" constant="8" symbolic="YES" id="gz2-hH-Gpo"/>
+                    <constraint firstItem="2JH-np-UFe" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="nDC-nR-DqC"/>
+                    <constraint firstItem="M9f-EO-l6V" firstAttribute="top" secondItem="9f5-FJ-awc" secondAttribute="bottom" constant="20" symbolic="YES" id="nfc-Ml-Gv3"/>
+                    <constraint firstItem="dyc-GZ-Z8j" firstAttribute="trailing" secondItem="9f5-FJ-awc" secondAttribute="trailing" id="rs0-4h-lta"/>
+                    <constraint firstItem="2JH-np-UFe" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="uPj-TH-crj"/>
+                    <constraint firstItem="dyc-GZ-Z8j" firstAttribute="leading" secondItem="nCL-Xx-KkQ" secondAttribute="trailing" constant="8" symbolic="YES" id="wU0-tC-NWS"/>
+                    <constraint firstItem="nCL-Xx-KkQ" firstAttribute="leading" secondItem="k5x-3n-C7c" secondAttribute="leading" id="xgt-Zn-Vz8"/>
+                </constraints>
             </view>
         </window>
     </objects>
