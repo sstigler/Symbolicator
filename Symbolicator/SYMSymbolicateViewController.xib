@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SYMSymbolicateViewController">
+            <connections>
+                <outlet property="leftFilePickerView" destination="zv9-ht-25y" id="WGH-80-bFR"/>
+                <outlet property="rightFilePickerView" destination="2Q1-EN-m0v" id="8DY-M3-4pj"/>
+                <outlet property="view" destination="HTd-9O-2JQ" id="ada-8x-68G"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <view id="HTd-9O-2JQ">
+            <rect key="frame" x="0.0" y="0.0" width="599" height="403"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1kt-gN-Izi">
+                    <rect key="frame" x="14" y="163" width="571" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Symbolicate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ppy-dH-gea">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ado-xk-bOg">
+                    <rect key="frame" x="20" y="61" width="559" height="89"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <clipView key="contentView" id="NYd-2a-G5A">
+                        <rect key="frame" x="1" y="1" width="557" height="87"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" id="5eI-FT-RAa">
+                                <rect key="frame" x="0.0" y="0.0" width="557" height="87"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="minSize" width="557" height="87"/>
+                                <size key="maxSize" width="567" height="10000000"/>
+                                <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="minSize" width="557" height="87"/>
+                                <size key="maxSize" width="567" height="10000000"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="iUe-eQ-n5x">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="nvb-Yq-NL5">
+                        <rect key="frame" x="542" y="1" width="16" height="87"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="do5-SA-KI8">
+                    <rect key="frame" x="486" y="13" width="94" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Export..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MlQ-bj-5Rv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fyB-iK-sI2">
+                    <rect key="frame" x="18" y="369" width="106" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="drag and drop files" id="j05-ms-M7H">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zv9-ht-25y" userLabel="left file picker view">
+                    <rect key="frame" x="20" y="211" width="275" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="NOE-kU-jZl"/>
+                        <constraint firstAttribute="height" constant="150" id="vBx-TX-j3B"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="2Q1-EN-m0v" userLabel="right file picker view">
+                    <rect key="frame" x="304" y="211" width="275" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="zv9-ht-25y" firstAttribute="leading" secondItem="fyB-iK-sI2" secondAttribute="leading" id="2xf-CB-4ZB"/>
+                <constraint firstItem="zv9-ht-25y" firstAttribute="height" secondItem="2Q1-EN-m0v" secondAttribute="height" id="6i3-bw-kt4"/>
+                <constraint firstItem="1kt-gN-Izi" firstAttribute="trailing" secondItem="2Q1-EN-m0v" secondAttribute="trailing" id="Bdg-CN-a4s"/>
+                <constraint firstItem="zv9-ht-25y" firstAttribute="bottom" secondItem="2Q1-EN-m0v" secondAttribute="bottom" id="GOT-x8-tHZ"/>
+                <constraint firstItem="do5-SA-KI8" firstAttribute="top" secondItem="Ado-xk-bOg" secondAttribute="bottom" constant="20" symbolic="YES" id="Hx0-H6-Y0I"/>
+                <constraint firstItem="1kt-gN-Izi" firstAttribute="top" secondItem="zv9-ht-25y" secondAttribute="bottom" constant="20" symbolic="YES" id="McU-TY-Cuz"/>
+                <constraint firstItem="Ado-xk-bOg" firstAttribute="top" secondItem="1kt-gN-Izi" secondAttribute="bottom" constant="20" symbolic="YES" id="Nwu-jg-8lJ"/>
+                <constraint firstItem="Ado-xk-bOg" firstAttribute="leading" secondItem="HTd-9O-2JQ" secondAttribute="leading" constant="20" symbolic="YES" id="OK5-Ui-jZ7"/>
+                <constraint firstItem="fyB-iK-sI2" firstAttribute="leading" secondItem="HTd-9O-2JQ" secondAttribute="leading" constant="20" symbolic="YES" id="TzP-U4-3pb"/>
+                <constraint firstAttribute="trailing" secondItem="do5-SA-KI8" secondAttribute="trailing" constant="25" id="U7I-Ke-aDf"/>
+                <constraint firstAttribute="trailing" secondItem="2Q1-EN-m0v" secondAttribute="trailing" constant="20" symbolic="YES" id="Wq0-yf-tVU"/>
+                <constraint firstItem="2Q1-EN-m0v" firstAttribute="trailing" secondItem="Ado-xk-bOg" secondAttribute="trailing" id="dNI-ge-fVy"/>
+                <constraint firstItem="zv9-ht-25y" firstAttribute="leading" secondItem="1kt-gN-Izi" secondAttribute="leading" id="eLn-kp-XnH"/>
+                <constraint firstItem="fyB-iK-sI2" firstAttribute="top" secondItem="HTd-9O-2JQ" secondAttribute="top" constant="20" symbolic="YES" id="epI-Z1-Dpf"/>
+                <constraint firstItem="zv9-ht-25y" firstAttribute="width" secondItem="2Q1-EN-m0v" secondAttribute="width" id="fJD-hX-bQB"/>
+                <constraint firstItem="zv9-ht-25y" firstAttribute="top" secondItem="fyB-iK-sI2" secondAttribute="bottom" constant="8" symbolic="YES" id="hOk-a2-HaG"/>
+                <constraint firstItem="2Q1-EN-m0v" firstAttribute="leading" secondItem="zv9-ht-25y" secondAttribute="trailing" constant="8" symbolic="YES" id="hl6-Fj-cZd"/>
+                <constraint firstAttribute="bottom" secondItem="do5-SA-KI8" secondAttribute="bottom" constant="20" symbolic="YES" id="obp-TZ-O4o"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

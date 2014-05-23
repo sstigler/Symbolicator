@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E76162B9192F0444001E2487 /* SYMFilePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76162B7192F0444001E2487 /* SYMFilePickerViewController.m */; };
+		E76162BA192F0444001E2487 /* SYMFilePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76162B7192F0444001E2487 /* SYMFilePickerViewController.m */; };
+		E76162BB192F0444001E2487 /* SYMFilePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76162B8192F0444001E2487 /* SYMFilePickerViewController.xib */; };
+		E76162BC192F0444001E2487 /* SYMFilePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76162B8192F0444001E2487 /* SYMFilePickerViewController.xib */; };
+		E76162C1192F0ABC001E2487 /* SYMSymbolicateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76162BF192F0ABC001E2487 /* SYMSymbolicateViewController.m */; };
+		E76162C2192F0ABC001E2487 /* SYMSymbolicateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76162BF192F0ABC001E2487 /* SYMSymbolicateViewController.m */; };
+		E76162C3192F0ABC001E2487 /* SYMSymbolicateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76162C0192F0ABC001E2487 /* SYMSymbolicateViewController.xib */; };
+		E76162C4192F0ABC001E2487 /* SYMSymbolicateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76162C0192F0ABC001E2487 /* SYMSymbolicateViewController.xib */; };
 		F5273F3E191DE61E00E792DB /* SYMFilePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */; };
 		F5273F3F191DE61E00E792DB /* SYMFilePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */; };
 		F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F40191DE7BE00E792DB /* SYMFilePickerViewTests.m */; };
@@ -37,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E76162B6192F0444001E2487 /* SYMFilePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMFilePickerViewController.h; sourceTree = "<group>"; };
+		E76162B7192F0444001E2487 /* SYMFilePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMFilePickerViewController.m; sourceTree = "<group>"; };
+		E76162B8192F0444001E2487 /* SYMFilePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYMFilePickerViewController.xib; sourceTree = "<group>"; };
+		E76162BD192F046F001E2487 /* SYMFilePickerViewController_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMFilePickerViewController_Private.h; sourceTree = "<group>"; };
+		E76162BE192F0ABC001E2487 /* SYMSymbolicateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMSymbolicateViewController.h; sourceTree = "<group>"; };
+		E76162BF192F0ABC001E2487 /* SYMSymbolicateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMSymbolicateViewController.m; sourceTree = "<group>"; };
+		E76162C0192F0ABC001E2487 /* SYMSymbolicateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYMSymbolicateViewController.xib; sourceTree = "<group>"; };
 		F5273F3C191DE61E00E792DB /* SYMFilePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMFilePickerView.h; sourceTree = "<group>"; };
 		F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMFilePickerView.m; sourceTree = "<group>"; };
 		F5273F40191DE7BE00E792DB /* SYMFilePickerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMFilePickerViewTests.m; sourceTree = "<group>"; };
@@ -134,11 +149,18 @@
 				F5D9565518D25B2F00952D3C /* SYMAppDelegate.m */,
 				F529775118D7E68A001551EB /* SYMSymbolicator.h */,
 				F529775218D7E68A001551EB /* SYMSymbolicator.m */,
+				E76162BE192F0ABC001E2487 /* SYMSymbolicateViewController.h */,
+				E76162BF192F0ABC001E2487 /* SYMSymbolicateViewController.m */,
+				E76162C0192F0ABC001E2487 /* SYMSymbolicateViewController.xib */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
 				F5D9565A18D25B2F00952D3C /* Images.xcassets */,
 				F5D9564918D25B2F00952D3C /* Supporting Files */,
 				F5273F3C191DE61E00E792DB /* SYMFilePickerView.h */,
 				F5273F42191DEB5000E792DB /* SYMFilePickerView_Private.h */,
+				E76162B6192F0444001E2487 /* SYMFilePickerViewController.h */,
+				E76162BD192F046F001E2487 /* SYMFilePickerViewController_Private.h */,
+				E76162B7192F0444001E2487 /* SYMFilePickerViewController.m */,
+				E76162B8192F0444001E2487 /* SYMFilePickerViewController.xib */,
 				F5273F3D191DE61E00E792DB /* SYMFilePickerView.m */,
 			);
 			path = Symbolicator;
@@ -253,6 +275,8 @@
 			files = (
 				F5D9564D18D25B2F00952D3C /* InfoPlist.strings in Resources */,
 				F5D9565B18D25B2F00952D3C /* Images.xcassets in Resources */,
+				E76162C3192F0ABC001E2487 /* SYMSymbolicateViewController.xib in Resources */,
+				E76162BB192F0444001E2487 /* SYMFilePickerViewController.xib in Resources */,
 				F5D9565318D25B2F00952D3C /* Credits.rtf in Resources */,
 				F5D9565918D25B2F00952D3C /* MainMenu.xib in Resources */,
 			);
@@ -262,7 +286,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E76162BC192F0444001E2487 /* SYMFilePickerViewController.xib in Resources */,
 				F5D9566B18D25B2F00952D3C /* InfoPlist.strings in Resources */,
+				E76162C4192F0ABC001E2487 /* SYMSymbolicateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +299,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E76162C1192F0ABC001E2487 /* SYMSymbolicateViewController.m in Sources */,
 				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
 				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
 				F5273F3E191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
+				E76162B9192F0444001E2487 /* SYMFilePickerViewController.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */,
+				E76162C2192F0ABC001E2487 /* SYMSymbolicateViewController.m in Sources */,
+				E76162BA192F0444001E2487 /* SYMFilePickerViewController.m in Sources */,
 				F5273F3F191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
 				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */,

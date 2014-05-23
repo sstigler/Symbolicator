@@ -29,10 +29,6 @@ NSString* const kDSYMPathExtension = @"dSym";
 
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.iconView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self addSubview:self.iconView];
-        [self addSubview:self.typeLabel];
-        [self addSubview:self.finderButton];
-        [self addSubview:self.bambooButton];
         
         self.fileType = (__bridge NSString *)(kUTTypePlainText);
     }
@@ -158,37 +154,37 @@ NSString* const kDSYMPathExtension = @"dSym";
     return YES;
 }
 
-
-- (void)updateConstraints
-{
-    [self removeAllConstraints];
-    
-    NSArray* horizontalIconConstraints = [NSLayoutConstraint
-                                          constraintsWithVisualFormat:@"|-[iconView]-[typeLabel]-|"
-                                          options:kNilOptions
-                                          metrics:@{}
-                                          views:self.viewsForAutolayout];
-    [self addConstraints:horizontalIconConstraints];
-    
-    if ([self.fileType isEqualToString:kDSYMUTI])
-    {
-        [self addHorizontalConstraintsForTwoButtonLayout];
-    }
-    else
-    {
-        [self addHorizontalConstraintsForOneButtonLayout];
-    }
-    
-    NSArray* verticalConstraints = [NSLayoutConstraint
-                                    constraintsWithVisualFormat:@"V:|-[iconView]-[Finder]-|"
-                                    options:kNilOptions
-                                    metrics:@{}
-                                    views:self.viewsForAutolayout];
-    [self addConstraints:verticalConstraints];
-    
-    [super updateConstraints];
-}
-
+//
+//- (void)updateConstraints
+//{
+//    [self removeAllConstraints];
+//    
+//    NSArray* horizontalIconConstraints = [NSLayoutConstraint
+//                                          constraintsWithVisualFormat:@"|-[iconView]-[typeLabel]-|"
+//                                          options:kNilOptions
+//                                          metrics:@{}
+//                                          views:self.viewsForAutolayout];
+//    [self addConstraints:horizontalIconConstraints];
+//    
+//    if ([self.fileType isEqualToString:kDSYMUTI])
+//    {
+//        [self addHorizontalConstraintsForTwoButtonLayout];
+//    }
+//    else
+//    {
+//        [self addHorizontalConstraintsForOneButtonLayout];
+//    }
+//    
+//    NSArray* verticalConstraints = [NSLayoutConstraint
+//                                    constraintsWithVisualFormat:@"V:|-[iconView]-[Finder]-|"
+//                                    options:kNilOptions
+//                                    metrics:@{}
+//                                    views:self.viewsForAutolayout];
+//    [self addConstraints:verticalConstraints];
+//    
+//    [super updateConstraints];
+//}
+//
 
 - (void)addHorizontalConstraintsForTwoButtonLayout
 {

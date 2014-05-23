@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SYMFilePickerViewController">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <customView id="Hz6-mo-xeY" customClass="SYMFilePickerView">
+            <rect key="frame" x="0.0" y="0.0" width="230" height="178"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="kPz-ps-B3z">
+                    <rect key="frame" x="64" y="106" width="102" height="72"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0J2-As-Knc">
+                            <rect key="frame" x="17" y="17" width="38" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="GdU-i2-jWD"/>
+                                <constraint firstAttribute="height" constant="32" id="LMv-BP-Znh"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="WNp-Qw-u3t"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zMS-JQ-qve">
+                            <rect key="frame" x="58" y="28" width="26" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=".txt" id="l5x-3i-d6q">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="0J2-As-Knc" secondAttribute="centerY" id="0y6-zQ-mTx"/>
+                        <constraint firstItem="0J2-As-Knc" firstAttribute="top" secondItem="kPz-ps-B3z" secondAttribute="top" constant="20" id="17n-aU-p0R"/>
+                        <constraint firstAttribute="bottom" secondItem="0J2-As-Knc" secondAttribute="bottom" constant="20" id="DRM-L3-M4d"/>
+                        <constraint firstAttribute="trailing" secondItem="zMS-JQ-qve" secondAttribute="trailing" constant="20" symbolic="YES" id="Qc2-RL-gXr"/>
+                        <constraint firstItem="0J2-As-Knc" firstAttribute="centerY" secondItem="zMS-JQ-qve" secondAttribute="centerY" id="RTM-T6-vpJ"/>
+                        <constraint firstItem="zMS-JQ-qve" firstAttribute="leading" secondItem="0J2-As-Knc" secondAttribute="trailing" constant="8" symbolic="YES" id="r3a-Pn-9xc"/>
+                        <constraint firstItem="0J2-As-Knc" firstAttribute="leading" secondItem="kPz-ps-B3z" secondAttribute="leading" constant="20" symbolic="YES" id="wPn-8h-lqo"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="pVk-9Z-AS3">
+                    <rect key="frame" x="13" y="20" width="204" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VKf-cH-bEE">
+                            <rect key="frame" x="94" y="13" width="91" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Bamboo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7uh-hg-B4I">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fiD-GO-Am8">
+                            <rect key="frame" x="14" y="13" width="80" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KcP-sX-4lt">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fiD-GO-Am8" firstAttribute="leading" secondItem="pVk-9Z-AS3" secondAttribute="leading" constant="20" id="0GI-45-MwR"/>
+                        <constraint firstItem="fiD-GO-Am8" firstAttribute="top" secondItem="pVk-9Z-AS3" secondAttribute="top" constant="20" id="AKk-g5-LlF"/>
+                        <constraint firstItem="VKf-cH-bEE" firstAttribute="leading" secondItem="fiD-GO-Am8" secondAttribute="trailing" constant="12" symbolic="YES" id="Afr-Mn-02J"/>
+                        <constraint firstAttribute="centerY" secondItem="VKf-cH-bEE" secondAttribute="centerY" id="D8a-Fm-FR9"/>
+                        <constraint firstAttribute="trailing" secondItem="VKf-cH-bEE" secondAttribute="trailing" constant="25" id="h1f-CY-gYs"/>
+                        <constraint firstAttribute="centerY" secondItem="fiD-GO-Am8" secondAttribute="centerY" id="tr4-kt-jqU"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="pVk-9Z-AS3" firstAttribute="top" secondItem="kPz-ps-B3z" secondAttribute="bottom" constant="25" id="4rG-0w-ehH"/>
+                <constraint firstAttribute="centerX" secondItem="kPz-ps-B3z" secondAttribute="centerX" id="C4Z-qI-jXp"/>
+                <constraint firstItem="kPz-ps-B3z" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Kb8-pb-PZR"/>
+                <constraint firstAttribute="centerX" secondItem="pVk-9Z-AS3" secondAttribute="centerX" id="bIn-pM-WiA"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>
