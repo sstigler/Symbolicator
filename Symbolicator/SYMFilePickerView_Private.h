@@ -13,11 +13,17 @@
 /**
  Shows the icon corresponding to the file type.
  */
-@property(nonatomic, strong) NSImageView *iconView;
+@property(nonatomic, strong) NSImageView* iconView;
+
+/**
+ Shows the file extension corresponding to the file type.
+ */
+@property(nonatomic, strong) NSTextField* typeLabel;
+
+@property(nonatomic, strong) NSButton* finderButton;
+@property(nonatomic, strong) NSButton* bambooButton;
 
 @property(nonatomic, strong) NSURL* fileURL;
-
-@property(nonatomic, assign) BOOL alreadyAddedConstraints;
 
 @property(nonatomic, strong) NSDictionary* viewsForAutolayout;
 
