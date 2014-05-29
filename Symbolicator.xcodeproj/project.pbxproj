@@ -24,6 +24,8 @@
 		F5D9566B18D25B2F00952D3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5D9566918D25B2F00952D3C /* InfoPlist.strings */; };
 		F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9567718D25DFA00952D3C /* SYMAppController.m */; };
 		F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9567718D25DFA00952D3C /* SYMAppController.m */; };
+		F5DC61FA19379F9A009856AA /* NSView+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5DC61F919379F9A009856AA /* NSView+SYMAdditions.m */; };
+		F5DC61FB19379F9A009856AA /* NSView+SYMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F5DC61F919379F9A009856AA /* NSView+SYMAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		F5D9566A18D25B2F00952D3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5D9567618D25DFA00952D3C /* SYMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMAppController.h; sourceTree = "<group>"; };
 		F5D9567718D25DFA00952D3C /* SYMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMAppController.m; sourceTree = "<group>"; };
+		F5DC61F819379F9A009856AA /* NSView+SYMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+SYMAdditions.h"; sourceTree = "<group>"; };
+		F5DC61F919379F9A009856AA /* NSView+SYMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+SYMAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5243C0219367D7E0080AE2B /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				F5DC61F819379F9A009856AA /* NSView+SYMAdditions.h */,
+				F5DC61F919379F9A009856AA /* NSView+SYMAdditions.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
 		F5D9563618D25B2F00952D3C = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +145,7 @@
 				F5D9567718D25DFA00952D3C /* SYMAppController.m */,
 				F5D9565418D25B2F00952D3C /* SYMAppDelegate.h */,
 				F5D9565518D25B2F00952D3C /* SYMAppDelegate.m */,
+				F5243C0219367D7E0080AE2B /* Additions */,
 				F529775118D7E68A001551EB /* SYMSymbolicator.h */,
 				F529775218D7E68A001551EB /* SYMSymbolicator.m */,
 				F5D9565718D25B2F00952D3C /* MainMenu.xib */,
@@ -276,6 +290,7 @@
 				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
 				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
+				F5DC61FA19379F9A009856AA /* NSView+SYMAdditions.m in Sources */,
 				F5273F3E191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
 			);
@@ -285,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5DC61FB19379F9A009856AA /* NSView+SYMAdditions.m in Sources */,
 				F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */,
 				F5273F3F191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
 				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
