@@ -8,6 +8,8 @@
 
 #import "SYMFilePickerView_Private.h"
 
+#import "NSView+SYMAdditions.h"
+
 static CGFloat const kBorderWidthWhenNoDragIsInProgress = 1;
 static CGFloat const kBorderWidthWhenDragIsInProgress = 3;
 
@@ -31,9 +33,11 @@ NSString* const kDSYMPathExtension = @"dSym";
         [self.iconView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:self.iconView];
         [self addSubview:self.typeLabel];
-        [self addSubview:self.finderButton];
-        [self addSubview:self.bambooButton];
-        
+
+        [self.buttonContainer addSubview:self.finderButton];
+        [self.buttonContainer addSubview:self.bambooButton];
+        [self addSubview:self.buttonContainer];
+
         self.fileType = (__bridge NSString *)(kUTTypePlainText);
     }
     return self;
@@ -59,8 +63,22 @@ NSString* const kDSYMPathExtension = @"dSym";
         [_typeLabel setSelectable:NO];
         [_typeLabel setBackgroundColor:[NSColor clearColor]];
         [_typeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_typeLabel setDrawsBackground:NO];
     }
     return _typeLabel;
+}
+
+
+- (NSView *)buttonContainer
+{
+    if (_buttonContainer == nil)
+    {
+        _buttonContainer = [[NSView alloc] initWithFrame:NSZeroRect];
+        _buttonContainer.wantsLayer = YES;
+        _buttonContainer.layer.backgroundColor = [[NSColor greenColor] CGColor];
+        [_buttonContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    return _buttonContainer;
 }
 
 
@@ -100,6 +118,12 @@ NSString* const kDSYMPathExtension = @"dSym";
     if ([fileType isEqualToString:kDSYMUTI])
     {
         extension = kDSYMPathExtension;
+        self.finderButton.layer.hidden = NO;
+        self.bambooButton.layer.hidden = NO;
+    }
+    else {
+        self.finderButton.layer.hidden = NO;
+        self.bambooButton.layer.hidden = YES;
     }
     NSString* extensionString = [NSString stringWithFormat:@".%@", extension];
     [self.typeLabel setStringValue:extensionString];
@@ -161,57 +185,68 @@ NSString* const kDSYMPathExtension = @"dSym";
 
 - (void)updateConstraints
 {
-    [self removeAllConstraints];
-    
-    NSArray* horizontalIconConstraints = [NSLayoutConstraint
-                                          constraintsWithVisualFormat:@"|-[iconView]-[typeLabel]-|"
-                                          options:kNilOptions
-                                          metrics:@{}
-                                          views:self.viewsForAutolayout];
-    [self addConstraints:horizontalIconConstraints];
-    
-    if ([self.fileType isEqualToString:kDSYMUTI])
-    {
-        [self addHorizontalConstraintsForTwoButtonLayout];
+    if (self.alreadyAddedConstraints == NO) {
+
+        NSArray* horizontalIconConstraints = [NSLayoutConstraint
+                                              constraintsWithVisualFormat:@"|-[iconView]-[typeLabel]-|"
+                                              options:kNilOptions
+                                              metrics:@{}
+                                              views:self.viewsForAutolayout];
+        [self addConstraints:horizontalIconConstraints];
+
+        [self constrainButtons];
+
+        NSArray* verticalConstraints = [NSLayoutConstraint
+                                        constraintsWithVisualFormat:@"V:|-[iconView]-[ButtonContainer]-|"
+                                        options:kNilOptions
+                                        metrics:@{}
+                                        views:self.viewsForAutolayout];
+        [self addConstraints:verticalConstraints];
+
+        self.alreadyAddedConstraints = YES;
+
+        [super updateConstraints];
     }
-    else
-    {
-        [self addHorizontalConstraintsForOneButtonLayout];
-    }
-    
-    NSArray* verticalConstraints = [NSLayoutConstraint
-                                    constraintsWithVisualFormat:@"V:|-[iconView]-[Finder]-|"
-                                    options:kNilOptions
-                                    metrics:@{}
-                                    views:self.viewsForAutolayout];
-    [self addConstraints:verticalConstraints];
-    
-    [super updateConstraints];
 }
 
 
-- (void)addHorizontalConstraintsForTwoButtonLayout
+- (void)constrainButtons
+{
+    if ([self.fileType isEqualToString:kDSYMUTI])
+    {
+        [self constrainButtonsForTwoButtonLayout];
+    }
+    else
+    {
+        [self constrainButtonsForOneButtonLayout];
+    }
+
+    [self constrainButtonContainer];
+}
+
+
+- (void)constrainButtonsForTwoButtonLayout
 {
     NSLayoutConstraint* alignLeadingOfFinderButton = [NSLayoutConstraint
-                                                      constraintWithItem:self
+                                                      constraintWithItem:self.buttonContainer
                                                       attribute:NSLayoutAttributeLeft
                                                       relatedBy:NSLayoutRelationEqual
                                                       toItem:self.finderButton
                                                       attribute:NSLayoutAttributeLeft
                                                       multiplier:1
-                                                      constant:8];
-    
+                                                      constant:0];
+
     NSLayoutConstraint* alignTrailingOfBambooButton = [NSLayoutConstraint
-                                                       constraintWithItem:self
+                                                       constraintWithItem:self.buttonContainer
                                                        attribute:NSLayoutAttributeRight
                                                        relatedBy:NSLayoutRelationEqual
                                                        toItem:self.bambooButton
                                                        attribute:NSLayoutAttributeRight
                                                        multiplier:1
-                                                       constant:8];
-    
+                                                       constant:0];
+
     [self addConstraints:@[alignLeadingOfFinderButton, alignTrailingOfBambooButton]];
-    
+
     NSLayoutConstraint* spacingBetweenButtons = [NSLayoutConstraint
                                                  constraintWithItem:self.finderButton
                                                  attribute:NSLayoutAttributeRight
@@ -220,20 +255,46 @@ NSString* const kDSYMPathExtension = @"dSym";
                                                  attribute:NSLayoutAttributeLeft
                                                  multiplier:1
                                                  constant:12];
-    
+
     [self addConstraint:spacingBetweenButtons];
 }
 
 
-- (void)addHorizontalConstraintsForOneButtonLayout
+- (void)constrainButtonsForOneButtonLayout
 {
     NSArray* horizontalButtonConstraints = [NSLayoutConstraint
                                             constraintsWithVisualFormat:@"|-[Finder]-|"
                                             options:kNilOptions
                                             metrics:@{}
                                             views:self.viewsForAutolayout];
-    [self addConstraints:horizontalButtonConstraints];
+    [self.buttonContainer addConstraints:horizontalButtonConstraints];
 }
+
+
+- (void)constrainButtonContainer
+{
+    NSLayoutConstraint *containerHeightConstraint = [NSLayoutConstraint
+                                                     constraintWithItem:self.buttonContainer
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                     toItem:self.finderButton
+                                                     attribute:NSLayoutAttributeHeight
+                                                     multiplier:1
+                                                     constant:0];
+
+    NSLayoutConstraint *containerXConstraint = [NSLayoutConstraint
+                                                constraintWithItem:self
+                                                attribute:NSLayoutAttributeCenterX
+                                                relatedBy:NSLayoutRelationEqual
+                                                toItem:self.buttonContainer
+                                                attribute:NSLayoutAttributeCenterX
+                                                multiplier:1
+                                                constant:0];
+
+    [self addConstraint:containerHeightConstraint];
+    [self addConstraint:containerXConstraint];
+}
+
 
 - (NSDictionary *)viewsForAutolayout
 {
@@ -242,19 +303,10 @@ NSString* const kDSYMPathExtension = @"dSym";
         _viewsForAutolayout = @{@"iconView": self.iconView,
                                 @"typeLabel": self.typeLabel,
                                 @"Finder": self.finderButton,
-                                @"Bamboo": self.bambooButton};
+                                @"Bamboo": self.bambooButton,
+                                @"ButtonContainer": self.buttonContainer};
     }
     return _viewsForAutolayout;
-}
-
-
-- (void)removeAllConstraints
-{
-    NSArray* allConstraints = self.constraints;
-    if ([allConstraints count] > 0)
-    {
-        [self removeConstraints:allConstraints];
-    }
 }
 
 @end

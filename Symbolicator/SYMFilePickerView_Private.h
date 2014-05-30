@@ -20,11 +20,14 @@
  */
 @property(nonatomic, strong) NSTextField* typeLabel;
 
+@property(nonatomic, strong) NSView* buttonContainer;
 @property(nonatomic, strong) NSButton* finderButton;
 @property(nonatomic, strong) NSButton* bambooButton;
 
 @property(nonatomic, strong) NSURL* fileURL;
 
 @property(nonatomic, strong) NSDictionary* viewsForAutolayout;
+
+@property(nonatomic, assign) BOOL alreadyAddedConstraints;
 
 @end
