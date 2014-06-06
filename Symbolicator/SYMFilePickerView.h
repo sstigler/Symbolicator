@@ -28,7 +28,7 @@ extern NSString* const kDSYMUTI;
 @end
 
 
-@interface SYMFilePickerView : NSView
+@interface SYMFilePickerView : NSView <NSDraggingDestination>
 
 /**
  The URL of the selected file, or nil if no file has been selected yet.

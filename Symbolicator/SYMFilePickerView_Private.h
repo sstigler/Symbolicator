@@ -8,7 +8,7 @@
 
 #import "SYMFilePickerView.h"
 
-@interface SYMFilePickerView () <NSDraggingDestination>
+@interface SYMFilePickerView ()
 
 /**
  Shows the icon corresponding to the file type.
@@ -26,6 +26,7 @@
 @property(nonatomic, strong) NSButton* bambooButton;
 
 @property(nonatomic, strong) NSURL* fileURL;
+@property(nonatomic, strong) NSURL* fileURLBeingDragged;
 
 @property(nonatomic, strong) NSDictionary* viewsForAutolayout;
 

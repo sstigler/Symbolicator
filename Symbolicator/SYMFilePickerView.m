@@ -17,7 +17,7 @@ NSString* const kCrashReportUTI = @"com.apple.crashreport";
 NSString* const kDSYMUTI = @"com.apple.xcode.dsym";
 
 NSString* const kCrashReportPathExtension = @"crash";
-NSString* const kDSYMPathExtension = @"dSym";
+NSString* const kDSYMPathExtension = @"dSYM";
 
 static CGFloat const kMaxWidthOfTypeLabel = 250;
 
@@ -39,9 +39,25 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
 
         [self addSubview:self.buttonContainer];
 
-        _fileType = nil;
+        [self registerForDraggedTypes:@[(NSString *)kUTTypeFileURL]];
     }
     return self;
+}
+
+
+- (NSString *)requiredFileExtension
+{
+    NSString* extension = nil;
+    if ([self.fileType isEqualToString:kDSYMUTI])
+    {
+        extension = kDSYMPathExtension;
+    }
+    else if ([self.fileType isEqualToString:kCrashReportUTI])
+    {
+        extension = kCrashReportPathExtension;
+    }
+
+    return extension;
 }
 
 
@@ -173,9 +189,6 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
     [self.typeLabel setStringValue:extensionString];
 
     [self setNeedsUpdateConstraints:YES];
-
-    [self unregisterDraggedTypes];
-    [self registerForDraggedTypes:@[fileType]];
 }
 
 
@@ -194,6 +207,14 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
     [self constrainButtons];
 
     [self setNeedsUpdateConstraints:YES];
+}
+
+
+- (void)setFileURL:(NSURL *)fileURL
+{
+    [self.typeLabel setStringValue:[fileURL lastPathComponent]];
+    [self.delegate filePickerView:self
+                   didPickFileURL:fileURL];
 }
 
 
@@ -304,9 +325,7 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
      completionHandler:^(NSInteger result) {
          if (result == NSFileHandlingPanelOKButton)
          {
-             [weakSelf.typeLabel setStringValue:[[reportChooser URL] lastPathComponent]];
-             [weakSelf.delegate filePickerView:self
-                                didPickFileURL:[reportChooser URL]];
+             weakSelf.fileURL = [reportChooser URL];
          }
      }];
 }
@@ -323,9 +342,7 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
      completionHandler:^(NSInteger result) {
          if (result == NSFileHandlingPanelOKButton)
          {
-             [weakSelf.typeLabel setStringValue:[[dSYMChooser URL] lastPathComponent]];
-             [weakSelf.delegate filePickerView:self
-                                didPickFileURL:[dSYMChooser URL]];
+             weakSelf.fileURL = [dSYMChooser URL];
          }
      }];
 }
@@ -348,17 +365,29 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
 }
 
 
+- (void)showRejectedDraggingBorder
+{
+    self.layer.borderColor = [[NSColor redColor] CGColor];
+    self.layer.borderWidth = kBorderWidthWhenDragIsInProgress;
+}
+
+
 #pragma mark - NSDraggingDestination methods
 
 
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender
 {
-    if ([(id<NSDraggingInfo>)sender draggingSourceOperationMask] != NSDragOperationNone)
+    NSDragOperation operationMask = [sender draggingSourceOperationMask];
+    BOOL isValidDrag = ((operationMask & NSDragOperationLink) &&
+                        ([self doesDraggingInfoRepresentAppropriateDrag:sender]));
+    if (isValidDrag)
     {
         [self showDraggingBorder];
         return NSDragOperationLink;
     }
     else {
+        NSBeep();
+        [self showRejectedDraggingBorder];
         return NSDragOperationNone;
     }
 }
@@ -367,6 +396,45 @@ static CGFloat const kMaxWidthOfTypeLabel = 250;
 - (void)draggingExited:(id<NSDraggingInfo>)sender
 {
     [self showNonDraggingBorder];
+}
+
+
+- (void)draggingEnded:(id<NSDraggingInfo>)sender
+{
+    [self showNonDraggingBorder];
+}
+
+
+- (BOOL)doesDraggingInfoRepresentAppropriateDrag:(id<NSDraggingInfo>) draggingInfo
+{
+    NSArray* __unused pasteboardFileTypes = [[draggingInfo draggingPasteboard] types]; // must call this before calling -stringForType: .
+    BOOL okayToDrag = NO;
+    NSString* fileURLString = [[draggingInfo draggingPasteboard] stringForType:(NSString *)kUTTypeFileURL];
+    if (fileURLString != nil)
+    {
+        NSURL* candidateURL = [NSURL URLWithString:fileURLString];
+        NSString* fileExtension = [candidateURL pathExtension];
+        if ([fileExtension isEqualToString:[self requiredFileExtension]])
+        {
+            self.fileURLBeingDragged = candidateURL;
+            okayToDrag = YES;
+        }
+    }
+
+    return okayToDrag;
+}
+
+
+- (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
+{
+    self.fileURL = [self.fileURLBeingDragged copy];
+    return YES;
+}
+
+
+- (void)concludeDragOperation:(id<NSDraggingInfo>)sender
+{
+    self.fileURLBeingDragged = nil;
 }
 
 
