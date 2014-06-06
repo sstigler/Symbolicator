@@ -31,7 +31,6 @@
 
 @property(nonatomic, assign) BOOL alreadyAddedConstraints;
 
-@property(nonatomic, strong) NSLayoutConstraint* bambooButtonHidingConstraint;
 @property(nonatomic, strong) NSArray* buttonConstraintsForTwoButtonLayout;
 @property(nonatomic, strong) NSArray* buttonConstraintsForOneButtonLayout;
 

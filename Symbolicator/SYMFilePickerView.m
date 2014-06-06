@@ -368,7 +368,22 @@ NSString* const kDSYMPathExtension = @"dSym";
 }
 
 
-#pragma mark - Top content layout constraints
+- (NSDictionary *)viewsForAutolayout
+{
+    if (_viewsForAutolayout == nil)
+    {
+        _viewsForAutolayout = @{@"iconView": self.iconView,
+                                @"typeLabel": self.typeLabel,
+                                @"Finder": self.finderButton,
+                                @"Bamboo": self.bambooButton,
+                                @"ButtonContainer": self.buttonContainer,
+                                @"TopContentContainer": self.topContentContainer};
+    }
+    return _viewsForAutolayout;
+}
+
+
+#pragma mark Top content layout constraints
 
 
 - (void)constrainTopContentContainer
@@ -404,7 +419,7 @@ NSString* const kDSYMPathExtension = @"dSym";
 }
 
 
-#pragma mark - Button layout constraints
+#pragma mark Button layout constraints
 
 
 - (void)constrainButtons
@@ -451,40 +466,6 @@ NSString* const kDSYMPathExtension = @"dSym";
 
     [self addConstraint:containerHeightConstraint];
     [self addConstraint:containerXConstraint];
-}
-
-
-- (NSDictionary *)viewsForAutolayout
-{
-    if (_viewsForAutolayout == nil)
-    {
-        _viewsForAutolayout = @{@"iconView": self.iconView,
-                                @"typeLabel": self.typeLabel,
-                                @"Finder": self.finderButton,
-                                @"Bamboo": self.bambooButton,
-                                @"ButtonContainer": self.buttonContainer,
-                                @"TopContentContainer": self.topContentContainer};
-    }
-    return _viewsForAutolayout;
-}
-
-
-- (NSLayoutConstraint *)bambooButtonHidingConstraint
-{
-    if (_bambooButtonHidingConstraint == nil)
-    {
-        _bambooButtonHidingConstraint = [NSLayoutConstraint
-                                         constraintWithItem:self.bambooButton
-                                         attribute:NSLayoutAttributeHeight
-                                         relatedBy:NSLayoutRelationEqual
-                                         toItem:nil
-                                         attribute:NSLayoutAttributeNotAnAttribute
-                                         multiplier:1
-                                         constant:0];
-        _bambooButtonHidingConstraint.priority = NSLayoutPriorityRequired;
-    }
-
-    return _bambooButtonHidingConstraint;
 }
 
 @end
