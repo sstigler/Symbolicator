@@ -133,6 +133,8 @@ NSString* const kDSYMPathExtension = @"dSym";
         [_finderButton setTitle:@"Finder..."];
         [_finderButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_finderButton setBezelStyle:NSRoundedBezelStyle];
+        [_finderButton setTarget:self];
+        [_finderButton setAction:@selector(runFileChooser:)];
     }
     return _finderButton;
 }
@@ -268,6 +270,58 @@ NSString* const kDSYMPathExtension = @"dSym";
     }
 
     return _buttonConstraintsForOneButtonLayout;
+}
+
+
+#pragma mark - AppKit-style file choosers
+
+
+- (void)runFileChooser:(id)sender
+{
+    if ([self.fileType isEqualToString:kCrashReportUTI])
+    {
+        [self chooseCrashReport:sender];
+    }
+    else if ([self.fileType isEqualToString:kDSYMUTI])
+    {
+        [self chooseDSYM:sender];
+    }
+}
+
+
+- (void)chooseCrashReport:(id)sender
+{
+    __weak typeof(self) weakSelf = self;
+
+    NSOpenPanel* reportChooser = [[NSOpenPanel alloc] initWithMessage:@"Which crash report is it?"
+                                                             fileType:@"crash"];
+    [reportChooser
+     beginSheetModalForWindow:[NSApp mainWindow]
+     completionHandler:^(NSInteger result) {
+         if (result == NSFileHandlingPanelOKButton)
+         {
+             [weakSelf.delegate filePickerView:self
+                                didPickFileURL:[reportChooser URL]];
+         }
+     }];
+}
+
+
+- (void)chooseDSYM:(id)sender
+{
+    __weak typeof(self) weakSelf = self;
+
+    NSOpenPanel* dSYMChooser = [[NSOpenPanel alloc] initWithMessage:@"Which dSYM goes with the crash report?"
+                                                           fileType:@"dSYM"];
+    [dSYMChooser
+     beginSheetModalForWindow:[NSApp mainWindow]
+     completionHandler:^(NSInteger result) {
+         if (result == NSFileHandlingPanelOKButton)
+         {
+             [weakSelf.delegate filePickerView:self
+                                didPickFileURL:[dSYMChooser URL]];
+         }
+     }];
 }
 
 
