@@ -290,9 +290,15 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="d3q-Un-YJZ"/>
                             <constraint firstAttribute="height" constant="150" id="jZp-0I-u4u"/>
                         </constraints>
+                        <connections>
+                            <outlet property="delegate" destination="YEF-mj-2aC" id="4cn-4G-R2p"/>
+                        </connections>
                     </customView>
                     <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyc-GZ-Z8j" customClass="SYMFilePickerView">
                         <rect key="frame" x="304" y="211" width="275" height="150"/>
+                        <connections>
+                            <outlet property="delegate" destination="YEF-mj-2aC" id="9UE-SG-qeJ"/>
+                        </connections>
                     </customView>
                 </subviews>
                 <constraints>

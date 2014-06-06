@@ -97,4 +97,20 @@
     });
 }
 
+
+#pragma mark - SYMFilePickerView delegate methods
+
+
+- (void)filePickerView:(SYMFilePickerView *)filePickerView didPickFileURL:(NSURL *)fileURL
+{
+    if ([filePickerView.fileType isEqualToString:kCrashReportUTI])
+    {
+        self.crashReportURL = fileURL;
+    }
+    else if ([filePickerView.fileType isEqualToString:kDSYMUTI])
+    {
+        self.dSYMURL = fileURL;
+    }
+}
+
 @end
