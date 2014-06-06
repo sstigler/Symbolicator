@@ -13,8 +13,6 @@
 static CGFloat const kBorderWidthWhenNoDragIsInProgress = 1;
 static CGFloat const kBorderWidthWhenDragIsInProgress = 3;
 
-static CGFloat const kHeightOfTopContentContainer = 60;
-
 NSString* const kCrashReportUTI = @"com.apple.crashreport";
 NSString* const kDSYMUTI = @"com.apple.xcode.dsym";
 
@@ -98,6 +96,7 @@ NSString* const kDSYMPathExtension = @"dSym";
         [_typeLabel setBackgroundColor:[NSColor clearColor]];
         [_typeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_typeLabel setDrawsBackground:NO];
+        [_typeLabel setBezeled:NO];
     }
     return _typeLabel;
 }
@@ -109,7 +108,6 @@ NSString* const kDSYMPathExtension = @"dSym";
     {
         _topContentContainer = [[NSView alloc] initWithFrame:NSZeroRect];
         _topContentContainer.wantsLayer = YES;
-        _topContentContainer.layer.backgroundColor = [[NSColor redColor] CGColor];
         [_topContentContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
     return _topContentContainer;
@@ -334,17 +332,37 @@ NSString* const kDSYMPathExtension = @"dSym";
                                               views:self.viewsForAutolayout];
         [self addConstraints:horizontalIconConstraints];
 
-        NSArray* verticalConstraints = [NSLayoutConstraint
-                                        constraintsWithVisualFormat:@"V:|-[iconView]-[ButtonContainer]-|"
-                                        options:kNilOptions
-                                        metrics:@{}
-                                        views:self.viewsForAutolayout];
-        [self addConstraints:verticalConstraints];
+
+        NSLayoutConstraint* subviewAlignmentInTopContentContainer = [NSLayoutConstraint
+                                                                     constraintWithItem:self.iconView
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.typeLabel
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                     multiplier:1
+                                                                     constant:0];
+
+        [self addConstraint:subviewAlignmentInTopContentContainer];
+
+        NSArray* verticalConstraintsPart1 = [NSLayoutConstraint
+                                             constraintsWithVisualFormat:@"V:|-[TopContentContainer]"
+                                             options:kNilOptions
+                                             metrics:@{}
+                                             views:self.viewsForAutolayout];
+
+        NSArray* verticalConstraintsPart2 = [NSLayoutConstraint
+                                             constraintsWithVisualFormat:@"V:[ButtonContainer]-|"
+                                             options:kNilOptions
+                                             metrics:@{}
+                                             views:self.viewsForAutolayout];
+
+        [self addConstraints:verticalConstraintsPart1];
+        [self addConstraints:verticalConstraintsPart2];
 
         [self constrainButtonContainer];
 
         self.alreadyAddedConstraints = YES;
-
+        
         [super updateConstraints];
     }
 }
@@ -355,26 +373,34 @@ NSString* const kDSYMPathExtension = @"dSym";
 
 - (void)constrainTopContentContainer
 {
-    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint
-                                                     constraintWithItem:self.topContentContainer
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                     toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                     multiplier:1
-                                                     constant:kHeightOfTopContentContainer];
+    NSLayoutConstraint* heightConstraint = [NSLayoutConstraint
+                                            constraintWithItem:self.topContentContainer
+                                            attribute:NSLayoutAttributeHeight
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:self.iconView
+                                            attribute:NSLayoutAttributeHeight
+                                            multiplier:1
+                                            constant:0];
 
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint
-                                                constraintWithItem:self
-                                                attribute:NSLayoutAttributeCenterX
-                                                relatedBy:NSLayoutRelationEqual
-                                                toItem:self.buttonContainer
-                                                attribute:NSLayoutAttributeCenterX
-                                                multiplier:1
-                                                constant:0];
+    NSLayoutConstraint* centerXConstraint = [NSLayoutConstraint
+                                             constraintWithItem:self
+                                             attribute:NSLayoutAttributeCenterX
+                                             relatedBy:NSLayoutRelationEqual
+                                             toItem:self.topContentContainer
+                                             attribute:NSLayoutAttributeCenterX
+                                             multiplier:1
+                                             constant:0];
 
-    [self addConstraint:heightConstraint];
-    [self addConstraint:leftConstraint];
+    NSLayoutConstraint* bottomConstraint = [NSLayoutConstraint
+                                            constraintWithItem:self.topContentContainer
+                                            attribute:NSLayoutAttributeBottom
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:self.iconView
+                                            attribute:NSLayoutAttributeBottom
+                                            multiplier:1
+                                            constant:0];
+
+    [self addConstraints:@[heightConstraint, centerXConstraint, bottomConstraint]];
 }
 
 
@@ -436,7 +462,8 @@ NSString* const kDSYMPathExtension = @"dSym";
                                 @"typeLabel": self.typeLabel,
                                 @"Finder": self.finderButton,
                                 @"Bamboo": self.bambooButton,
-                                @"ButtonContainer": self.buttonContainer};
+                                @"ButtonContainer": self.buttonContainer,
+                                @"TopContentContainer": self.topContentContainer};
     }
     return _viewsForAutolayout;
 }
