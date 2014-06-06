@@ -16,6 +16,18 @@ typedef NS_ENUM(NSInteger, SYMFilePickerMode) {
 extern NSString* const kCrashReportUTI;
 extern NSString* const kDSYMUTI;
 
+
+@class SYMFilePickerView;
+
+@protocol SYMFilePickerViewDelegate <NSObject>
+
+@required
+- (void)filePickerView:(SYMFilePickerView *)filePickerView
+        didPickFileURL:(NSURL *)fileURL;
+
+@end
+
+
 @interface SYMFilePickerView : NSView
 
 /**
@@ -34,6 +46,11 @@ extern NSString* const kDSYMUTI;
  etc.) to display. Defaults to SYMFilePickerModeFinderOnly.
  */
 @property(nonatomic, assign) SYMFilePickerMode mode;
+
+/**
+ The file picker view's delegate.
+ */
+@property(nonatomic, weak) IBOutlet id<SYMFilePickerViewDelegate> delegate;
 
 - (void)configureForOneButtonLayout;
 - (void)configureForTwoButtonLayout;
