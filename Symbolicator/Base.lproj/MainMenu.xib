@@ -192,7 +192,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k5x-3n-C7c">
-                        <rect key="frame" x="14" y="163" width="571" height="32"/>
+                        <rect key="frame" x="14" y="203" width="571" height="32"/>
                         <buttonCell key="cell" type="push" title="Symbolicate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zap-YD-PUc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -216,7 +216,7 @@
                         </connections>
                     </button>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-FJ-awc">
-                        <rect key="frame" x="20" y="61" width="559" height="89"/>
+                        <rect key="frame" x="20" y="61" width="559" height="129"/>
                         <clipView key="contentView" id="K59-MA-Hzt">
                             <rect key="frame" x="1" y="1" width="557" height="87"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,10 +225,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="557" height="87"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="557" height="87"/>
+                                    <size key="minSize" width="557" height="127"/>
                                     <size key="maxSize" width="567" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="557" height="87"/>
+                                    <size key="minSize" width="557" height="127"/>
                                     <size key="maxSize" width="567" height="10000000"/>
                                     <connections>
                                         <binding destination="YEF-mj-2aC" name="value" keyPath="symbolicatedReport" id="0A6-Bl-3wi">
@@ -285,17 +285,17 @@
                         </textFieldCell>
                     </textField>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="nCL-Xx-KkQ" customClass="SYMFilePickerView">
-                        <rect key="frame" x="20" y="211" width="275" height="150"/>
+                        <rect key="frame" x="20" y="251" width="276" height="110"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="d3q-Un-YJZ"/>
-                            <constraint firstAttribute="height" constant="150" id="jZp-0I-u4u"/>
+                            <constraint firstAttribute="height" constant="110" id="jZp-0I-u4u"/>
                         </constraints>
                         <connections>
                             <outlet property="delegate" destination="YEF-mj-2aC" id="4cn-4G-R2p"/>
                         </connections>
                     </customView>
-                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyc-GZ-Z8j" customClass="SYMFilePickerView">
-                        <rect key="frame" x="304" y="211" width="275" height="150"/>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dyc-GZ-Z8j" customClass="SYMFilePickerView">
+                        <rect key="frame" x="304" y="251" width="275" height="110"/>
                         <connections>
                             <outlet property="delegate" destination="YEF-mj-2aC" id="9UE-SG-qeJ"/>
                         </connections>
