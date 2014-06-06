@@ -19,7 +19,7 @@ NSString* const kDSYMUTI = @"com.apple.xcode.dsym";
 NSString* const kCrashReportPathExtension = @"crash";
 NSString* const kDSYMPathExtension = @"dSym";
 
-static CGFloat const kMaxWidthOfTypeLabel = 120;
+static CGFloat const kMaxWidthOfTypeLabel = 250;
 
 @implementation SYMFilePickerView
 
@@ -151,6 +151,7 @@ static CGFloat const kMaxWidthOfTypeLabel = 120;
         [_bambooButton setTitle:@"Bamboo..."];
         [_bambooButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_bambooButton setBezelStyle:NSRoundedBezelStyle];
+        [_bambooButton setEnabled:NO];
     }
     return _bambooButton;
 }
