@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Symbolicator. All rights reserved.
 //
 
+#import "Symbolicator-Swift.h"
 #import "SYMFilePickerView_Private.h"
-
 #import "NSView+SYMAdditions.h"
 
 static CGFloat const kBorderWidthWhenNoDragIsInProgress = 1;

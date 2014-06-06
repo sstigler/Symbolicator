@@ -12,6 +12,8 @@
 		F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5273F40191DE7BE00E792DB /* SYMFilePickerViewTests.m */; };
 		F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
+		F54A5977194252CF00F5FDA0 /* NSOpenPanel+SYMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54A5976194252CF00F5FDA0 /* NSOpenPanel+SYMAdditions.swift */; };
+		F54A5978194252D000F5FDA0 /* NSOpenPanel+SYMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54A5976194252CF00F5FDA0 /* NSOpenPanel+SYMAdditions.swift */; };
 		F5D9564318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
 		F5D9564D18D25B2F00952D3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5D9564B18D25B2F00952D3C /* InfoPlist.strings */; };
 		F5D9564F18D25B2F00952D3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D9564E18D25B2F00952D3C /* main.m */; };
@@ -45,6 +47,9 @@
 		F5273F42191DEB5000E792DB /* SYMFilePickerView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMFilePickerView_Private.h; sourceTree = "<group>"; };
 		F529775118D7E68A001551EB /* SYMSymbolicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMSymbolicator.h; sourceTree = "<group>"; };
 		F529775218D7E68A001551EB /* SYMSymbolicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMSymbolicator.m; sourceTree = "<group>"; };
+		F54A5974194252CF00F5FDA0 /* Symbolicator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Symbolicator-Bridging-Header.h"; sourceTree = "<group>"; };
+		F54A5975194252CF00F5FDA0 /* SymbolicatorTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SymbolicatorTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		F54A5976194252CF00F5FDA0 /* NSOpenPanel+SYMAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSOpenPanel+SYMAdditions.swift"; sourceTree = "<group>"; };
 		F5D9563F18D25B2F00952D3C /* Symbolicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symbolicator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D9564218D25B2F00952D3C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F5D9564518D25B2F00952D3C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -93,6 +98,7 @@
 		F5243C0219367D7E0080AE2B /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				F54A5976194252CF00F5FDA0 /* NSOpenPanel+SYMAdditions.swift */,
 				F5DC61F819379F9A009856AA /* NSView+SYMAdditions.h */,
 				F5DC61F919379F9A009856AA /* NSView+SYMAdditions.m */,
 			);
@@ -165,6 +171,8 @@
 				F5D9564B18D25B2F00952D3C /* InfoPlist.strings */,
 				F5D9564E18D25B2F00952D3C /* main.m */,
 				F5D9565018D25B2F00952D3C /* Symbolicator-Prefix.pch */,
+				F54A5974194252CF00F5FDA0 /* Symbolicator-Bridging-Header.h */,
+				F54A5975194252CF00F5FDA0 /* SymbolicatorTests-Bridging-Header.h */,
 				F5D9565118D25B2F00952D3C /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -290,6 +298,7 @@
 				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
 				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
+				F54A5977194252CF00F5FDA0 /* NSOpenPanel+SYMAdditions.swift in Sources */,
 				F5DC61FA19379F9A009856AA /* NSView+SYMAdditions.m in Sources */,
 				F5273F3E191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
 				F5D9564F18D25B2F00952D3C /* main.m in Sources */,
@@ -303,6 +312,7 @@
 				F5DC61FB19379F9A009856AA /* NSView+SYMAdditions.m in Sources */,
 				F5273F41191DE7BE00E792DB /* SYMFilePickerViewTests.m in Sources */,
 				F5273F3F191DE61E00E792DB /* SYMFilePickerView.m in Sources */,
+				F54A5978194252D000F5FDA0 /* NSOpenPanel+SYMAdditions.swift in Sources */,
 				F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9567918D25DFA00952D3C /* SYMAppController.m in Sources */,
 			);
@@ -428,11 +438,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Symbolicator/Symbolicator-Prefix.pch";
 				INFOPLIST_FILE = "Symbolicator/Symbolicator-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Symbolicator/Symbolicator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -441,11 +455,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Symbolicator/Symbolicator-Prefix.pch";
 				INFOPLIST_FILE = "Symbolicator/Symbolicator-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Symbolicator/Symbolicator-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -454,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Symbolicator.app/Contents/MacOS/Symbolicator";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -466,7 +484,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SymbolicatorTests/SymbolicatorTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Symbolicator/SymbolicatorTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -476,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Symbolicator.app/Contents/MacOS/Symbolicator";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -484,7 +506,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Symbolicator/Symbolicator-Prefix.pch";
 				INFOPLIST_FILE = "SymbolicatorTests/SymbolicatorTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Symbolicator/SymbolicatorTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
