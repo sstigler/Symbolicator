@@ -300,6 +300,7 @@ NSString* const kDSYMPathExtension = @"dSym";
      completionHandler:^(NSInteger result) {
          if (result == NSFileHandlingPanelOKButton)
          {
+             [weakSelf.typeLabel setStringValue:[[reportChooser URL] lastPathComponent]];
              [weakSelf.delegate filePickerView:self
                                 didPickFileURL:[reportChooser URL]];
          }
@@ -318,6 +319,7 @@ NSString* const kDSYMPathExtension = @"dSym";
      completionHandler:^(NSInteger result) {
          if (result == NSFileHandlingPanelOKButton)
          {
+             [weakSelf.typeLabel setStringValue:[[dSYMChooser URL] lastPathComponent]];
              [weakSelf.delegate filePickerView:self
                                 didPickFileURL:[dSYMChooser URL]];
          }
