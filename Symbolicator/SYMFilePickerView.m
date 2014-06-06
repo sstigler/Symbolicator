@@ -19,6 +19,8 @@ NSString* const kDSYMUTI = @"com.apple.xcode.dsym";
 NSString* const kCrashReportPathExtension = @"crash";
 NSString* const kDSYMPathExtension = @"dSym";
 
+static CGFloat const kMaxWidthOfTypeLabel = 120;
+
 @implementation SYMFilePickerView
 
 - (instancetype)initWithFrame:(NSRect)frameRect
@@ -97,6 +99,7 @@ NSString* const kDSYMPathExtension = @"dSym";
         [_typeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_typeLabel setDrawsBackground:NO];
         [_typeLabel setBezeled:NO];
+        [_typeLabel.cell setLineBreakMode:NSLineBreakByTruncatingMiddle];
     }
     return _typeLabel;
 }
@@ -379,41 +382,15 @@ NSString* const kDSYMPathExtension = @"dSym";
 {
     if (self.alreadyAddedConstraints == NO) {
 
-        [self constrainTopContentContainer];
+        [self constraintTopContent];
 
-        NSArray* horizontalIconConstraints = [NSLayoutConstraint
-                                              constraintsWithVisualFormat:@"|-[iconView]-[typeLabel]-|"
-                                              options:kNilOptions
-                                              metrics:@{}
-                                              views:self.viewsForAutolayout];
-        [self addConstraints:horizontalIconConstraints];
-
-
-        NSLayoutConstraint* subviewAlignmentInTopContentContainer = [NSLayoutConstraint
-                                                                     constraintWithItem:self.iconView
-                                                                     attribute:NSLayoutAttributeCenterY
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                     toItem:self.typeLabel
-                                                                     attribute:NSLayoutAttributeCenterY
-                                                                     multiplier:1
-                                                                     constant:0];
-
-        [self addConstraint:subviewAlignmentInTopContentContainer];
-
-        NSArray* verticalConstraintsPart1 = [NSLayoutConstraint
-                                             constraintsWithVisualFormat:@"V:|-[TopContentContainer]"
-                                             options:kNilOptions
-                                             metrics:@{}
-                                             views:self.viewsForAutolayout];
-
-        NSArray* verticalConstraintsPart2 = [NSLayoutConstraint
+        NSArray* verticalConstraints = [NSLayoutConstraint
                                              constraintsWithVisualFormat:@"V:[ButtonContainer]-|"
                                              options:kNilOptions
                                              metrics:@{}
                                              views:self.viewsForAutolayout];
 
-        [self addConstraints:verticalConstraintsPart1];
-        [self addConstraints:verticalConstraintsPart2];
+        [self addConstraints:verticalConstraints];
 
         [self constrainButtonContainer];
 
@@ -440,6 +417,58 @@ NSString* const kDSYMPathExtension = @"dSym";
 
 
 #pragma mark Top content layout constraints
+
+
+- (void)constraintTopContent
+{
+    [self constrainTopContentContainer];
+
+    NSArray* horizontalIconConstraints = [NSLayoutConstraint
+                                          constraintsWithVisualFormat:@"|-[iconView]-[typeLabel]-|"
+                                          options:kNilOptions
+                                          metrics:@{}
+                                          views:self.viewsForAutolayout];
+    [self addConstraints:horizontalIconConstraints];
+
+    NSLayoutConstraint* iconWidthConstraint = [NSLayoutConstraint
+                                               constraintWithItem:self.iconView
+                                               attribute:NSLayoutAttributeWidth
+                                               relatedBy:NSLayoutRelationEqual
+                                               toItem:nil
+                                               attribute:NSLayoutAttributeNotAnAttribute
+                                               multiplier:1
+                                               constant:32];
+
+    NSLayoutConstraint* typeLabelWidthConstraint = [NSLayoutConstraint
+                                                    constraintWithItem:self.typeLabel
+                                                    attribute:NSLayoutAttributeWidth
+                                                    relatedBy:NSLayoutRelationLessThanOrEqual
+                                                    toItem:nil
+                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1
+                                                    constant:kMaxWidthOfTypeLabel];
+
+    NSLayoutConstraint* subviewAlignmentInTopContentContainer = [NSLayoutConstraint
+                                                                 constraintWithItem:self.iconView
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.typeLabel
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 multiplier:1
+                                                                 constant:0];
+
+    NSArray* verticalConstraints = [NSLayoutConstraint
+                                         constraintsWithVisualFormat:@"V:|-[TopContentContainer]"
+                                         options:kNilOptions
+                                         metrics:@{}
+                                         views:self.viewsForAutolayout];
+
+    [self addConstraints:@[iconWidthConstraint,
+                           typeLabelWidthConstraint,
+                           subviewAlignmentInTopContentContainer]];
+
+    [self addConstraints:verticalConstraints];
+}
 
 
 - (void)constrainTopContentContainer
@@ -471,7 +500,14 @@ NSString* const kDSYMPathExtension = @"dSym";
                                             multiplier:1
                                             constant:0];
 
+    NSArray* sideConstraints = [NSLayoutConstraint
+                                constraintsWithVisualFormat:@"|-(>=20)-[TopContentContainer]-(>=20)-|"
+                                options:kNilOptions
+                                metrics:@{}
+                                views:self.viewsForAutolayout];
+
     [self addConstraints:@[heightConstraint, centerXConstraint, bottomConstraint]];
+    [self addConstraints:sideConstraints];
 }
 
 
