@@ -28,7 +28,10 @@
 - (void)awakeFromNib
 {
     [self.crashReportFilePickerView setFileType:kCrashReportUTI];
+    [self.crashReportFilePickerView setMode:SYMFilePickerModeFinderOnly];
+
     [self.dSYMFilePickerView setFileType:kDSYMUTI];
+    [self.dSYMFilePickerView setMode:SYMFilePickerModeFinderAndBamboo];
 }
 
 

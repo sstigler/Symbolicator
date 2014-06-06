@@ -35,4 +35,7 @@ extern NSString* const kDSYMUTI;
  */
 @property(nonatomic, assign) SYMFilePickerMode mode;
 
+- (void)configureForOneButtonLayout;
+- (void)configureForTwoButtonLayout;
+
 @end

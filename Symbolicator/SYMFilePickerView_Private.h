@@ -20,6 +20,7 @@
  */
 @property(nonatomic, strong) NSTextField* typeLabel;
 
+@property(nonatomic, strong) NSView* topContentContainer;
 @property(nonatomic, strong) NSView* buttonContainer;
 @property(nonatomic, strong) NSButton* finderButton;
 @property(nonatomic, strong) NSButton* bambooButton;
@@ -29,5 +30,9 @@
 @property(nonatomic, strong) NSDictionary* viewsForAutolayout;
 
 @property(nonatomic, assign) BOOL alreadyAddedConstraints;
+
+@property(nonatomic, strong) NSLayoutConstraint* bambooButtonHidingConstraint;
+@property(nonatomic, strong) NSArray* buttonConstraintsForTwoButtonLayout;
+@property(nonatomic, strong) NSArray* buttonConstraintsForOneButtonLayout;
 
 @end
