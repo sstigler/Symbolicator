@@ -45,14 +45,6 @@ NSString* const kDSYMPathExtension = @"dSym";
 }
 
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-
-    self.fileType = kCrashReportUTI;
-}
-
-
 #pragma mark - Top-level button configuration methods
 
 
