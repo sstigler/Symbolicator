@@ -129,7 +129,6 @@ NSString* const kDSYMPathExtension = @"dSym";
     {
         _buttonContainer = [[NSView alloc] initWithFrame:NSZeroRect];
         _buttonContainer.wantsLayer = YES;
-        _buttonContainer.layer.backgroundColor = [[NSColor greenColor] CGColor];
         [_buttonContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
     return _buttonContainer;
