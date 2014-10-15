@@ -10,6 +10,8 @@
 #import "SYMSymbolicator.h"
 #import "SYMLocator.h"
 
+#define SEARCH_ENABLED
+
 @interface SYMAppController ()
 
 - (IBAction)chooseCrashReport:(id)sender;
@@ -32,7 +34,12 @@
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.crashReportURL = [reportChooser URL];
+#ifdef SEARCH_ENABLED
              self.dSYMURL = [SYMLocator findDSYMWithPlistUrl:weakSelf.crashReportURL];
+             if (self.dSYMURL) {
+                 [self symbolicate:nil];
+             }
+#endif
          }
      }];
 }
