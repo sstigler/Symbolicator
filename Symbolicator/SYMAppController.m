@@ -8,6 +8,7 @@
 
 #import "SYMAppController.h"
 #import "SYMSymbolicator.h"
+#import "SYMLocator.h"
 
 @interface SYMAppController ()
 
@@ -31,6 +32,7 @@
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.crashReportURL = [reportChooser URL];
+             self.dSYMURL = [SYMLocator findDSYMWithPlistUrl:weakSelf.crashReportURL];
          }
      }];
 }
