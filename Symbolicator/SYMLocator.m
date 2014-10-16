@@ -7,6 +7,7 @@
 //
 
 #import "SYMLocator.h"
+#import "NSString+Utils.h"
 
 @interface SYMLocator ()
 
@@ -19,12 +20,10 @@
 @implementation SYMLocator
 
 + (void) findDSYMWithPlistUrl: (NSURL *) crashReportURL inFolder: (NSURL *) folderURL completion: (void(^)(NSURL * dSYMURL, NSString *version)) completion {
-    
     SYMLocator *locator = [SYMLocator new];
     locator.crashReportURL = crashReportURL;
     locator.folderURL = folderURL;
     locator.completion = completion;
-    
     [locator execute];
 }
 
@@ -44,40 +43,39 @@
     if ([fm fileExistsAtPath:self.folderURL.path isDirectory:&isDir] && isDir) {
         NSError *error = nil;
         NSString *str = [NSString stringWithContentsOfURL:self.crashReportURL encoding:NSUTF8StringEncoding error:&error];
+        assert(error != nil);
         
         NSRange versionRange = [str rangeOfString:@"Version:"];
-        NSInteger index = versionRange.location + versionRange.length;
-        
-        NSMutableString *version = [[NSMutableString alloc] init];
-        BOOL inVersion = NO;
-        
-        while (true) {
-            char c = [str characterAtIndex:index];
-            index ++;
-            
-            if (c == '(') {
-                inVersion = YES;
-            } else if (c == ')') {
-                break;
-            } else if (inVersion) {
-                [version appendFormat:@"%c", c];
-            }
-        }
-        
-        return version;
+        return [self versionFromString:str fromLocation:NSMaxRange(versionRange)];
     }
 
     return nil;
+}
+
+- (NSString *) versionFromString: (NSString *) versionString fromLocation: (NSInteger) location {
+    NSMutableString *version = [[NSMutableString alloc] init];
+    BOOL inVersion = NO;
+    
+    while (true) {
+        char c = [versionString characterAtIndex:location];
+        location ++;
+        
+        if (c == '(') {
+            inVersion = YES;
+        } else if (c == ')') {
+            break;
+        } else if (inVersion) {
+            [version appendFormat:@"%c", c];
+        }
+    }
+    return version;
 }
 
 - (NSURL *) searchDSYM: (NSString *) version {
     
     NSPipe* outputPipe = [NSPipe pipe];
     NSFileHandle* outputFileHandle = [outputPipe fileHandleForReading];
-    
-    
     NSTask* task = [self createSearchTaskWithOutputPipe:outputPipe version:version folder:self.folderURL];
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [task launch];
         [task waitUntilExit];
@@ -85,26 +83,31 @@
         NSData* data = [outputFileHandle readDataToEndOfFile];
         NSString *result =[[NSString alloc] initWithData:data
                                                 encoding:NSUTF8StringEncoding];
+        NSURL *dSYMURL = [self dSYMURLFromSearchResults:result];
         
-        NSString *pattern = @"/Contents/Info.plist";
-        NSString *dSYMExtension = @".dSYM";
-        
-        NSURL *dSYMURL = nil;
-        for (NSString *res in [result componentsSeparatedByString:@"\n"]) {
-            if ([res rangeOfString:pattern].location + pattern.length == res.length) {
-                NSString *dSYMPath = [res stringByReplacingOccurrencesOfString:pattern withString:@""];
-                if ([dSYMPath rangeOfString:dSYMExtension].location + dSYMExtension.length == dSYMPath.length) {
-                    dSYMURL = [NSURL fileURLWithPath:dSYMPath];
-                    break;
-                }
-            }
-        }
-
         dispatch_async(dispatch_get_main_queue(), ^{
             self.completion(dSYMURL, version);
         });
     });
     return nil;
+}
+
+- (NSURL *) dSYMURLFromSearchResults: (NSString *) result {
+    NSString *pattern = @"/Contents/Info.plist";
+    NSString *dSYMExtension = @".dSYM";
+    
+    NSURL *dSYMURL = nil;
+    for (NSString *res in [result componentsSeparatedByString:@"\n"]) {
+        if ([res endsWith:pattern options:NSCaseInsensitiveSearch]) {
+            NSString *dSYMPath = [res stringByReplacingOccurrencesOfString:pattern withString:@""];
+            if ([dSYMPath endsWith:dSYMExtension]) {
+                dSYMURL = [NSURL fileURLWithPath:dSYMPath];
+                break;
+            }
+        }
+    }
+    
+    return dSYMURL;
 }
 
 - (NSTask *)createSearchTaskWithOutputPipe:(NSPipe *)outputPipe version: (NSString *) version folder: (NSURL *) folderURL
@@ -130,5 +133,5 @@
     return task;
 }
 
-
 @end
+

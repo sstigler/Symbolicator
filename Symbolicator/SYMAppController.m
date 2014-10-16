@@ -7,8 +7,8 @@
 //
 
 #import "SYMAppController.h"
-#import "SYMSymbolicator.h"
 #import "SYMLocator.h"
+#import "SYMSymbolicator.h"
 
 NSString *const kSearchDirectory = @"kSearchDirectory";
 

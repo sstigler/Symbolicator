@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3BAA2BD319EEB1AC00E71104 /* SYMLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAA2BD219EEB1AC00E71104 /* SYMLocator.m */; };
+		3BAA2BDC19EFD37A00E71104 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAA2BDB19EFD37A00E71104 /* NSString+Utils.m */; };
 		F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F529775418D7E68A001551EB /* SYMSymbolicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F529775218D7E68A001551EB /* SYMSymbolicator.m */; };
 		F5D9564318D25B2F00952D3C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9564218D25B2F00952D3C /* Cocoa.framework */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		3BAA2BD119EEB1AC00E71104 /* SYMLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMLocator.h; sourceTree = "<group>"; };
 		3BAA2BD219EEB1AC00E71104 /* SYMLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMLocator.m; sourceTree = "<group>"; };
+		3BAA2BDA19EFD37A00E71104 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		3BAA2BDB19EFD37A00E71104 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		F529775118D7E68A001551EB /* SYMSymbolicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMSymbolicator.h; sourceTree = "<group>"; };
 		F529775218D7E68A001551EB /* SYMSymbolicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMSymbolicator.m; sourceTree = "<group>"; };
 		F5D9563F18D25B2F00952D3C /* Symbolicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symbolicator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +129,8 @@
 		F5D9564818D25B2F00952D3C /* Symbolicator */ = {
 			isa = PBXGroup;
 			children = (
+				3BAA2BDA19EFD37A00E71104 /* NSString+Utils.h */,
+				3BAA2BDB19EFD37A00E71104 /* NSString+Utils.m */,
 				F5D9567618D25DFA00952D3C /* SYMAppController.h */,
 				F5D9567718D25DFA00952D3C /* SYMAppController.m */,
 				F5D9565418D25B2F00952D3C /* SYMAppDelegate.h */,
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D9567818D25DFA00952D3C /* SYMAppController.m in Sources */,
+				3BAA2BDC19EFD37A00E71104 /* NSString+Utils.m in Sources */,
 				F529775318D7E68A001551EB /* SYMSymbolicator.m in Sources */,
 				F5D9565618D25B2F00952D3C /* SYMAppDelegate.m in Sources */,
 				3BAA2BD319EEB1AC00E71104 /* SYMLocator.m in Sources */,
