@@ -8,16 +8,14 @@
 
 #import "SYMLocator.h"
 
-NSString *const kDSYMSearchDirectory = @"/Users/sidslog/Public/Archives";
-
 @implementation SYMLocator
 
-+ (NSURL *) findDSYMWithPlistUrl: (NSURL *) plistUrl {
++ (NSURL *) findDSYMWithPlistUrl: (NSURL *) plistUrl inFolder: (NSURL *) folderURL {
     
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDir = NO;
     
-    if ([fm fileExistsAtPath:kDSYMSearchDirectory isDirectory:&isDir] && isDir) {
+    if ([fm fileExistsAtPath:folderURL.path isDirectory:&isDir] && isDir) {
         NSError *error = nil;
         NSString *str = [NSString stringWithContentsOfURL:plistUrl encoding:NSUTF8StringEncoding error:&error];
         
@@ -41,7 +39,7 @@ NSString *const kDSYMSearchDirectory = @"/Users/sidslog/Public/Archives";
         }
         
         if (version.length > 0) {
-            NSURL *url = [SYMLocator findDSYMForVersion:version];
+            NSURL *url = [SYMLocator findDSYMForVersion:version inFolder:folderURL];
             return url;
         }
     }
@@ -49,12 +47,12 @@ NSString *const kDSYMSearchDirectory = @"/Users/sidslog/Public/Archives";
     return nil;
 }
 
-+ (NSURL *) findDSYMForVersion: (NSString *) version {
++ (NSURL *) findDSYMForVersion: (NSString *) version inFolder: (NSURL *) folderURL {
     
     NSPipe* outputPipe = [NSPipe pipe];
     NSFileHandle* outputFileHandle = [outputPipe fileHandleForReading];
     
-    NSTask* task = [self createSearchTaskWithOutputPipe:outputPipe andVersion:version];
+    NSTask* task = [self createSearchTaskWithOutputPipe:outputPipe version:version folder:folderURL];
     [task launch];
     [task waitUntilExit];
     
@@ -77,12 +75,12 @@ NSString *const kDSYMSearchDirectory = @"/Users/sidslog/Public/Archives";
 }
 
 
-+ (NSTask *)createSearchTaskWithOutputPipe:(NSPipe *)outputPipe andVersion: (NSString *) version
++ (NSTask *)createSearchTaskWithOutputPipe:(NSPipe *)outputPipe version: (NSString *) version folder: (NSURL *) folderURL
 {
     NSArray* arguments = @[@"-rnil",
                            @"--include=Info.plist",
                            [NSString stringWithFormat:@"<string>%@</string>", version],
-                           kDSYMSearchDirectory,
+                           folderURL.path,
                            ];
     
     NSDictionary* existingEnvironentVariables = [[NSProcessInfo processInfo] environment];

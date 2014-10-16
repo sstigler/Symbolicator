@@ -16,6 +16,7 @@
 
 - (IBAction)chooseCrashReport:(id)sender;
 - (IBAction)chooseDSYM:(id)sender;
+- (IBAction)chooseDSYMFolder:(id)sender;
 - (IBAction)symbolicate:(id)sender;
 - (IBAction)export:(id)sender;
 
@@ -34,16 +35,9 @@
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.crashReportURL = [reportChooser URL];
-#ifdef SEARCH_ENABLED
-             self.dSYMURL = [SYMLocator findDSYMWithPlistUrl:weakSelf.crashReportURL];
-             if (self.dSYMURL) {
-                 [self symbolicate:nil];
-             }
-#endif
          }
      }];
 }
-
 
 - (void)chooseDSYM:(id)sender
 {
@@ -59,12 +53,31 @@
          }
      }];
 }
+    
+- (void)chooseDSYMFolder:(id)sender
+{
+    __weak typeof(self) weakSelf = self;
+    
+    NSOpenPanel* folderChooser = [self folderChooserWithMessage:@"Choose folder with DSYM files?"];
+    [folderChooser
+     beginSheetModalForWindow:[NSApp mainWindow]
+     completionHandler:^(NSInteger result) {
+         if (result == NSFileHandlingPanelOKButton)
+         {
+             weakSelf.dSYMFolder = [folderChooser URL];
+             weakSelf.dSYMURL = [SYMLocator findDSYMWithPlistUrl:weakSelf.crashReportURL inFolder:self.dSYMFolder];
+             if (weakSelf.dSYMURL) {
+                 [weakSelf symbolicate:nil];
+             }
+         }
+     }];
+}
 
 
 - (void)symbolicate:(id)sender
 {
     __weak typeof(self) weakSelf = self;
-    
+
     [SYMSymbolicator
      symbolicateCrashReport:self.crashReportURL
      dSYM:self.dSYMURL
@@ -103,6 +116,18 @@
      }];
 }
 
+
+- (NSOpenPanel *) folderChooserWithMessage:(NSString *)message {
+    NSOpenPanel* openPanel = [NSOpenPanel openPanel];
+    [openPanel setCanChooseDirectories:YES];
+    [openPanel setCanChooseFiles:NO];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setCanCreateDirectories:NO];
+    [openPanel setPrompt:@"Choose"];
+    [openPanel setMessage:message];
+    return openPanel;
+}
+
 - (NSOpenPanel *)fileChooserWithMessage:(NSString *)message fileType:(NSString *)extension
 {
     NSOpenPanel* openPanel = [NSOpenPanel openPanel];
@@ -113,7 +138,7 @@
     [openPanel setCanCreateDirectories:NO];
     [openPanel setPrompt:@"Choose"];
     [openPanel setMessage:message];
-    [openPanel setTreatsFilePackagesAsDirectories:NO];
+    [openPanel setTreatsFilePackagesAsDirectories:YES];
     return openPanel;
 }
 

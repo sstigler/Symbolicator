@@ -10,6 +10,6 @@
 
 @interface SYMLocator : NSObject
 
-+ (NSURL *) findDSYMWithPlistUrl: (NSURL *) plistUrl;
++ (NSURL *) findDSYMWithPlistUrl: (NSURL *) plistUrl inFolder: (NSURL *) folderURL;
 
 @end
