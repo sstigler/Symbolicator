@@ -17,7 +17,11 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="YEF-mj-2aC" customClass="SYMAppController"/>
+        <customObject id="YEF-mj-2aC" customClass="SYMAppController">
+            <connections>
+                <outlet property="symbolicateButton" destination="k5x-3n-C7c" id="rB9-hw-QgJ"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Symbolicator" id="1Xt-HY-uBw">

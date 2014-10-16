@@ -10,7 +10,7 @@
 #import "SYMSymbolicator.h"
 #import "SYMLocator.h"
 
-#define SEARCH_ENABLED
+NSString *const kSearchDirectory = @"kSearchDirectory";
 
 @interface SYMAppController ()
 
@@ -24,6 +24,17 @@
 
 @implementation SYMAppController
 
+
+- (id) init {
+    if (self = [super init]) {
+        NSString *searchFolderPath = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchDirectory];
+        if (searchFolderPath) {
+            self.dSYMFolder = [NSURL fileURLWithPath:searchFolderPath];
+        }
+    }
+    return self;
+}
+
 - (void)chooseCrashReport:(id)sender
 {
     __weak typeof(self) weakSelf = self;
@@ -35,6 +46,9 @@
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.crashReportURL = [reportChooser URL];
+             if (self.dSYMFolder) {
+                 [self findDSYMFile];
+             }
          }
      }];
 }
@@ -58,31 +72,61 @@
 {
     __weak typeof(self) weakSelf = self;
     
-    NSOpenPanel* folderChooser = [self folderChooserWithMessage:@"Choose folder with DSYM files?"];
+    NSOpenPanel* folderChooser = [self folderChooserWithMessage:@"Choose folder with the dSYM files or Xcode archives."];
     [folderChooser
      beginSheetModalForWindow:[NSApp mainWindow]
      completionHandler:^(NSInteger result) {
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.dSYMFolder = [folderChooser URL];
-             weakSelf.dSYMURL = [SYMLocator findDSYMWithPlistUrl:weakSelf.crashReportURL inFolder:self.dSYMFolder];
-             if (weakSelf.dSYMURL) {
-                 [weakSelf symbolicate:nil];
+             weakSelf.dSYMURL = nil;
+             if (weakSelf.crashReportURL) {
+                 [self.symbolicateButton setTitle:@"Search for the dSYM file"];
+                 [self.symbolicateButton setEnabled:YES];
              }
          }
      }];
 }
 
+- (void) findDSYMFile {
+    
+    [self.symbolicateButton setEnabled:NO];
+    
+    [self.symbolicateButton setTitle:@"Searching for dSYM file..."];
+    [SYMLocator findDSYMWithPlistUrl:self.crashReportURL inFolder:self.dSYMFolder completion:^(NSURL * dSYMURL, NSString *version) {
+        self.dSYMURL = dSYMURL;
+        
+        if (self.dSYMURL) {
+            [self symbolicate:nil];
+        } else {
+            NSString *title = [NSString stringWithFormat:@"dSYM file not found for app version: %@", version];
+            [self.symbolicateButton setTitle:title];
+        }
+    }];
+}
 
 - (void)symbolicate:(id)sender
 {
+    if (!self.dSYMURL && self.crashReportURL && self.dSYMFolder) {
+        [self findDSYMFile];
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
 
+    [[NSUserDefaults standardUserDefaults] setObject:self.dSYMFolder.path forKey:kSearchDirectory];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.symbolicateButton setEnabled:NO];
+    [self.symbolicateButton setTitle:@"Symbolication in process.."];
+    
     [SYMSymbolicator
      symbolicateCrashReport:self.crashReportURL
      dSYM:self.dSYMURL
      withCompletionBlock:^(NSString *symbolicatedReport) {
          weakSelf.symbolicatedReport = symbolicatedReport;
+         [weakSelf.symbolicateButton setEnabled:YES];
+         [weakSelf.symbolicateButton setTitle:@"Symbolicate"];
      }];
 }
 
