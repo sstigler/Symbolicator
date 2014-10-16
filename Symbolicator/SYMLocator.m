@@ -43,7 +43,7 @@
     if ([fm fileExistsAtPath:self.folderURL.path isDirectory:&isDir] && isDir) {
         NSError *error = nil;
         NSString *str = [NSString stringWithContentsOfURL:self.crashReportURL encoding:NSUTF8StringEncoding error:&error];
-        assert(error != nil);
+        assert(error == nil);
         
         NSRange versionRange = [str rangeOfString:@"Version:"];
         return [self versionFromString:str fromLocation:NSMaxRange(versionRange)];
@@ -100,7 +100,7 @@
     for (NSString *res in [result componentsSeparatedByString:@"\n"]) {
         if ([res endsWith:pattern options:NSCaseInsensitiveSearch]) {
             NSString *dSYMPath = [res stringByReplacingOccurrencesOfString:pattern withString:@""];
-            if ([dSYMPath endsWith:dSYMExtension]) {
+            if ([dSYMPath endsWith:dSYMExtension options:NSCaseInsensitiveSearch]) {
                 dSYMURL = [NSURL fileURLWithPath:dSYMPath];
                 break;
             }

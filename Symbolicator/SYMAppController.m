@@ -31,6 +31,8 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
         if (searchFolderPath) {
             self.dSYMFolder = [NSURL fileURLWithPath:searchFolderPath];
         }
+        self.canSymbolicate = NO;
+        self.symbolicateStatus = @"Select crash report and a folder with dSYMs or concrete dSYM file.";
     }
     return self;
 }
@@ -46,8 +48,8 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.crashReportURL = [reportChooser URL];
-             if (self.dSYMFolder) {
-                 [self findDSYMFile];
+             if (weakSelf.dSYMFolder) {
+                 [weakSelf findDSYMFile];
              }
          }
      }];
@@ -81,8 +83,8 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
              weakSelf.dSYMFolder = [folderChooser URL];
              weakSelf.dSYMURL = nil;
              if (weakSelf.crashReportURL) {
-                 [self.symbolicateButton setTitle:@"Search for the dSYM file"];
-                 [self.symbolicateButton setEnabled:YES];
+                 self.symbolicateStatus = @"Search for the dSYM file";
+                 self.canSymbolicate = YES;
              }
          }
      }];
@@ -90,17 +92,15 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
 
 - (void) findDSYMFile {
     
-    [self.symbolicateButton setEnabled:NO];
-    
-    [self.symbolicateButton setTitle:@"Searching for dSYM file..."];
+    self.symbolicateStatus = @"Searching for dSYM file...";
+    self.canSymbolicate = NO;
     [SYMLocator findDSYMWithPlistUrl:self.crashReportURL inFolder:self.dSYMFolder completion:^(NSURL * dSYMURL, NSString *version) {
         self.dSYMURL = dSYMURL;
         
         if (self.dSYMURL) {
             [self symbolicate:nil];
         } else {
-            NSString *title = [NSString stringWithFormat:@"dSYM file not found for app version: %@", version];
-            [self.symbolicateButton setTitle:title];
+            self.symbolicateStatus = [NSString stringWithFormat:@"dSYM file not found for app version: %@", version];
         }
     }];
 }
@@ -117,16 +117,16 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
     [[NSUserDefaults standardUserDefaults] setObject:self.dSYMFolder.path forKey:kSearchDirectory];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self.symbolicateButton setEnabled:NO];
-    [self.symbolicateButton setTitle:@"Symbolication in process.."];
+    self.canSymbolicate = NO;
+    self.symbolicateStatus  = @"Symbolication in process..";
     
     [SYMSymbolicator
      symbolicateCrashReport:self.crashReportURL
      dSYM:self.dSYMURL
      withCompletionBlock:^(NSString *symbolicatedReport) {
          weakSelf.symbolicatedReport = symbolicatedReport;
-         [weakSelf.symbolicateButton setEnabled:YES];
-         [weakSelf.symbolicateButton setTitle:@"Symbolicate"];
+         weakSelf.canSymbolicate = YES;
+         weakSelf.symbolicateStatus = @"Symbolicate";
      }];
 }
 

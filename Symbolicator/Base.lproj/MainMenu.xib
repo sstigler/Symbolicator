@@ -237,20 +237,8 @@
                         </buttonCell>
                         <connections>
                             <action selector="symbolicate:" target="YEF-mj-2aC" id="uGT-Tq-u5Y"/>
-                            <binding destination="YEF-mj-2aC" name="enabled" keyPath="crashReportURL" id="AxX-PZ-9F9">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="YEF-mj-2aC" name="enabled2" keyPath="dSYMURL" previousBinding="AxX-PZ-9F9" id="4Y1-cX-62p">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                    <integer key="NSNullPlaceholder" value="-1"/>
-                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                </dictionary>
-                            </binding>
+                            <binding destination="YEF-mj-2aC" name="enabled" keyPath="canSymbolicate" id="mCr-gN-3ZD"/>
+                            <binding destination="YEF-mj-2aC" name="title" keyPath="symbolicateStatus" id="poH-Ha-PAf"/>
                         </connections>
                     </button>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-FJ-awc">

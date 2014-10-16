@@ -16,6 +16,7 @@
 
 @property(nonatomic, copy) NSString* symbolicatedReport;
 
-@property (weak) IBOutlet NSButton *symbolicateButton;
+@property (nonatomic, assign) BOOL canSymbolicate;
+@property (nonatomic, copy) NSString *symbolicateStatus;
 
 @end
