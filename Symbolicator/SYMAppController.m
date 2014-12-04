@@ -16,8 +16,7 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
 
 - (IBAction)chooseCrashReport:(id)sender;
 - (IBAction)chooseDSYM:(id)sender;
-- (IBAction)chooseDSYMFolder:(id)sender;
-- (IBAction)symbolicate:(id)sender;
+- (IBAction)findDSYMFile:(id)sender;
 - (IBAction)export:(id)sender;
 
 @end
@@ -29,10 +28,9 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
     if (self = [super init]) {
         NSString *searchFolderPath = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchDirectory];
         if (searchFolderPath) {
-            self.dSYMFolder = [NSURL fileURLWithPath:searchFolderPath];
+            self.dSYMURL = [NSURL fileURLWithPath:searchFolderPath];
         }
-        self.canSymbolicate = NO;
-        self.symbolicateStatus = @"Select crash report and a folder with dSYMs or concrete dSYM file.";
+        [self updateStatus];
     }
     return self;
 }
@@ -48,9 +46,7 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
          if (result == NSFileHandlingPanelOKButton)
          {
              weakSelf.crashReportURL = [reportChooser URL];
-             if (weakSelf.dSYMFolder) {
-                 [weakSelf findDSYMFile];
-             }
+             [weakSelf updateStatus];
          }
      }];
 }
@@ -59,74 +55,46 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
 {
     __weak typeof(self) weakSelf = self;
     
-    NSOpenPanel* dSYMChooser = [self fileChooserWithMessage:@"Which dSYM goes with the crash report?" fileType:@"dSYM"];
-    [dSYMChooser
+    NSOpenPanel* chooser = [self fileChooserWithMessage:@"Select dSYM file or a folder which contains dSYM file" fileType:@"dSYM"];
+    [chooser
      beginSheetModalForWindow:[NSApp mainWindow]
      completionHandler:^(NSInteger result) {
          if (result == NSFileHandlingPanelOKButton)
          {
-             weakSelf.dSYMURL = [dSYMChooser URL];
-         }
-     }];
-}
-    
-- (void)chooseDSYMFolder:(id)sender
-{
-    __weak typeof(self) weakSelf = self;
-    
-    NSOpenPanel* folderChooser = [self folderChooserWithMessage:@"Choose folder with the dSYM files or Xcode archives."];
-    [folderChooser
-     beginSheetModalForWindow:[NSApp mainWindow]
-     completionHandler:^(NSInteger result) {
-         if (result == NSFileHandlingPanelOKButton)
-         {
-             weakSelf.dSYMFolder = [folderChooser URL];
-             weakSelf.dSYMURL = nil;
-             if (weakSelf.crashReportURL) {
-                 self.symbolicateStatus = @"Search for the dSYM file";
-                 self.canSymbolicate = YES;
-             }
+             weakSelf.dSYMURL = [chooser URL];
+             [weakSelf updateStatus];
          }
      }];
 }
 
-- (void) findDSYMFile {
+- (void) findDSYMFile:(id) sender {
+    [self setEnabled:NO withStatusString:@"Searching for dSYM file..."];
+    __weak typeof(self) weakSelf = self;
     
-    self.symbolicateStatus = @"Searching for dSYM file...";
-    self.canSymbolicate = NO;
-    [SYMLocator findDSYMWithPlistUrl:self.crashReportURL inFolder:self.dSYMFolder completion:^(NSURL * dSYMURL, NSString *version) {
-        self.dSYMURL = dSYMURL;
-        
-        if (self.dSYMURL) {
-            [self symbolicate:nil];
+    [SYMLocator findDSYMWithPlistUrl:self.crashReportURL inFolder:self.dSYMURL completion:^(NSURL * dSYMURL, NSString *version) {
+        if (dSYMURL) {
+            [[NSUserDefaults standardUserDefaults] setObject:weakSelf.dSYMURL.path forKey:kSearchDirectory];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            weakSelf.dSYMURL = dSYMURL;
+            [weakSelf symbolicate:nil];
         } else {
-            self.symbolicateStatus = [NSString stringWithFormat:@"dSYM file not found for app version: %@", version];
+            [weakSelf setEnabled:NO withStatusString:[NSString stringWithFormat:@"dSYM file not found for app version: %@", version]];
         }
     }];
 }
 
 - (void)symbolicate:(id)sender
 {
-    if (!self.dSYMURL && self.crashReportURL && self.dSYMFolder) {
-        [self findDSYMFile];
-        return;
-    }
-    
+    [self setEnabled:NO withStatusString:@"Symbolication in process..."];
     __weak typeof(self) weakSelf = self;
-
-    [[NSUserDefaults standardUserDefaults] setObject:self.dSYMFolder.path forKey:kSearchDirectory];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    self.canSymbolicate = NO;
-    self.symbolicateStatus  = @"Symbolication in process..";
     
     [SYMSymbolicator
      symbolicateCrashReport:self.crashReportURL
      dSYM:self.dSYMURL
      withCompletionBlock:^(NSString *symbolicatedReport) {
          weakSelf.symbolicatedReport = symbolicatedReport;
-         weakSelf.canSymbolicate = YES;
-         weakSelf.symbolicateStatus = @"Symbolicate";
+         [weakSelf setEnabled:YES withStatusString:@"Symbolicate"];
      }];
 }
 
@@ -160,22 +128,10 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
      }];
 }
 
-
-- (NSOpenPanel *) folderChooserWithMessage:(NSString *)message {
-    NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-    [openPanel setCanChooseDirectories:YES];
-    [openPanel setCanChooseFiles:NO];
-    [openPanel setAllowsMultipleSelection:NO];
-    [openPanel setCanCreateDirectories:NO];
-    [openPanel setPrompt:@"Choose"];
-    [openPanel setMessage:message];
-    return openPanel;
-}
-
 - (NSOpenPanel *)fileChooserWithMessage:(NSString *)message fileType:(NSString *)extension
 {
     NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-    [openPanel setCanChooseDirectories:NO];
+    [openPanel setCanChooseDirectories:YES];
     [openPanel setCanChooseFiles:YES];
     [openPanel setAllowsMultipleSelection:NO];
     [openPanel setAllowedFileTypes:@[extension]];
@@ -198,6 +154,24 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
     return savePanel;
 }
 
+- (void) updateStatus {
+    if (self.dSYMURL && self.crashReportURL) {
+        NSString *statusString;
+        if ([[self.dSYMURL pathExtension] isEqualToString:@"dSYM"]) {
+            statusString = @"Symbolicate";
+        } else {
+            statusString = @"Search for the dSYM file";
+        }
+        [self setEnabled:YES withStatusString:statusString];
+    } else {
+        [self setEnabled:NO withStatusString:@"Select crash report and a folder with dSYMs or concrete dSYM file."];
+    }
+}
+
+- (void) setEnabled: (BOOL) enabled withStatusString: (NSString *) string {
+    self.canSymbolicate = enabled;
+    self.symbolicateStatus = string;
+}
 
 - (void)showAlertForError:(NSError *)error
 {
