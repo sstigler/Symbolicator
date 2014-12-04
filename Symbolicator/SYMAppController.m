@@ -25,7 +25,7 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
 @implementation SYMAppController
 
 
-- (id) init {
+- (instancetype) init {
     if (self = [super init]) {
         NSString *searchFolderPath = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchDirectory];
         if (searchFolderPath) {

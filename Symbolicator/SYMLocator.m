@@ -7,7 +7,6 @@
 //
 
 #import "SYMLocator.h"
-#import "NSString+Utils.h"
 
 @interface SYMLocator ()
 
@@ -98,9 +97,9 @@
     
     NSURL *dSYMURL = nil;
     for (NSString *res in [result componentsSeparatedByString:@"\n"]) {
-        if ([res endsWith:pattern options:NSCaseInsensitiveSearch]) {
+        if ([res hasSuffix:pattern]) {
             NSString *dSYMPath = [res stringByReplacingOccurrencesOfString:pattern withString:@""];
-            if ([dSYMPath endsWith:dSYMExtension options:NSCaseInsensitiveSearch]) {
+            if ([dSYMPath hasSuffix:dSYMExtension]) {
                 dSYMURL = [NSURL fileURLWithPath:dSYMPath];
                 break;
             }
