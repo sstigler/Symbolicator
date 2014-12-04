@@ -55,7 +55,7 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
 {
     __weak typeof(self) weakSelf = self;
     
-    NSOpenPanel* chooser = [self fileChooserWithMessage:@"Select dSYM file or a folder which contains dSYM file" fileType:@"dSYM"];
+    NSOpenPanel* chooser = [self fileChooserWithMessage:@"Select dSYM file or a folder which contains dSYM file" fileType:nil];
     [chooser
      beginSheetModalForWindow:[NSApp mainWindow]
      completionHandler:^(NSInteger result) {
@@ -131,10 +131,12 @@ NSString *const kSearchDirectory = @"kSearchDirectory";
 - (NSOpenPanel *)fileChooserWithMessage:(NSString *)message fileType:(NSString *)extension
 {
     NSOpenPanel* openPanel = [NSOpenPanel openPanel];
-    [openPanel setCanChooseDirectories:YES];
+    [openPanel setCanChooseDirectories:extension ? NO : YES];
     [openPanel setCanChooseFiles:YES];
     [openPanel setAllowsMultipleSelection:NO];
-    [openPanel setAllowedFileTypes:@[extension]];
+    if (extension) {
+        [openPanel setAllowedFileTypes:@[extension]];
+    }
     [openPanel setCanCreateDirectories:NO];
     [openPanel setPrompt:@"Choose"];
     [openPanel setMessage:message];
