@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="SYMAppDelegate">
             <connections>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -180,15 +181,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="597" height="645"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="588" height="400"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="597" height="645"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="F6G-jp-sD2">
-                        <rect key="frame" x="10" y="606" width="46" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="13" y="606" width="46" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title=".crash:" id="wmX-z1-1RI">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -196,8 +196,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NhH-02-68q">
-                        <rect key="frame" x="13" y="573" width="43" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="13" y="574" width="46" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="dSYM:" id="W89-3q-OK0">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -206,7 +205,6 @@
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ezS-Uh-ixK">
                         <rect key="frame" x="479" y="597" width="99" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="87" id="Eza-O7-WlI"/>
                         </constraints>
@@ -219,56 +217,41 @@
                         </connections>
                     </button>
                     <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ss9-fV-daf">
-                        <rect key="frame" x="479" y="564" width="99" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="479" y="565" width="99" height="32"/>
                         <buttonCell key="cell" type="push" title="Choose..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9xX-cJ-gVg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="chooseDSYM:" target="YEF-mj-2aC" id="naz-Qp-mIo"/>
+                            <action selector="chooseDSYM:" target="YEF-mj-2aC" id="LF5-Wd-k7v"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k5x-3n-C7c">
-                        <rect key="frame" x="14" y="527" width="569" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="14" y="528" width="569" height="32"/>
                         <buttonCell key="cell" type="push" title="Symbolicate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zap-YD-PUc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="symbolicate:" target="YEF-mj-2aC" id="uGT-Tq-u5Y"/>
-                            <binding destination="YEF-mj-2aC" name="enabled" keyPath="crashReportURL" id="AxX-PZ-9F9">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="YEF-mj-2aC" name="enabled2" keyPath="dSYMURL" previousBinding="AxX-PZ-9F9" id="4Y1-cX-62p">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                    <integer key="NSNullPlaceholder" value="-1"/>
-                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                </dictionary>
-                            </binding>
+                            <action selector="findDSYMFile:" target="YEF-mj-2aC" id="H7m-Rt-loY"/>
+                            <binding destination="YEF-mj-2aC" name="enabled" keyPath="canSymbolicate" id="mCr-gN-3ZD"/>
+                            <binding destination="YEF-mj-2aC" name="title" keyPath="symbolicateStatus" id="poH-Ha-PAf"/>
                         </connections>
                     </button>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-FJ-awc">
-                        <rect key="frame" x="20" y="49" width="557" height="470"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="20" y="49" width="557" height="471"/>
                         <clipView key="contentView" id="K59-MA-Hzt">
                             <rect key="frame" x="1" y="1" width="555" height="468"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="iEt-GK-jIp">
-                                    <rect key="frame" x="0.0" y="0.0" width="555" height="468"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="555" height="469"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="555" height="468"/>
+                                    <size key="minSize" width="555" height="469"/>
                                     <size key="maxSize" width="567" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="555" height="468"/>
+                                    <size key="minSize" width="555" height="469"/>
                                     <size key="maxSize" width="567" height="10000000"/>
                                     <connections>
                                         <binding destination="YEF-mj-2aC" name="value" keyPath="symbolicatedReport" id="0A6-Bl-3wi">
@@ -293,8 +276,7 @@
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9f-EO-l6V">
-                        <rect key="frame" x="484" y="1" width="94" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="485" y="1" width="93" height="32"/>
                         <buttonCell key="cell" type="push" title="Export..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bve-tc-WsU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -318,8 +300,7 @@
                         </connections>
                     </button>
                     <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWV-ii-E9k">
-                        <rect key="frame" x="62" y="608" width="415" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="65" y="608" width="412" height="14"/>
                         <pathCell key="cell" controlSize="small" selectable="YES" editable="YES" alignment="left" placeholderString="Drag a .crash file here" id="zeR-3n-gDn">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -332,8 +313,7 @@
                         </connections>
                     </pathControl>
                     <pathControl verticalHuggingPriority="249" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79f-4y-Q4K">
-                        <rect key="frame" x="62" y="575" width="415" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="65" y="576" width="412" height="14"/>
                         <pathCell key="cell" controlSize="small" selectable="YES" editable="YES" alignment="left" placeholderString="Drag a .dSYM file here" id="q5x-iL-CSc">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -342,7 +322,7 @@
                             </allowedTypes>
                         </pathCell>
                         <connections>
-                            <binding destination="YEF-mj-2aC" name="value" keyPath="dSYMURL" id="glg-AU-WUW"/>
+                            <binding destination="YEF-mj-2aC" name="value" keyPath="dSYMURL" id="lFx-L1-bvo"/>
                         </connections>
                     </pathControl>
                 </subviews>
@@ -354,6 +334,7 @@
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ss9-fV-daf" secondAttribute="trailing" constant="20" symbolic="YES" id="7Qw-Ip-Jdm"/>
                     <constraint firstItem="79f-4y-Q4K" firstAttribute="centerY" secondItem="Ss9-fV-daf" secondAttribute="centerY" id="AE0-YX-awn"/>
                     <constraint firstItem="F6G-jp-sD2" firstAttribute="leading" relation="lessThanOrEqual" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="15" id="FIn-Vi-X0b"/>
+                    <constraint firstItem="NhH-02-68q" firstAttribute="top" secondItem="F6G-jp-sD2" secondAttribute="bottom" constant="15" id="GNN-20-Wmy"/>
                     <constraint firstItem="Ss9-fV-daf" firstAttribute="width" secondItem="ezS-Uh-ixK" secondAttribute="width" id="JfR-py-IZ4"/>
                     <constraint firstItem="9f5-FJ-awc" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="MWJ-ML-GSs"/>
                     <constraint firstItem="ezS-Uh-ixK" firstAttribute="centerY" secondItem="OWV-ii-E9k" secondAttribute="centerY" id="MpF-Er-2Zj"/>
@@ -375,9 +356,9 @@
                     <constraint firstItem="OWV-ii-E9k" firstAttribute="leading" secondItem="F6G-jp-sD2" secondAttribute="trailing" constant="8" symbolic="YES" id="o9v-eL-z5b"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ezS-Uh-ixK" secondAttribute="trailing" constant="20" symbolic="YES" id="oYt-sL-x0a"/>
                     <constraint firstItem="ezS-Uh-ixK" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="sqE-x6-VSJ"/>
-                    <constraint firstItem="Ss9-fV-daf" firstAttribute="top" secondItem="ezS-Uh-ixK" secondAttribute="bottom" constant="12" symbolic="YES" id="xjp-Cv-NMM"/>
                 </constraints>
             </view>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="y2P-q1-Emg"/>
     </objects>
 </document>

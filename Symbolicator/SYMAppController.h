@@ -15,4 +15,7 @@
 
 @property(nonatomic, copy) NSString* symbolicatedReport;
 
+@property (nonatomic, assign) BOOL canSymbolicate;
+@property (nonatomic, copy) NSString *symbolicateStatus;
+
 @end
